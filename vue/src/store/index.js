@@ -7,3 +7,5 @@ const store = createStore({
   mutations:{},
   modules:{}
 })
+
+export default store;
