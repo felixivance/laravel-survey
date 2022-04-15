@@ -16,8 +16,7 @@ export default {
 </script>
 
 <template>
-
-  <HelloWorld msg="Hello Vue 3 + Vite Felix!" />
+  <router-view></router-view>
 </template>
 
 <style>

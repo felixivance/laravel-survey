@@ -1,4 +1,7 @@
-import { createRouter} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
+import Login from "../views/Login.vue";
+import Dashboard from "../views/Dashboard.vue";
+import Register from "../views/Register.vue";
 
 const routes = [
   {
@@ -19,7 +22,7 @@ const routes = [
 ];
 
 const router = createRouter( {
-  history: createWebHistory,
+  history: createWebHistory(),
   routes
 });
 
