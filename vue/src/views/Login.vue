@@ -6,7 +6,7 @@
     <p class="mt-2 text-center text-sm text-gray-600">
       Or
       {{ ' ' }}
-      <router-link :to={name:'Register'} class="font-medium text-indigo-600 hover:text-indigo-500"> Sign up Today </router-link>
+      <router-link :to="{name:'Register'}" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign up Today </router-link>
     </p>
   </div>
   <form class="mt-8 space-y-6" action="#" method="POST">
