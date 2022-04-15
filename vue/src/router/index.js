@@ -5,13 +5,10 @@ import Register from "../views/Register.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
 import Surveys from "../views/Surveys.vue";
 import store from "../store";
+import AuthComponent from "../components/AuthComponent.vue";
 
 const routes = [
-  {
-    path:'/login',
-    name: 'Login',
-    component: Login
-  },
+
   {
     path:'/',
     name: 'Dashboard',
@@ -28,10 +25,23 @@ const routes = [
     ]
   },
   {
-    path:'/register',
-    name: 'Register',
-    component: Register
-  }
+    path:'/auth',
+    name:'Auth',
+    component: AuthComponent,
+    children: [
+      {
+        path:'/auth/register',
+        name: 'Register',
+        component: Register
+      },
+      {
+        path:'/auth/login',
+        name: 'Login',
+        component: Login
+      },
+    ]
+  },
+
 ];
 
 const router = createRouter( {
