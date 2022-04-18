@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
@@ -13,9 +14,12 @@ class AuthController extends Controller
             'email'=> 'required|email|string|unique:users',
             'password'=> ['required','confirmed',
                 Password::min(8)->mixedCase()->numbers()->symbols()
-            ],
-
-
+            ]
+        ]);
+        $user = User::create([
+            'name'=> $data['name'],
+            'email'=> $data['email'],
+            'password'=> bcrypt($data['password'])
         ]);
     }
 }
