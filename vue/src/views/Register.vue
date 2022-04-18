@@ -86,9 +86,9 @@ function register(e){
   store.dispatch('register',user).then((result)=>{
     console.log("result is ", result);
 
-    router.push({
-      name:"Dashboard"
-    })
+    // router.push({
+    //   name:"Dashboard"
+    // })
   })
 }
 
