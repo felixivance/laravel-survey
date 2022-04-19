@@ -10,7 +10,13 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="login">
-    <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
+    <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between" v-if="errorMsg !==''" >
+      {{errorMsg}}
+      <span @click="errorMsg =''" >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg></span>
+    </p>
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>

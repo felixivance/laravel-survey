@@ -25,8 +25,8 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="register">
-    <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
-    <p class="text-white bg-red-500 rounded-md" >
+    <p class="text-white text-center bg-red-500 rounded-md px-3 py-5">{{errorMsg}}</p>
+    <p class="text-white bg-red-500 rounded-md px-3 py-5" v-if="errors" >
       <span v-for="(error,i) in errors.password"> * {{error}} <br> </span>
     </p>
     <input type="hidden" name="remember" value="true" />
