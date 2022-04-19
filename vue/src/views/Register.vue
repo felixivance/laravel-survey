@@ -26,7 +26,9 @@
   </div>
   <form class="mt-8 space-y-6" @submit="register">
     <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
-<!--    <p class="text-white text-center bg-red-500 rounded-md" v-for="">{{errorMsg}}</p>-->
+    <p class="text-white bg-red-500 rounded-md" >
+      <span v-for="(error,i) in errors.password"> * {{error}} <br> </span>
+    </p>
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
@@ -84,7 +86,7 @@ const user = {
 
 };
 let errorMsg = ref("")
-let errors = ref([]);
+let errors = ref("");
 
 
 function register(e){
