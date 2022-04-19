@@ -92,7 +92,7 @@ let errors = ref("");
 function register(e){
   e.preventDefault();
   store.dispatch('register',user).then((result)=>{
-    console.log("result is ", result);
+
 
     router.push({
       name:"Dashboard"

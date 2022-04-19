@@ -37,9 +37,9 @@ class AuthController extends Controller
         $data = $request->validate([
             'email'=>'required|string|exists:users,email',
             'password'=>'required',
-            'remember'=>'boolean'
+            'remember_token'=>'boolean'
         ]);
-        $remember = $data['remember'] ?? false;
+        $remember = $data['remember_token'] ?? false;
 
         if(!Auth::attempt($data, $remember)){
             return response([

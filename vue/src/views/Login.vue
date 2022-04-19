@@ -66,9 +66,9 @@ function login(e){
   console.log("login user");
   store.dispatch('login', user ).then((res)=>{
     console.log("logged in user ", res)
-    // router.push({
-    //   name:"Dashboard"
-    // })
+    router.push({
+      name:"Dashboard"
+    })
   }).catch((error)=>{
     errorMsg.value = error.response.data.message
     console.log(error.response.data.message)
