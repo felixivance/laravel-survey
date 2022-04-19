@@ -25,6 +25,7 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="register">
+    <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
@@ -71,6 +72,7 @@
 import { LockClosedIcon } from '@heroicons/vue/solid'
 import store from "../store";
 import {useRouter} from "vue-router";
+import {onMounted, ref} from "vue";
 const router = useRouter();
 
 const user = {
@@ -80,6 +82,7 @@ const user = {
   password_confirmation:"",
 
 };
+let errorMsg = ref("")
 
 function register(e){
   e.preventDefault();
@@ -89,7 +92,13 @@ function register(e){
     // router.push({
     //   name:"Dashboard"
     // })
+  }).catch((error)=>{
+    errorMsg.value = error.response.data.errors
   })
 }
+
+onMounted(()=>{
+  console.log("mounted");
+});
 
 </script>

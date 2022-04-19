@@ -16,8 +16,6 @@ const store = createStore({
         commit("setUser", data)
         return data;
 
-      }).catch((error)=>{
-        console.log(error)
       })
 
       //odl method
@@ -40,8 +38,6 @@ const store = createStore({
            commit("setUser", data)
           return data;
 
-      }).catch((error)=>{
-        console.log(error)
       })
     //   return fetch('http://127.0.0.1:8000/api/login',{
     //     headers:{

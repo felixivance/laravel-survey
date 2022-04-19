@@ -9,7 +9,8 @@
       <router-link :to="{name:'Register'}" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign up Today </router-link>
     </p>
   </div>
-  <form class="mt-8 space-y-6" action="#" method="POST">
+  <form class="mt-8 space-y-6" @submit="login">
+    <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
@@ -48,6 +49,7 @@
 import { LockClosedIcon } from '@heroicons/vue/solid'
 import store from "../store";
 import {useRouter} from "vue-router";
+import {ref} from "vue";
 const router = useRouter();
 
 const user = {
@@ -56,13 +58,20 @@ const user = {
   'remember':false
 }
 
+let errorMsg = ref("");
+
+
 function login(e){
   e.preventDefault();
+  console.log("login user");
   store.dispatch('login', user ).then((res)=>{
     console.log("logged in user ", res)
     // router.push({
     //   name:"Dashboard"
     // })
+  }).catch((error)=>{
+    errorMsg.value = error.response.data.message
+    console.log(error.response.data.message)
   })
 }
 
