@@ -10,9 +10,9 @@
     </p>
   </div>
   <form class="mt-8 space-y-6" @submit="login">
-    <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between" v-if="errorMsg !==''" >
+    <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center " v-if="errorMsg !==''" >
       {{errorMsg}}
-      <span @click="errorMsg =''" >
+      <span @click="errorMsg =''" class="transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg></span>
@@ -72,12 +72,17 @@ function login(e){
   console.log("login user");
   store.dispatch('login', user ).then((res)=>{
     console.log("logged in user ", res)
+    if(res.error){
+      return errorMsg.value = res.error
+    }
     router.push({
       name:"Dashboard"
     })
   }).catch((error)=>{
+    console.log(error)
     errorMsg.value = error.response.data.message
-    console.log(error.response.data.message)
+
+
   })
 }
 
