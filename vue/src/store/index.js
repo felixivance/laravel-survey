@@ -39,6 +39,7 @@ const store = createStore({
           return data;
 
       })
+
     //   return fetch('http://127.0.0.1:8000/api/login',{
     //     headers:{
     //       "Content-type":"application/json",
@@ -51,19 +52,26 @@ const store = createStore({
     //       commit("setUser", result)
     //       return result
     //     })
+    },
+    logout({commit}){
+      return axiosClient.post('/logout').then(response=>{
+        commit('logout')
+        return response
+      })
     }
   },
   mutations:{
-    logout: (state) =>{
-      state.user.data ={};
-        state.user.token = null;
-        sessionStorage.removeItem("TOKEN");
-    },
+
     setUser: (state, userData)=>{
       state.user.token = userData.token;
       state.user.data = userData.user;
       sessionStorage.setItem('TOKEN', userData.token);
-    }
+    },
+    logout: (state) =>{
+      state.user.data ={};
+      state.user.token = null;
+      sessionStorage.removeItem("TOKEN");
+    },
   },
   modules:{}
 })

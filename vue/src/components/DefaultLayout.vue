@@ -142,10 +142,12 @@ export default {
   },
   methods:{
     logout(){
-      this.$store.commit('logout');
-      this.$router.push({
-        name:'Login'
-      })
+      this.$store.dispatch('logout').then(()=>{
+        this.$router.push({
+          name:'Login'
+        });
+      });
+
     }
   }
 
