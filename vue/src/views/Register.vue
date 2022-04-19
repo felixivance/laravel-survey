@@ -26,6 +26,7 @@
   </div>
   <form class="mt-8 space-y-6" @submit="register">
     <p class="text-white text-center bg-red-500 rounded-md">{{errorMsg}}</p>
+<!--    <p class="text-white text-center bg-red-500 rounded-md" v-for="">{{errorMsg}}</p>-->
     <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
@@ -83,6 +84,8 @@ const user = {
 
 };
 let errorMsg = ref("")
+let errors = ref([]);
+
 
 function register(e){
   e.preventDefault();
@@ -93,7 +96,9 @@ function register(e){
     //   name:"Dashboard"
     // })
   }).catch((error)=>{
-    errorMsg.value = error.response.data.errors
+    errorMsg.value = error.response.data.message
+    errors.value = error.response.data.errors
+    console.log(errors)
   })
 }
 
