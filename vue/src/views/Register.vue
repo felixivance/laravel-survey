@@ -94,13 +94,13 @@ function register(e){
   store.dispatch('register',user).then((result)=>{
     console.log("result is ", result);
 
-    // router.push({
-    //   name:"Dashboard"
-    // })
+    router.push({
+      name:"Dashboard"
+    })
   }).catch((error)=>{
     errorMsg.value = error.response.data.message
     errors.value = error.response.data.errors
-    console.log(errors)
+
   })
 }
 
