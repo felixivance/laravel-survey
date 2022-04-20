@@ -12,7 +12,52 @@ const tmpSurveys = [
     created_at: "2021-12-20 18:00:00",
     updated_at:"2021-12-20 18:00:00",
     expire_date: "2021-12-31 18:00",
-    questions:[]
+    questions:[
+      {
+        id: 1,
+        type: "select",
+        question:"from which country are you?",
+        description: null,
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"kenya"
+            },
+            {
+              uuid: "2",
+              text:"Nigeria"
+            },
+            {
+              uuid: "4",
+              text:"Sudan"
+            }
+          ]
+        }
+      },
+      {
+        id: 2,
+        type: "checkbox",
+        question:"which language videos do you prefer",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      }
+    ]
 
   }
 ];
