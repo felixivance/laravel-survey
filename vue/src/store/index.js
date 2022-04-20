@@ -56,7 +56,87 @@ const tmpSurveys = [
             }
           ]
         }
-      }
+      },
+      {
+        id: 3,
+        type: "checkbox",
+        question:"which language videos do you prefer 2",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 4,
+        type: "radio",
+        question:"which language videos do you prefer",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 5,
+        type: "radio",
+        question:"which language videos do you prefer 2",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 6,
+        type: "text",
+        question:"which language videos do you prefer 2",
+        description: null,
+        data:{ }
+      },
+      {
+        id: 7,
+        type: "textarea",
+        question:"which language videos do you prefer 2",
+        description: "text area description",
+        data:{ }
+      },
     ]
 
   }
