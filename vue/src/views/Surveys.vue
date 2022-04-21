@@ -15,10 +15,18 @@
       </div>
 
    </template>
+    <div>
+
+      <pre>{{surveys}}</pre>
+    </div>
   </PageComponent>
 </template>
 
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
+import store from "../store";
+import {computed} from "vue";
+
+const surveys = computed(()=> store.state.surveys);
 
 </script>
