@@ -21,6 +21,9 @@ const routes = [
       },
       {
         path:'/surveys', name:'Surveys', component: Surveys
+      },
+      {
+        path:'/surveys', name:'CreateSurvey', component: Surveys
       }
     ]
   },
