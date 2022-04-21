@@ -15,6 +15,7 @@
       </div>
 
     </template>
+    <pre>{{survey}}</pre>
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -37,14 +38,32 @@
 <!--          title-->
           <div>
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-            <input type="text" v-model="survey.title" id="title" name="title" autocomplete="false"
+            <input type="text" v-model="survey.title" id="title" name="title" autocomplete="false" placeholder="Survey Title"
                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
           <div>
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea v-model="survey.title" id="description" name="title" autocomplete="false" rows="3"
+            <textarea v-model="survey.description" id="description" name="title" autocomplete="false" rows="3" placeholder="Survey description"
                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </textarea>
+          </div>
+          <div>
+            <label for="expireDate" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+            <input type="date" v-model="survey.expire_date" id="expireDate" name="title" autocomplete="false" placeholder="Survey Expiry Date"
+                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input type="checkbox" id="status" v-model="survey.status" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="status" class="font-medium text-gray-700">Active</label>
+            </div>
+          </div>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
+            text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
+            focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
           </div>
         </div>
       </div>
@@ -64,7 +83,7 @@ const route = useRoute();
 let survey= ref({
   title:'',
   status:false,
-  description:false,
+  description:'',
   image:null,
   expire_date:null,
   questions:[]
