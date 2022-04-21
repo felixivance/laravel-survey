@@ -69,6 +69,9 @@
           <div v-if="!survey.questions.length" class="text-center text-gray-600">
             You dont have any questions created
           </div>
+          <div v-for="(question, index) in survey.questions" :key="question.id">
+            <QuestionEditor  :question="question" :index="index" @change="questionChange" @addQuestion="addQuestion" @deleteQuestion="deleteQuestion"  />
+          </div>
 
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
@@ -85,6 +88,7 @@
 
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
+import QuestionEditor from "../components/editor/QuestionEditor.vue"
 import {ref} from "vue";
 import {useRoute} from "vue-router";
 import store from "../store";
