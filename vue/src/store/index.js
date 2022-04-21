@@ -11,7 +11,7 @@ const tmpSurveys = [
     description:'My name is Felix, i am a web developer with 8+ years of exeperience',
     created_at: "2021-12-20 18:00:00",
     updated_at:"2021-12-20 18:00:00",
-    expire_date: "2021-12-31 18:00",
+    expiry_date: "2021-12-31 18:00",
     questions:[
       {
         id: 1,
@@ -149,19 +149,19 @@ const tmpSurveys = [
     description:'My name is Felix, i am a web developer with 8+ years of exeperience',
     created_at: "2021-12-20 18:00:00",
     updated_at:"2021-12-20 18:00:00",
-    expire_date: "2021-12-31 18:00",
+    expiry_date: "2021-12-31 18:00",
     questions:[]
   },
   {
     id:200,
     title:'Felix',
-    slug:'Runye is a G',
+    slug:'Ivance is a G',
     status:'draft',
     image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
     description:'My name is Felix, i am a web developer with 8+ years of exeperience',
     created_at: "2021-12-20 18:00:00",
     updated_at:"2021-12-20 18:00:00",
-    expire_date: "2021-12-31 18:00",
+    expiry_date: "2021-12-31 18:00",
     questions:[]
   }
 ];

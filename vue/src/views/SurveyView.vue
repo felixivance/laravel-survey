@@ -15,7 +15,6 @@
       </div>
 
     </template>
-    <pre>{{survey}}</pre>
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -49,7 +48,7 @@
           </div>
           <div>
             <label for="expireDate" class="block text-sm font-medium text-gray-700">Expiry Date</label>
-            <input type="date" v-model="survey.expire_date" id="expireDate" name="title" autocomplete="false" placeholder="Survey Expiry Date"
+            <input type="date" v-model="survey.expiry_date" id="expireDate" name="title" autocomplete="false" placeholder="Survey Expiry Date"
                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
           <div class="flex items-start">
@@ -85,7 +84,7 @@ let survey= ref({
   status:false,
   description:'',
   image:null,
-  expire_date:null,
+  expiry_date:null,
   questions:[]
 })
 
