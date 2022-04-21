@@ -59,12 +59,24 @@
               <label for="status" class="font-medium text-gray-700">Active</label>
             </div>
           </div>
+          <!--          questions-->
+          <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+            <div class="text-2xl font-semibold flex items-center justify-between">
+              Questions
+              <button type="button" @click="addQuestion" class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700">Add Question</button>
+            </div>
+          </div>
+          <div v-if="!survey.questions.length" class="text-center text-gray-600">
+            You dont have any questions created
+          </div>
+
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
             text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
           </div>
         </div>
+
       </div>
 
     </form>
@@ -93,6 +105,10 @@ if(route.params.id){
 }
 
 const saveSurvey=()=>{
+
+}
+
+const addQuestion=()=>{
 
 }
 
