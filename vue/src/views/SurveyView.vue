@@ -20,5 +20,13 @@
 
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
-
+import {ref} from "vue";
+let model= ref({
+  title:'',
+  status:false,
+  description:false,
+  image:null,
+  expire_date:null,
+  questions:[]
+})
 </script>
