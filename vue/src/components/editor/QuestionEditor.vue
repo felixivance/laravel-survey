@@ -36,7 +36,7 @@
     <!-- Question -->
     <div class="mt-3 col-span-9">
       <label :for="'question_text_' + survey.data" class="block text-sm font-medium text-gray-700">Question Text</label>
-      <input :id="'question_text_' + survey.data" v-model="survey.question":name="'question_text_' + survey.data"
+      <input :id="'question_text_' + survey.data" v-model="survey.question" :name="'question_text_' + survey.data"
              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md "
         type="text" @change="dataChange"/>
     </div>
@@ -71,7 +71,6 @@
     <div v-if="shouldHaveOptions()" class="mt-2">
       <h4 class="text-sm font-semibold mb-1 flex justify-between items-center">
         Options
-
         <!-- Add new option -->
         <button class="flex items-center text-xs py-1 px-2 rounded-sm text-white bg-gray-600 hover:bg-gray-700"
           type="button" @click="addOption()">
@@ -120,7 +119,7 @@ const props = defineProps({
 });
 const emit = defineEmits(["change", "addQuestion", "deleteQuestion"]);
 // Re-create the whole question data to avoid unintentional reference change
-const surver = ref(JSON.parse(JSON.stringify(props.question)));
+const survey= ref(JSON.parse(JSON.stringify(props.question)));
 // Get question types from vuex
 const questionTypes = computed(() => store.state.questionTypes);
 
