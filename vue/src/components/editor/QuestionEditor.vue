@@ -2,7 +2,7 @@
   <!-- Question index -->
   <div class="flex items-center justify-between">
     <h3 class="text-lg font-bold">
-      {{ index + 1 }}. {{ survey.question }}
+      {{ props.index + 1 }}. {{ survey.question }}
     </h3>
 
 
@@ -164,7 +164,8 @@ function typeChange() {
 
 // Emit the data change
 function dataChange() {
-  const data = survey.value;
+  // const data = survey.value;
+  const data = JSON.parse(JSON.stringify(survey.value));
   if (!shouldHaveOptions()) {
     delete data.data.options;
   }
