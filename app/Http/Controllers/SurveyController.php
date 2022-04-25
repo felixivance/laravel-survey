@@ -10,7 +10,8 @@ class SurveyController extends Controller
 
     public function index(Request $request)
     {
-        //
+        $user = $request->user();
+        return Survey::where('user_id', $user->id)->paginate();
     }
 
     /**
@@ -23,15 +24,16 @@ class SurveyController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'email'=>'required|string|exists:users,email',
+            'password'=>'required',
+            'remember_token'=>'boolean'
+        ]);
+
+
     }
 
     /**
