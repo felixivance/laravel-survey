@@ -124,8 +124,16 @@ const addQuestion=(index)=>{
   survey.value.questions.splice(index, 0, newQuestion) //adds nw element to thr array
 }
 
-const deleteQuestion=(index)=>{
+const deleteQuestion=(question)=>{
   survey.value.questions = survey.value.questions.filter((q)=> q!== question)
 }
 
+function questionChange(question){
+  survey.value.questions = survey.value.questions.map((q)=>{
+    if(q.id === question.id){
+      return JSON.parse(JSON.stringify(question))
+    }
+    return q;
+  })
+}
 </script>
