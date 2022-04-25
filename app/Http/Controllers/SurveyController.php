@@ -28,23 +28,23 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'email'=>'required|string|exists:users,email',
-            'password'=>'required',
-            'remember_token'=>'boolean'
+            'title'=>'required | string| max:1000',
+            'user_id'=>'exists:users,id',
+            'status'=>'required|boolean',
+            'description'=>'nullable|string',
+            'expire_date'=>'nullable|date|after:tomorrow'
         ]);
 
+      return  Survey::create($data);
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Survey  $survey
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Survey $survey)
+    public function show(Survey $survey, Request  $request)
     {
-        //
+        if($request->user()->id !== $survey->user_id){
+            return abort(403, 'unauthorized action');
+        }
+        return $survey;
     }
 
     /**
@@ -58,26 +58,30 @@ class SurveyController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Survey  $survey
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Survey $survey)
     {
-        //
+        $data = $request->validate([
+            'title'=>'required | string| max:1000',
+            'user_id'=>'exists:users,id',
+            'status'=>'required|boolean',
+            'description'=>'nullable|string',
+            'expire_date'=>'nullable|date|after:tomorrow'
+        ]);
+        if($survey->update($data)){
+            return $survey;
+        }else{
+            return abort(500, 'error occured updating survey');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Survey  $survey
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Survey $survey)
+
+    public function destroy(Survey $survey, Request $request)
     {
-        //
+        if($request->user()->id !== $survey->user_id){
+            return abort(403, 'unauthorized action');
+        }
+        $survey->delete();
+        return response('Survey deleted successfully',200);
     }
 }
