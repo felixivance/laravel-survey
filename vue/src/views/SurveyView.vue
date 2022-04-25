@@ -92,6 +92,7 @@ import QuestionEditor from "../components/editor/QuestionEditor.vue"
 import {ref} from "vue";
 import {useRoute} from "vue-router";
 import store from "../store";
+import {v4 as uuidv4} from "uuid";
 
 const route = useRoute();
 
@@ -112,8 +113,19 @@ const saveSurvey=()=>{
 
 }
 
-const addQuestion=()=>{
+const addQuestion=(index)=>{
+  const newQuestion = {
+    id: uuidv4(),
+    type: "text",
+    question:"",
+    description: null,
+    data:{}
+  }
+  survey.value.questions.splice(index, 0, newQuestion) //adds nw element to thr array
+}
 
+const deleteQuestion=(index)=>{
+  survey.value.questions = survey.value.questions.filter((q)=> q!== question)
 }
 
 </script>

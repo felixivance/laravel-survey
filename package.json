@@ -15,6 +15,7 @@
         "lodash": "^4.17.19"
     },
     "dependencies": {
+        "uuid": "^8.3.2",
         "vuex": "^4.0.2"
     }
 }

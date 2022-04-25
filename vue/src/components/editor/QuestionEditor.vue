@@ -165,7 +165,7 @@ function typeChange() {
 // Emit the data change
 function dataChange() {
   // const data = survey.value;
-  const data = JSON.parse(JSON.stringify(survey.value));
+  const data = JSON.parse(JSON.stringify(survey.value)); //create clone of model value ie the survey
   if (!shouldHaveOptions()) {
     delete data.data.options;
   }
