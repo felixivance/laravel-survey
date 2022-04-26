@@ -256,8 +256,8 @@ const store = createStore({
     },
     updateSurvey:(state,survey)=>{
       state.surveys = state.surveys.map((s)=>{
-        if(survey.id ===s.id){
-          return survey
+        if(survey.data.id ===s.id){
+          return survey.data
         }else{
           return s
         }
