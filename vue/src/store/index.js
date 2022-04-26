@@ -177,6 +177,18 @@ const store = createStore({
   },
   getters:{ },
   actions:{
+    saveSurvey({commit}, survey){
+      let response;
+      if(survey.id){ //updating
+        response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
+
+        })
+      }else{
+        response = axiosClient.post(`/survey`,survey).then((res)=>{
+
+        })
+      }
+    },
     register({commit},user){
       return axiosClient.post('/register', user).
       then(({data})=>{
