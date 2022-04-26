@@ -71,7 +71,7 @@ class SurveyController extends Controller
         if($survey->update($data)){
             return $survey;
         }else{
-            return abort(500, 'error occured updating survey');
+            return abort(500, 'error occurred updating survey');
         }
     }
 
@@ -82,6 +82,6 @@ class SurveyController extends Controller
             return abort(403, 'unauthorized action');
         }
         $survey->delete();
-        return response('Survey deleted successfully',200);
+        return response('Survey deleted successfully',204);
     }
 }
