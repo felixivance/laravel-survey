@@ -178,6 +178,8 @@ const store = createStore({
   getters:{ },
   actions:{
     saveSurvey({commit}, survey){
+      delete survey.image_url; //remove the viewwable image src
+
       let response;
       if(survey.id){ //updating
         response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
