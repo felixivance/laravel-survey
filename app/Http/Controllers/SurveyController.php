@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class SurveyController extends Controller
 {
@@ -39,6 +40,11 @@ class SurveyController extends Controller
             'expire_date'=>'nullable|date|after:tomorrow'
         ]);
 
+        //check if image was sent
+        if(isset($data['image'])){
+            $relativePath = $this->saveImage($data['image']);
+            $data['image'] = $relativePath;
+        }
       return  Survey::create($data);
 
     }
@@ -87,5 +93,35 @@ class SurveyController extends Controller
         }
         $survey->delete();
         return response('Survey deleted successfully',204);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function saveImage($image)
+    {
+        //check if image is valid base 64
+        if(preg_match('/^data:image\/(\w+);base64,/', $image, $type)){
+            $image = substr($image, strpos($image,',')+1);
+            $type = strtolower($type[1]);
+
+            if(!in_array($type, ['jpg','jpeg','gif','png'])){
+                throw new \Exception('invalid image type');
+            }
+
+            $image = str_replace(' ','+',$image);
+            $image = base64_decode($image);
+            if(!$image){
+                throw new \Exception('base 64 decode failed');
+            }
+
+        }else
+            throw new \Exception("did not match; not a valid image");
+
+        $dir = 'images/';
+        $file = Str::random().'.'.$type;
+        $absolutePath = public_path($dir);
+        $relativePath = $dir.$file;
+
     }
 }
