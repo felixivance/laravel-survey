@@ -188,6 +188,7 @@ const store = createStore({
           commit("saveSurvey", res.data)
         })
       }
+      return response;
     },
     register({commit},user){
       return axiosClient.post('/register', user).

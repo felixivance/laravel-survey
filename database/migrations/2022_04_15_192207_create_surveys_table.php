@@ -20,8 +20,10 @@ class CreateSurveysTable extends Migration
             $table->string('slug',1000);
             $table->enum('status',['active','inactive'])->default('active');
             $table->text('description')->nullable();
-            $table->timestamps();
+            $table->string('image', 255)->nullable();
             $table->timestamp('expire_date')->nullable();
+            $table->timestamps();
+
         });
     }
 
