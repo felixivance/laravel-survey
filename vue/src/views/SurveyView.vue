@@ -22,14 +22,14 @@
           <div>
             <label class="block text-sm font-medium text-gray-700">Image</label>
             <div class="mt-1 flex items-center">
-              <img v-if="survey.image" :src="survey.image"  :alt="survey.title" class="w-64 h-48 object-cover">
+              <img v-if="survey.image_url" :src="survey.image_url"  :alt="survey.title" class="w-64 h-48 object-cover">
               <span v-else class="flex items-center justify-center h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-[80%] w-[80%] text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </span>
               <button type="button" class="relative overflow-hidden ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium cursor-pointer">
-                <input type="file" class="absolute inset-0 opacity-0 cursor-pointer"/>
+                <input type="file" class="absolute inset-0 opacity-0 cursor-pointer" @change="onImageChange"/>
                 Change
               </button>
             </div>
@@ -102,6 +102,7 @@ let survey= ref({
   status:false,
   description:'',
   image:null,
+  image_url:null,
   expiry_date:null,
   questions:[]
 })
@@ -141,5 +142,20 @@ function saveSurvey(){
       params:{ id: data.data.id}
     })
   });
+}
+
+function onImageChange(event){
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+
+  reader.onload = () =>{
+    //field to send to backend
+    survey.value.image = reader.result
+    //image to display
+    survey.value.image_url = reader.result
+  }
+
 }
 </script>
