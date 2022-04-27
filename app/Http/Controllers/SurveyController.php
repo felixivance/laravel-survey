@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SurveyController extends Controller
 {
@@ -27,6 +28,8 @@ class SurveyController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge(['user_id'=> Auth::id()]);
+
         $data = $request->validate([
             'title'=>'required | string| max:1000',
             'user_id'=>'exists:users,id',
