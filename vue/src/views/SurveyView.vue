@@ -110,10 +110,6 @@ if(route.params.id){
   survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
 }
 
-const saveSurvey=()=>{
-
-}
-
 const addQuestion=(index)=>{
   const newQuestion = {
     id: uuidv4(),
