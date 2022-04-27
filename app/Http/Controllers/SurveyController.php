@@ -32,6 +32,7 @@ class SurveyController extends Controller
 
         $data = $request->validate([
             'title'=>'required | string| max:1000',
+            'image'=>'nullable|string',
             'user_id'=>'exists:users,id',
             'status'=>'required|boolean',
             'description'=>'nullable|string',
