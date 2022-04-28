@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class SurveyController extends Controller
@@ -42,8 +43,13 @@ class SurveyController extends Controller
 
         //check if image was sent
         if(isset($data['image'])){
-            $relativePath = $this->saveImage($data['image']);
-            $data['image'] = $relativePath;
+            try {
+                $relativePath = $this->saveImage($data['image']);
+                $data['image'] = $relativePath;
+            } catch (\Exception $e) {
+                \Log::info($e->getMessage());
+            }
+
         }
       return  Survey::create($data);
 
@@ -122,6 +128,11 @@ class SurveyController extends Controller
         $file = Str::random().'.'.$type;
         $absolutePath = public_path($dir);
         $relativePath = $dir.$file;
+
+        if(!File::exists($absolutePath)){
+            File::makeDirectory($absolutePath, 0755, true);
+
+        }
 
     }
 }
