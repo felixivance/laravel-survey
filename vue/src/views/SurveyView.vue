@@ -15,6 +15,7 @@
       </div>
 
     </template>
+
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -89,7 +90,7 @@
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
 import QuestionEditor from "../components/editor/QuestionEditor.vue"
-import {ref, watch} from "vue";
+import {computed, ref, watch,} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import store from "../store";
 import {v4 as uuidv4} from "uuid";
@@ -107,20 +108,28 @@ let survey= ref({
   questions:[]
 })
 
-//watch current survey to data change
+let data = {}
+
+// survey.value = computed(() => store.state.currentSurvey.data)
+
+// watch current survey to data change
 console.log("watch running");
 watch(
   ()=> store.state.currentSurvey.data,
   (newVal, oldVal) => {
     console.log("new value ", newVal);
     console.log("old value ",oldVal);
-    survey.value = {
+    data = {
       ...JSON.parse(JSON.stringify(newVal)),
       status: newVal.status
     }
   },
+  // {
+  //   deep:true //makes newVal and oldVal same
+  // }
 );
-console.log("end watch running");
+console.log("end watch running ", data);
+
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
   store.dispatch('getSurvey', route.params.id);
