@@ -138,5 +138,9 @@ class SurveyController extends Controller
             File::makeDirectory($absolutePath, 0755, true);
         }
 
+        file_put_contents($relativePath, $image);
+
+        return $relativePath;
+
     }
 }
