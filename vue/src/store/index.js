@@ -172,7 +172,8 @@ const store = createStore({
       data: {},
       token: sessionStorage.getItem("TOKEN")
     },
-    surveys:[...tmpSurveys],
+    // surveys:[...tmpSurveys],
+    surveys:[],
     currentSurvey:{
       loading:false,
       data:{}
@@ -197,6 +198,7 @@ const store = createStore({
     saveSurvey({commit}, survey){
       delete survey.image_url; //remove the viewable image src
       console.log("saving survey ",survey);
+      console.log(survey.title);
       let response;
       if(survey.id){ //updating
         response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{

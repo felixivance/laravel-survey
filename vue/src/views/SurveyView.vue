@@ -108,6 +108,7 @@ let survey= ref({
 })
 
 //watch current survey to data change
+console.log("watch running");
 watch(
   ()=> store.state.currentSurvey.data,
   (newVal, oldVal) => {
@@ -118,10 +119,8 @@ watch(
       status: newVal.status
     }
   },
-
-
-)
-
+);
+console.log("end watch running");
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
   store.dispatch('getSurvey', route.params.id);
@@ -153,8 +152,9 @@ function questionChange(question){
 }
 
 function saveSurvey(){
-  store.dispatch("saveSurvey", survey.value).then((data)=>{
-    console.log("after saving ", data);
+  //
+  store.dispatch("saveSurvey", survey.value).then((res)=>{
+    console.log("after saving ", res.data);
     router.push({
       name:"Surveys",
       params:{ id: data.data.id}
