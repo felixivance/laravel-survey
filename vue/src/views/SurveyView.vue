@@ -148,8 +148,6 @@ function onImageChange(event){
   const file = event.target.files[0];
   const reader = new FileReader();
   reader.readAsDataURL(file);
-
-
   reader.onload = () =>{
     //field to send to backend
     survey.value.image = reader.result

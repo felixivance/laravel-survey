@@ -108,15 +108,20 @@ class SurveyController extends Controller
     {
         //check if image is valid base 64
         if(preg_match('/^data:image\/(\w+);base64,/', $image, $type)){
+            //take out the base64 encoded text without meme type
             $image = substr($image, strpos($image,',')+1);
+
+            //get file extension
             $type = strtolower($type[1]);
 
+            //check if file is an image
             if(!in_array($type, ['jpg','jpeg','gif','png'])){
                 throw new \Exception('invalid image type');
             }
 
             $image = str_replace(' ','+',$image);
             $image = base64_decode($image);
+
             if(!$image){
                 throw new \Exception('base 64 decode failed');
             }
@@ -131,7 +136,6 @@ class SurveyController extends Controller
 
         if(!File::exists($absolutePath)){
             File::makeDirectory($absolutePath, 0755, true);
-
         }
 
     }
