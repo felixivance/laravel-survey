@@ -75,15 +75,36 @@ class SurveyController extends Controller
     }
 
 
-    public function update(Request $request, Survey $survey)
+    public function update(Request $request, $id)
     {
+
+        //check if logged in user is the owner of the survey
+        $survey = Survey::find($id)->first();
+
+        if($survey->user_id !== Auth::id()){
+            return "You are not permitted to perform this action!";
+        }
+
         $data = $request->validate([
             'title'=>'required | string| max:1000',
+            'image'=>'nullable|string',
             'user_id'=>'exists:users,id',
             'status'=>'required|boolean',
             'description'=>'nullable|string',
             'expire_date'=>'nullable|date|after:tomorrow'
         ]);
+        //if image exists inside data
+        if(isset($data['image'])){
+            $relativePath = $this->saveImage($data['image']);
+            $data['image']= $relativePath;
+
+            //if there is an old image , delete it
+            if($survey->image){
+                $absolutePath = public_path($survey->image);
+                File::delete($absolutePath);
+            }
+        }
+
         if($survey->update($data)){
             return $survey;
         }else{
