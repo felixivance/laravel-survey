@@ -173,10 +173,17 @@ const store = createStore({
       token: sessionStorage.getItem("TOKEN")
     },
     surveys:[...tmpSurveys],
+    currentSurvey:{
+      loading:false,
+      data:{}
+    },
     questionTypes:['text','select','radio','checkbox','textarea']
   },
   getters:{ },
   actions:{
+    getSurvey({commit}, id){
+
+    },
     saveSurvey({commit}, survey){
       delete survey.image_url; //remove the viewwable image src
 

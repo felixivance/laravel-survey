@@ -108,7 +108,8 @@ let survey= ref({
 })
 
 if(route.params.id){
-  survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
+  // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
+  store.dispatch('getSurvey', route.params.id);
 }
 
 const addQuestion=(index)=>{
