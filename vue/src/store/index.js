@@ -182,7 +182,17 @@ const store = createStore({
   getters:{ },
   actions:{
     getSurvey({commit}, id){
-
+      commit("setCurrentSurveyLoading", true);
+      return axiosClient.get(`/survey/${id}`)
+        .then((res)=>{
+          console.log("response in fetching survey ", res.data)
+          commit("setCurrentSurvey", res.data);
+          commit("setCurrentSurveyLoading", false);
+          return res;
+        }).catch((err)=>{
+          commit("setCurrentSurveyLoading", false);
+          throw err;
+        })
     },
     saveSurvey({commit}, survey){
       delete survey.image_url; //remove the viewwable image src
@@ -272,6 +282,12 @@ const store = createStore({
           return s
         }
       })
+    },
+    setCurrentSurveyLoading:(state, loadingStatus)=>{
+      state.currentSurvey.loading = loadingStatus
+    },
+    setCurrentSurvey:(state, survey)=>{
+      state.currentSurvey.data = survey
     }
   },
   modules:{}

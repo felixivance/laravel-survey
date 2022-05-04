@@ -55,8 +55,10 @@ class SurveyController extends Controller
 
     }
 
-    public function show(Survey $survey, Request  $request)
+    public function show($id, Request  $request)
     {
+        $survey = Survey::find($id);
+
         if($request->user()->id !== $survey->user_id){
             return abort(403, 'unauthorized action');
         }

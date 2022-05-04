@@ -89,7 +89,7 @@
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
 import QuestionEditor from "../components/editor/QuestionEditor.vue"
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import store from "../store";
 import {v4 as uuidv4} from "uuid";
@@ -107,9 +107,21 @@ let survey= ref({
   questions:[]
 })
 
+//watch current survey to data change
+watch(
+  ()=> store.state.currentSurvey.data,
+  (newVal, oldVal)=>{
+    survey.value = {
+      ...JSON.parse(JSON.stringify(newVal)),
+      status: newVal.status !=='draft'
+    }
+  }
+)
+
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
   store.dispatch('getSurvey', route.params.id);
+
 }
 
 const addQuestion=(index)=>{
@@ -139,7 +151,7 @@ function questionChange(question){
 function saveSurvey(){
   store.dispatch("saveSurvey", survey.value).then(({data})=>{
     router.push({
-      name:"SurveyView",
+      name:"Surveys",
       params:{ id: data.data.id}
     })
   });
