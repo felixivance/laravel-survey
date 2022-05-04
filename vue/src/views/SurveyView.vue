@@ -110,12 +110,16 @@ let survey= ref({
 //watch current survey to data change
 watch(
   ()=> store.state.currentSurvey.data,
-  (newVal, oldVal)=>{
+  (newVal, oldVal) => {
+    console.log("new value ", newVal);
+    console.log("old value ",oldVal);
     survey.value = {
       ...JSON.parse(JSON.stringify(newVal)),
-      status: newVal.status !=='draft'
+      status: newVal.status
     }
-  }
+  },
+
+
 )
 
 if(route.params.id){
@@ -149,7 +153,8 @@ function questionChange(question){
 }
 
 function saveSurvey(){
-  store.dispatch("saveSurvey", survey.value).then(({data})=>{
+  store.dispatch("saveSurvey", survey.value).then((data)=>{
+    console.log("after saving ", data);
     router.push({
       name:"Surveys",
       params:{ id: data.data.id}

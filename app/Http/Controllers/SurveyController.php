@@ -31,12 +31,13 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id'=> Auth::id()]);
+        isset($request['status']) ? $request->merge(['status'=> 'inactive']): $request->merge(['status'=> $request['status']]);
 
         $data = $request->validate([
             'title'=>'required | string| max:1000',
             'image'=>'nullable|string',
             'user_id'=>'exists:users,id',
-            'status'=>'required|boolean',
+            'status'=>'required|string',
             'description'=>'nullable|string',
             'expire_date'=>'nullable|date|after:tomorrow'
         ]);

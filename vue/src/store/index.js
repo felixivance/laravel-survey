@@ -195,8 +195,8 @@ const store = createStore({
         })
     },
     saveSurvey({commit}, survey){
-      delete survey.image_url; //remove the viewwable image src
-
+      delete survey.image_url; //remove the viewable image src
+      console.log("saving survey ",survey);
       let response;
       if(survey.id){ //updating
         response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
@@ -207,6 +207,7 @@ const store = createStore({
           commit("saveSurvey", res.data)
         })
       }
+      console.log("after saving in store ");
       return response;
     },
     register({commit},user){
