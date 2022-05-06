@@ -114,7 +114,7 @@ let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
 
-// watch current survey to data change
+// watch current survey to data change and update local data
 console.log("watch running");
 watch(
   ()=> store.state.currentSurvey.data,
@@ -135,7 +135,7 @@ console.log("end watch running ", data);
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
   store.dispatch('getSurvey', route.params.id).then((data)=>{
-    survey.value = data;
+    survey.value = JSON.parse(JSON.stringify(data));
   });
 
 }
