@@ -172,8 +172,8 @@ const store = createStore({
       data: {},
       token: sessionStorage.getItem("TOKEN")
     },
-    // surveys:[...tmpSurveys],
-    surveys:[],
+    surveys:[...tmpSurveys],
+    // surveys:[],
     currentSurvey:{
       loading:false,
       data:{}
