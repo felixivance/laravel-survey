@@ -184,8 +184,7 @@ const store = createStore({
   actions:{
     getSurvey({commit}, id){
       commit("setCurrentSurveyLoading", true);
-      return axiosClient.get(`/survey/${id}`)
-        .then((res)=>{
+      return axiosClient.get(`/survey/${id}`).then((res)=>{
           console.log("response in fetching survey ", res.data)
           commit("setCurrentSurvey", res.data);
           commit("setCurrentSurveyLoading", false);

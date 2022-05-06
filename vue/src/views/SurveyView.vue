@@ -108,6 +108,7 @@ let survey= ref({
   questions:[]
 })
 
+
 let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
@@ -124,9 +125,9 @@ watch(
       status: newVal.status
     }
   },
-  // {
-  //   deep:true //makes newVal and oldVal same
-  // }
+  {
+    deep:true //makes newVal and oldVal same
+  }
 );
 console.log("end watch running ", data);
 
