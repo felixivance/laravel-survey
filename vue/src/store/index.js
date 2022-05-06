@@ -188,7 +188,7 @@ const store = createStore({
           console.log("response in fetching survey ", res.data)
           commit("setCurrentSurvey", res.data);
           commit("setCurrentSurveyLoading", false);
-          return res;
+          return res.data;
         }).catch((err)=>{
           commit("setCurrentSurveyLoading", false);
           throw err;

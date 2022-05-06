@@ -67,7 +67,8 @@
               <button type="button" @click="addQuestion" class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700">Add Question</button>
             </div>
           </div>
-          <div v-if="!survey.questions.length" class="text-center text-gray-600">
+          <div class="text-center text-gray-600">
+<!--             v-if="!survey.questions.length" -->
             You dont have any questions created
           </div>
           <div v-for="(question, index) in survey.questions" :key="question.id">
@@ -133,7 +134,9 @@ console.log("end watch running ", data);
 
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
-  store.dispatch('getSurvey', route.params.id);
+  store.dispatch('getSurvey', route.params.id).then((data)=>{
+    survey.value = data;
+  });
 
 }
 
