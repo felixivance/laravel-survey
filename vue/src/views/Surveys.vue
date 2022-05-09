@@ -56,9 +56,10 @@ let surveys = [];
 onMounted(()=>{
   store.dispatch('getSurveys').then((data)=>{
     console.log("fetched data ", data);
+    console.log(data);
     // surveys = JSON.parse(JSON.stringify(data));
-    // surveys= data;
-    surveys = computed(()=> store.state.surveys)
+    surveys= data;
+    // surveys = computed(()=> store.state.surveys)
   });
 })
 

@@ -172,7 +172,7 @@ function questionChange(question){
 function saveSurvey(){
   //
   store.dispatch("saveSurvey", survey.value).then((res)=>{
-    console.log("after saving ", res.data);
+    console.log("after saving ", res);
     router.push({
       name:"Surveys",
       params:{ id: data.data.id}
