@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -16,5 +17,9 @@ class Survey extends Model
     public function getSlugOptions(): SlugOptions
     {
        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
+    }
+
+    public function getImageAttribute($value){
+        return $value ? URL::to($value) : null;
     }
 }

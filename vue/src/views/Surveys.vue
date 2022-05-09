@@ -48,9 +48,19 @@ border border-transparent text-sm text-red-500 focus:ring-2 focus:ring-offset-2 
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
 import store from "../store";
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
 
-const surveys = computed(()=> store.state.surveys);
+// const surveys = computed(()=> store.state.surveys);
+let surveys = [];
+
+onMounted(()=>{
+  store.dispatch('getSurveys').then((data)=>{
+    console.log("fetched data ", data);
+    // surveys = JSON.parse(JSON.stringify(data));
+    // surveys= data;
+    surveys = computed(()=> store.state.surveys)
+  });
+})
 
 const deleteSurvey= (survey)=>{
   console.log("delete clicked")

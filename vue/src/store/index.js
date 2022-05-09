@@ -172,8 +172,8 @@ const store = createStore({
       data: {},
       token: sessionStorage.getItem("TOKEN")
     },
-    surveys:[...tmpSurveys],
-    // surveys:[],
+    // surveys:[...tmpSurveys],
+    surveys:[],
     currentSurvey:{
       loading:false,
       data:{}
@@ -182,6 +182,13 @@ const store = createStore({
   },
   getters:{ },
   actions:{
+    getSurveys({commit}){
+      return axiosClient.get(`/survey`).then((res)=>{
+        commit("setSurveys", res.data.data);
+        console.log("store fetching surveys ",res.data.data);
+        res.data.data;
+      })
+    },
     getSurvey({commit}, id){
       commit("setCurrentSurveyLoading", true);
       return axiosClient.get(`/survey/${id}`).then((res)=>{
@@ -216,7 +223,6 @@ const store = createStore({
       then(({data})=>{
         commit("setUser", data)
         return data;
-
       })
 
       //odl method
@@ -290,6 +296,9 @@ const store = createStore({
     },
     setCurrentSurvey:(state, survey)=>{
       state.currentSurvey.data = survey
+    },
+    setSurveys:(state,surveys)=>{
+      state.surveys = surveys
     }
   },
   modules:{}
