@@ -111,6 +111,7 @@ class SurveyController extends Controller
         }
 
         if($survey->update($data)){
+            $survey->image_url = $survey->image ? URL::to($survey->image) : null;
             return $survey;
         }else{
             return abort(500, 'error occurred updating survey');
