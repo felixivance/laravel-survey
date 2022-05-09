@@ -6,6 +6,7 @@ use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class SurveyController extends Controller
@@ -59,6 +60,7 @@ class SurveyController extends Controller
     public function show($id, Request  $request)
     {
         $survey = Survey::find($id);
+        $survey->image_url = $survey->image ? URL::to($survey->image) : null;
 
         if($request->user()->id !== $survey->user_id){
             return abort(403, 'unauthorized action');
