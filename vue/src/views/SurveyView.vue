@@ -16,9 +16,6 @@
 
     </template>
 
-    <pre>
-      {{survey}}
-    </pre>
 
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
@@ -178,8 +175,10 @@ function saveSurvey(){
   store.dispatch("saveSurvey", survey.value).then((res)=>{
     console.log("after saving ", res);
     console.log(res.id);
+    survey.value = JSON.parse(JSON.stringify(res));
+
     router.push({
-      name:"Surveys",
+      name:"UpdateSurvey",
       params:{ id: res.id}
     })
   });
