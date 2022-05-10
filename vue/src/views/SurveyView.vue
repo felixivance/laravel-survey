@@ -16,6 +16,9 @@
 
     </template>
 
+    <pre>
+      {{surveyLoading.loading}}
+    </pre>
 
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
@@ -118,6 +121,10 @@ let editMode = false;
 let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
+
+const surveyLoading = computed(()=> store.state.currentSurvey);
+
+
 
 // watch current survey to data change and update local data
 console.log("watch running");
