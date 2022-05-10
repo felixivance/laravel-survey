@@ -19,7 +19,7 @@ class Survey extends Model
        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
     }
 
-    public function getImageAttribute($value){
-        return $value ? URL::to($value) : null;
-    }
+//    public function getImageAttribute($value){
+//        return $value ? URL::to($value) : null;
+//    }
 }

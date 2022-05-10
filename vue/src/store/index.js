@@ -208,14 +208,15 @@ const store = createStore({
       let response;
       if(survey.id){ //updating
         response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
-          commit("updateSurvey",res.data)
+          commit("setCurrentSurvey",res.data)
         })
       }else{
         response = axiosClient.post(`/survey`,survey).then((res)=>{
-          commit("saveSurvey", res.data)
+          commit("setCurrentSurvey", res.data)
         })
       }
       console.log("after saving in store ");
+      console.log(response);
       return response;
     },
     register({commit},user){
@@ -279,18 +280,18 @@ const store = createStore({
       state.user.token = null;
       sessionStorage.removeItem("TOKEN");
     },
-    saveSurvey:(state, survey)=>{
-      state.surveys = [...state.surveys, survey.data]
-    },
-    updateSurvey:(state,survey)=>{
-      state.surveys = state.surveys.map((s)=>{
-        if(survey.data.id ===s.id){
-          return survey.data
-        }else{
-          return s
-        }
-      })
-    },
+    // saveSurvey:(state, survey)=>{
+    //   state.surveys = [...state.surveys, survey.data]
+    // },
+    // updateSurvey:(state,survey)=>{
+    //   state.surveys = state.surveys.map((s)=>{
+    //     if(survey.data.id ===s.id){
+    //       return survey.data
+    //     }else{
+    //       return s
+    //     }
+    //   })
+    // },
     setCurrentSurveyLoading:(state, loadingStatus)=>{
       state.currentSurvey.loading = loadingStatus
     },

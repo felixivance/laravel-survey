@@ -16,6 +16,10 @@
 
     </template>
 
+    <pre>
+      {{survey}}
+    </pre>
+
     <form @submit.prevent="saveSurvey">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -170,9 +174,10 @@ function questionChange(question){
 }
 
 function saveSurvey(){
-  //
+
   store.dispatch("saveSurvey", survey.value).then((res)=>{
     console.log("after saving ", res);
+    console.log(res);
     router.push({
       name:"Surveys",
       params:{ id: data.data.id}
