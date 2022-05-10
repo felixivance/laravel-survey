@@ -209,10 +209,12 @@ const store = createStore({
       if(survey.id){ //updating
         response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
           commit("setCurrentSurvey",res.data)
+          return res.data;
         })
       }else{
         response = axiosClient.post(`/survey`,survey).then((res)=>{
           commit("setCurrentSurvey", res.data)
+          return res.data;
         })
       }
       console.log("after saving in store ");

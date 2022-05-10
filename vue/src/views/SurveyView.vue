@@ -177,10 +177,10 @@ function saveSurvey(){
 
   store.dispatch("saveSurvey", survey.value).then((res)=>{
     console.log("after saving ", res);
-    console.log(res);
+    console.log(res.id);
     router.push({
       name:"Surveys",
-      params:{ id: data.data.id}
+      params:{ id: res.id}
     })
   });
 }
