@@ -182,6 +182,9 @@ const store = createStore({
   },
   getters:{ },
   actions:{
+    deleteSurvey({commit},id){
+      return axiosClient.delete(`/survey/${id}`)
+    },
     getSurveys({commit}){
       return axiosClient.get(`/survey`).then((res)=>{
         commit("setSurveys", res.data.data);

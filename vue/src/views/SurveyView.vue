@@ -208,4 +208,13 @@ function onImageChange(event){
   }
 
 }
+function deleteSurvey(){
+  if(confirm("Are you sure you want to delete this survey")){
+    store.dispatch("deleteSurvey",survey.value.id).then(()=>{
+      router.push({
+        name:'Surveys'
+      })
+    })
+  }
+}
 </script>
