@@ -125,6 +125,11 @@ class SurveyController extends Controller
         if($request->user()->id !== $survey->user_id){
             return abort(403, 'unauthorized action');
         }
+        if($survey->image){
+            $absolutePath = public_path($survey->image);
+            File::delete($absolutePath);
+        }
+
         $survey->delete();
         return response('Survey deleted successfully',204);
     }
