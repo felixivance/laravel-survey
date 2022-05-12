@@ -3,7 +3,7 @@
   <PageComponent >
     <template v-slot:header>
       <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-bold text-gray-900">{{ survey.id ? "Editing: "+survey.title : "Create Survey"  }}</h1>
+        <h1 class="text-3xl font-bold text-gray-900">{{ route.params.id ? "Editing: "+survey.title : "Create Survey"  }}</h1>
         <router-link :to="{name: 'Surveys'}" class="py-2 px-3 text-white bg-emerald-500 rounded-md hover:bg-emerald-600">
           <span class="flex space-x-2">
            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
