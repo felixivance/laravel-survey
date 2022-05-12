@@ -53,15 +53,17 @@ import {computed, onMounted} from "vue";
 // const surveys = computed(()=> store.state.surveys);
 let surveys = [];
 
-onMounted(()=>{
-  store.dispatch('getSurveys').then((data)=>{
-    console.log("fetched data ", data);
-    console.log(data);
-    // surveys = JSON.parse(JSON.stringify(data));
-    surveys= data;
-    // surveys = computed(()=> store.state.surveys)
-  });
-})
+// onMounted(()=>{
+//   store.dispatch('getSurveys').then((data)=>{
+//     console.log("fetched data ", data);
+//     console.log(data);
+//     // surveys = JSON.parse(JSON.stringify(data));
+//     surveys= data;
+//     // surveys = computed(()=> store.state.surveys)
+//   });
+// })
+
+store.dispatch('getSurveys')
 
 const deleteSurvey= (survey)=>{
   console.log("delete clicked")

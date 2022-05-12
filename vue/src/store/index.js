@@ -173,7 +173,10 @@ const store = createStore({
       token: sessionStorage.getItem("TOKEN")
     },
     // surveys:[...tmpSurveys],
-    surveys:[],
+    surveys:{
+      loading:false,
+      data:[]
+    },
     currentSurvey:{
       loading:false,
       data:{}
@@ -186,10 +189,11 @@ const store = createStore({
       return axiosClient.delete(`/survey/${id}`)
     },
     getSurveys({commit}){
+      commit("setSurveysLoading",true);
       return axiosClient.get(`/survey`).then((res)=>{
         commit("setSurveys", res.data.data);
         console.log("store fetching surveys ",res.data.data);
-        res.data.data;
+       return res.data.data;
       })
     },
     getSurvey({commit}, id){
@@ -300,11 +304,15 @@ const store = createStore({
     setCurrentSurveyLoading:(state, loadingStatus)=>{
       state.currentSurvey.loading = loadingStatus
     },
+    setSurveysLoading: (state, loadingStatus)=>{
+      state.surveys.loading =   loadingStatus
+    },
     setCurrentSurvey:(state, survey)=>{
       state.currentSurvey.data = survey
     },
     setSurveys:(state,surveys)=>{
       state.surveys = surveys
+      debugger;
     }
   },
   modules:{}
