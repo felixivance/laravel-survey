@@ -15,7 +15,7 @@
            Back to List
             </span>
           </router-link>
-          <button v-if="route.params.id" type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
+          <button v-if="route.params.id"  type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
           @click="deleteSurvey">
             Delete
           </button>
