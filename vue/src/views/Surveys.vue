@@ -15,6 +15,9 @@
       </div>
 
    </template>
+    <pre>
+      {{surveys}}
+    </pre>
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
       <div v-for="survey in surveys" :key="survey.id" class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]">
         <img :src="survey.image" alt="img" class="w-full h-48 object-cover" />
@@ -63,7 +66,10 @@ let surveys = [];
 //   });
 // })
 
-store.dispatch('getSurveys')
+store.dispatch('getSurveys').then((data)=>{
+  console.log(data);
+  surveys = data
+});
 
 const deleteSurvey= (survey)=>{
   console.log("delete clicked")

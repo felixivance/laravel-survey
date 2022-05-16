@@ -193,6 +193,7 @@ const store = createStore({
       return axiosClient.get(`/survey`).then((res)=>{
         commit("setSurveys", res.data.data);
         console.log("store fetching surveys ",res.data.data);
+        commit("setSurveysLoading",false);
        return res.data.data;
       })
     },
@@ -311,8 +312,7 @@ const store = createStore({
       state.currentSurvey.data = survey
     },
     setSurveys:(state,surveys)=>{
-      state.surveys = surveys
-      debugger;
+      state.surveys.data = surveys
     }
   },
   modules:{}
