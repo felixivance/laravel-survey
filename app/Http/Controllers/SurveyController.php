@@ -122,7 +122,23 @@ class SurveyController extends Controller
 
     public function destroy(Survey $survey, Request $request)
     {
+//        todo disable permanent deletion, implement temporary deleting
         if($request->user()->id !== $survey->user_id){
+            return abort(403, 'unauthorized action');
+        }
+        if($survey->image){
+            $absolutePath = public_path($survey->image);
+            File::delete($absolutePath);
+        }
+
+        $survey->delete();
+        return response('Survey deleted successfully',204);
+    }
+
+    public function permanentlyDeleteSurvey($id){
+        $survey = Survey::find($id);
+
+        if(Auth::id() !== $survey->user_id){
             return abort(403, 'unauthorized action');
         }
         if($survey->image){
