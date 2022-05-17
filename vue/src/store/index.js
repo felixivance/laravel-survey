@@ -183,11 +183,7 @@ const store = createStore({
     },
     questionTypes:['text','select','radio','checkbox','textarea']
   },
-  getters:{
-    surveys: state=>{
-      return state.surveys
-    },
-  },
+  getters:{ },
   actions:{
     deleteSurvey({commit},id){
       return axiosClient.delete(`/survey/${id}`)

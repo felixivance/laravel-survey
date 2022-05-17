@@ -16,10 +16,10 @@
 
    </template>
     <pre>
-      {{surveys}}
+      {{_surveys}}
     </pre>
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-      <div v-for="survey in surveys.data" :key="survey.id" class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]">
+      <div v-for="survey in _surveys.data" :key="survey.id" class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]">
         <img :src="survey.image" alt="img" class="w-full h-48 object-cover" />
         <h4 class="mt-4 text-lg font-bold">{{survey.title}}</h4>
         <div v-html="survey.description" class="overflow-hidden flex-1"></div>
@@ -33,7 +33,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
             </svg>
-            <p>Edit</p>
+           <p>Edit</p>
           </router-link>
           <button v-if="survey.id" type="button" @click="deleteSurvey(survey)" class="h-8 w-8 flex items-center justify-center rounded-full
 border border-transparent text-sm text-red-500 focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
@@ -48,39 +48,19 @@ border border-transparent text-sm text-red-500 focus:ring-2 focus:ring-offset-2 
   </PageComponent>
 </template>
 
-<script >
-
+<script setup>
 import PageComponent from "../components/PageComponent.vue"
 import store from "../store";
 import {computed, onMounted} from "vue";
-export default{
-  data(){
-    return {
 
-    }
-  },
-  computed:{
-    surveys: store.state.surveys
-  },
-  methods:{
-     deleteSurvey(survey){
-      console.log("delete clicked")
-      if(confirm(`Are you sure you want to delete this survey? `)){
-        //todo delete survey
-      }
-    }
-  },
-  mounted(){
-    store.dispatch('getSurveys').then((data)=>{
-      console.log("here");
-      console.log(data);
-     this._surveys = data
-    });
-  }
-}
+store.dispatch('getSurveys').then((data)=>{
+  console.log("here");
+  console.log(data);
 
+  // _surveys = data
+});
 
-// let _surveys =  computed(() => store.state.surveys);
+let _surveys =  computed(() => store.state.surveys);
 // const policyMapName = computed({
 //   get: () => {
 //     const cID = circuitID.value;
@@ -105,5 +85,10 @@ export default{
 
 
 
-
+const deleteSurvey= (survey)=>{
+  console.log("delete clicked")
+  if(confirm(`Are you sure you want to delete this survey? `)){
+    //todo delete survey
+  }
+}
 </script>
