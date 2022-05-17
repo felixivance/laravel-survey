@@ -36,7 +36,7 @@ let _surveys =  computed(() => store.state.surveys);
 const deleteSurvey= (survey)=>{
   console.log("delete clicked")
   if(confirm(`Are you sure you want to delete this survey? `)){
-    //todo delete survey
+    store.dispatch("deleteSurvey",survey.id);
   }
 }
 </script>
