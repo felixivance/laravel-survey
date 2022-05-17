@@ -12,14 +12,15 @@ class Survey extends Model
 {
     use HasFactory, HasSlug;
     protected $fillable=['user_id','title','image','slug','status','description','expire_date'];
-
+    protected $appends=['image_url'];
     //save slug
     public function getSlugOptions(): SlugOptions
     {
        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
     }
 
-//    public function getImageAttribute($value){
+    public function getImageUrlAttribute(){
+        return $this->image ? URL::to($this->image) : null;
 //        return $value ? URL::to($value) : null;
-//    }
+    }
 }

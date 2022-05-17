@@ -173,17 +173,19 @@ const store = createStore({
       token: sessionStorage.getItem("TOKEN")
     },
     // surveys:[...tmpSurveys],
-    surveys:{
-      loading:false,
-      data:[]
-    },
+    surveys:[],
+    surveysLoading:false,
     currentSurvey:{
       loading:false,
       data:{}
     },
     questionTypes:['text','select','radio','checkbox','textarea']
   },
-  getters:{ },
+  getters:{
+    getSurveys(state) {
+      return state.surveys
+    }
+  },
   actions:{
     deleteSurvey({commit},id){
       return axiosClient.delete(`/survey/${id}`)
@@ -306,13 +308,13 @@ const store = createStore({
       state.currentSurvey.loading = loadingStatus
     },
     setSurveysLoading: (state, loadingStatus)=>{
-      state.surveys.loading =   loadingStatus
+      state.surveysLoading =   loadingStatus
     },
     setCurrentSurvey:(state, survey)=>{
       state.currentSurvey.data = survey
     },
     setSurveys:(state,surveys)=>{
-      state.surveys.data = surveys
+      state.surveys = surveys
     }
   },
   modules:{}

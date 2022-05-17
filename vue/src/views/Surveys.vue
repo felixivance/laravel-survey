@@ -15,12 +15,10 @@
       </div>
 
    </template>
-    <pre>
-      {{_surveys}}
-    </pre>
+
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-      <div v-for="survey in _surveys.data" :key="survey.id" class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]">
-        <img :src="survey.image" alt="img" class="w-full h-48 object-cover" />
+      <div v-for="survey in _surveys" :key="survey.id" class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-gray-50 h-[470px]">
+        <img :src="survey.image_url" alt="img" class="w-full h-48 object-cover" />
         <h4 class="mt-4 text-lg font-bold">{{survey.title}}</h4>
         <div v-html="survey.description" class="overflow-hidden flex-1"></div>
 
@@ -53,35 +51,11 @@ import PageComponent from "../components/PageComponent.vue"
 import store from "../store";
 import {computed, onMounted} from "vue";
 
-store.dispatch('getSurveys').then((data)=>{
-  console.log("here");
-  console.log(data);
-
-  // _surveys = data
-});
+store.dispatch('getSurveys');
 
 let _surveys =  computed(() => store.state.surveys);
-// const policyMapName = computed({
-//   get: () => {
-//     const cID = circuitID.value;
-//
-//     return cID.replace(/[/]/g, '').slice(0, -3);
-//   },
-//   set:(newval)=>{
-//     circuitID.value =newval
-//   }
-// });
-// let _surveys = [];
-
-// onMounted(()=>{
-//   store.dispatch('getSurveys').then((data)=>{
-//     console.log("fetched data ", data);
-//     console.log(data);
-//     // surveys = JSON.parse(JSON.stringify(data));
-//     surveys= data;
-//     // surveys = computed(()=> store.state.surveys)
-//   });
-// })
+console.log("here");
+console.log(_surveys);
 
 
 
