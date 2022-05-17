@@ -26,10 +26,8 @@
 import PageComponent from "../components/PageComponent.vue"
 import store from "../store";
 import {computed, onMounted} from "vue";
-import SurveyListItem from "../components/SurveyListItem";
-export default {
-  components: {SurveyListItem}
-}
+import SurveyListItem from "../components/SurveyListItem.vue";
+
 store.dispatch('getSurveys');
 
 let _surveys =  computed(() => store.state.surveys);
