@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class SurveyController extends Controller
 {
@@ -64,8 +66,14 @@ class SurveyController extends Controller
 
     }
 
-    public function createQuestion(){
-
+    public function createQuestion($question){
+        if(is_array($question['data'])){
+            $question['data'] = json_encode($question['data']);
+        }
+        $validator = Validator::make($question,[
+           'question'=> 'required|string',
+            'type'=> ['required',Rule::in()]
+        ]);
     }
 
     public function show($id, Request  $request)
@@ -87,7 +95,7 @@ class SurveyController extends Controller
      */
     public function edit(Survey $survey)
     {
-        //
+
     }
 
 
