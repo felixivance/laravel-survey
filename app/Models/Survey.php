@@ -31,4 +31,8 @@ class Survey extends Model
         return $this->image ? URL::to($this->image) : null;
 //        return $value ? URL::to($value) : null;
     }
+
+    public function questions(){
+        return $this->hasMany(SurveyQuestion::class, 'survey_id');
+    }
 }
