@@ -53,7 +53,18 @@ class SurveyController extends Controller
             }
 
         }
-      return  Survey::create($data);
+      $survey =  Survey::create($data);
+
+        foreach($data['questions'] as $question){
+            $question['survey_id'] = $survey->id;
+            //validate questions
+            $this->createQuestion($question);
+        }
+      return true;
+
+    }
+
+    public function createQuestion(){
 
     }
 
