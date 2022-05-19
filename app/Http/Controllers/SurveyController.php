@@ -92,7 +92,7 @@ class SurveyController extends Controller
 
     public function show($id, Request  $request)
     {
-        $survey = Survey::find($id);
+        $survey = Survey::where('id',$id)->with('questions')->first();
         $survey->image_url = $survey->image ? URL::to($survey->image) : null;
 
         if($request->user()->id !== $survey->user_id){
