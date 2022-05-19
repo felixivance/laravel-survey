@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -42,7 +43,8 @@ class SurveyController extends Controller
             'user_id'=>'exists:users,id',
             'status'=>'required|string',
             'description'=>'nullable|string',
-            'expire_date'=>'nullable|date|after:tomorrow'
+            'expire_date'=>'nullable|date|after:tomorrow',
+            'questions'=>'array'
         ]);
 
         //check if image was sent
@@ -56,7 +58,6 @@ class SurveyController extends Controller
 
         }
       $survey =  Survey::create($data);
-
         foreach($data['questions'] as $question){
             $question['survey_id'] = $survey->id;
             //validate questions
@@ -72,8 +73,21 @@ class SurveyController extends Controller
         }
         $validator = Validator::make($question,[
            'question'=> 'required|string',
-            'type'=> ['required',Rule::in()]
+            'type'=> ['required',Rule::in(
+               [
+                   Survey::TYPE_TEXT,
+                   Survey::TYPE_TEXTAREA,
+                   Survey::TYPE_RADIO,
+                   Survey::TYPE_CHECKBOX,
+                   Survey::TYPE_SELECT,
+               ]
+            )],
+            'description'=> 'nullable|string',
+            'data'=>'present',
+            'survey_id'=>'exists:App\Models\Survey,id'
+
         ]);
+        return SurveyQuestion::create($validator->validated());
     }
 
     public function show($id, Request  $request)
