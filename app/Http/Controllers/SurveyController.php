@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
@@ -98,7 +99,7 @@ class SurveyController extends Controller
         if($request->user()->id !== $survey->user_id){
             return abort(403, 'unauthorized action');
         }
-        return $survey;
+        return new SurveyResource($survey);
     }
 
     /**
