@@ -130,8 +130,6 @@ let data = {}
 
 const surveyLoading = computed(()=> store.state.currentSurvey);
 
-
-
 // watch current survey to data change and update local data
 console.log("watch running");
 watch(
