@@ -153,7 +153,6 @@ if(route.params.id){
   store.dispatch('getSurvey', route.params.id).then((data)=>{
     survey.value = JSON.parse(JSON.stringify(data));
   });
-
   editMode = true;
 }
 
