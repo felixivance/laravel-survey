@@ -138,7 +138,6 @@ class SurveyController extends Controller
 //            return $data->errors();
 //        }
 
-
         //if image exists inside data
         if(isset($data['image'])){
             $relativePath = $this->saveImage($data['image']);
