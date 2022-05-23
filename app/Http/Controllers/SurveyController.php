@@ -132,6 +132,13 @@ class SurveyController extends Controller
             'description'=>'nullable|string',
             'expire_date'=>'nullable|date|after:tomorrow'
         ]);
+
+//        // Check validation failure
+//        if ($data->fails()) {
+//            return $data->errors();
+//        }
+
+
         //if image exists inside data
         if(isset($data['image'])){
             $relativePath = $this->saveImage($data['image']);
