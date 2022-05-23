@@ -281,7 +281,6 @@ const store = createStore({
     }
   },
   mutations:{
-
     setUser: (state, userData)=>{
       state.user.token = userData.token;
       state.user.data = userData.user;
