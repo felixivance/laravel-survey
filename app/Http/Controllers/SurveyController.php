@@ -94,16 +94,6 @@ class SurveyController extends Controller
         return new SurveyResource($survey);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Survey  $survey
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Survey $survey)
-    {
-
-    }
 
 
     public function update(Request $request, $id)
