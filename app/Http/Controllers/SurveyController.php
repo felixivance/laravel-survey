@@ -56,7 +56,7 @@ class SurveyController extends Controller
             //validate questions
             $this->createQuestion($question);
         }
-      return true;
+      return "Survey Created successfully";
 
     }
 
