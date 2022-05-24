@@ -158,9 +158,11 @@ class SurveyController extends Controller
             foreach ($data['questions'] as $question){
                 if(in_array($question['id'],$questionsToAdd)){
                     $question['survey_id'] = $survey->id;
+                    $this->createQuestion($question);
                 }
             }
             //update existing questions
+            $questionsMap = collect($data['questions'])->keyBy('id');
 
 
             return $survey;
