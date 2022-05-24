@@ -6,6 +6,7 @@ use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
@@ -135,6 +136,27 @@ class SurveyController extends Controller
         if($survey->update($data)){
 
             $survey->image_url = $survey->image ? URL::to($survey->image) : null;
+
+            //update questions
+
+            //get ids as a plain array of existing questions
+            $existingIds = $survey->questions()->pluck('id')->toArray();
+
+            //get ids as a plain array of new questions
+            $newIds = Arr::pluck($data['questions'],'id');
+
+            //find questions to delete
+            $toDelete = array_diff($existingIds, $newIds);
+
+            //find questions to add
+            $questionsToAdd = array_diff($newIds, $existingIds);
+
+
+            //delete questions to delete array
+            //create new questions
+            //update existing questions
+
+
             return $survey;
         }else{
             return abort(500, 'error occurred updating survey');
