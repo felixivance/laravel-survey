@@ -22,15 +22,7 @@ class SurveyController extends Controller
         return Survey::where('user_id', $user->id)->paginate();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
 
     public function store(Request $request)
