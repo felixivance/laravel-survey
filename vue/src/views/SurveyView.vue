@@ -151,7 +151,9 @@ console.log("end watch running ", data);
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
   store.dispatch('getSurvey', route.params.id).then((data)=>{
-    survey.value = JSON.parse(JSON.stringify(data));
+    console.log("survey fetched is ")
+    console.log(data);
+    survey.value = JSON.parse(JSON.stringify(data.data));
   });
   editMode = true;
 }

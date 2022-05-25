@@ -203,7 +203,7 @@ const store = createStore({
       commit("setCurrentSurveyLoading", true);
       return axiosClient.get(`/survey/${id}`).then((res)=>{
           console.log("response in fetching survey ", res.data)
-          commit("setCurrentSurvey", res.data);
+          commit("setCurrentSurvey", res.data.data);
           commit("setCurrentSurveyLoading", false);
           return res.data;
         }).catch((err)=>{
