@@ -163,9 +163,15 @@ class SurveyController extends Controller
             }
             //update existing questions
             $questionsMap = collect($data['questions'])->keyBy('id');
+            foreach($survey->questions as $question){
+                if(isset($questionsMap[$question->id])){
+                    $this->updateQuestion($question, $questionsMap[$question->id]);
+                }
+
+            }
 
 
-            return $survey;
+            return new SurveyResource($survey);
         }else{
             return abort(500, 'error occurred updating survey');
         }
@@ -242,6 +248,28 @@ class SurveyController extends Controller
         file_put_contents($relativePath, $image);
 
         return $relativePath;
+
+    }
+
+    private function updateQuestion(SurveyQuestion $question, $data)
+    {
+        if(is_array($data['data'])){
+            $data['data']= json_encode($data['data']);
+        }
+        $validator = Validator::make($data,[
+            'id'=> 'exists:App\Models\SurveyQuestion,id',
+            'question'=>'required|string',
+            'type'=> ['required',Rule::in([
+                Survey::TYPE_TEXT,
+                Survey::TYPE_TEXTAREA,
+                Survey::TYPE_RADIO,
+                Survey::TYPE_CHECKBOX,
+                Survey::TYPE_SELECT,
+            ])],
+            'description'=> 'nullable|string',
+            'data'=>'present'
+        ]);
+        return $question->update($validator->validated());
 
     }
 }
