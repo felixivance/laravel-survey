@@ -128,6 +128,7 @@ let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
 
+
 const surveyLoading = computed(()=> store.state.currentSurvey);
 
 // watch current survey to data change and update local data
@@ -185,13 +186,12 @@ function questionChange(question){
 function saveSurvey(){
 
   store.dispatch("saveSurvey", survey.value).then((res)=>{
-    console.log("after saving ", res);
-    console.log(res.id);
-    survey.value = JSON.parse(JSON.stringify(res));
+
+    survey.value = JSON.parse(JSON.stringify(res.data));
 
     router.push({
       name:"UpdateSurvey",
-      params:{ id: res.id}
+      params:{ id: res.data.id}
     })
   });
 }

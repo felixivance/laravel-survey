@@ -35,4 +35,8 @@ class Survey extends Model
     public function questions(){
         return $this->hasMany(SurveyQuestion::class, 'survey_id');
     }
+
+    public function getStatusAttribute($value){
+        return $value == 'active';
+    }
 }
