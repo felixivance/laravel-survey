@@ -101,6 +101,7 @@
      </Disclosure>
 
      <router-view></router-view>
+     <Notification />
    </div>
  </div>
 </template>
@@ -108,6 +109,7 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import Notification from './Notification.vue';
 
 const navigation = [
   { name: 'Dashboard', to: {name:'Dashboard'} },
@@ -133,7 +135,7 @@ export default {
     MenuItems,
     BellIcon,
     MenuIcon,
-    XIcon,
+    XIcon,Notification
   },
   setup() {
 

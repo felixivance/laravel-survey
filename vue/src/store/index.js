@@ -179,7 +179,12 @@ const store = createStore({
       loading:false,
       data:{}
     },
-    questionTypes:['text','select','radio','checkbox','textarea']
+    questionTypes:['text','select','radio','checkbox','textarea'],
+    notification:{
+      show:true,
+      message:null,
+      type:null
+    }
   },
   getters:{
     getSurveys(state) {
