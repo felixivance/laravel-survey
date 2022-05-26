@@ -187,8 +187,11 @@ const store = new Vuex.Store({
     }
   },
   getters:{
-    getSurveys(state) {
+    surveys(state) {
       return state.surveys
+    },
+    notification(state){
+      return state.notification
     }
   },
   actions:{

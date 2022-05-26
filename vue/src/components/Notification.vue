@@ -1,11 +1,11 @@
 <template>
  <div class="" >
-   <pre>{{data}}</pre>
-   <div  v-if="data.show" class="fixed w-[300px] left-4 bottom-4 py-2 px-4 text-white animate-fade-in-down rounded-md flex justify-between"
-         :class="[data.type=== 'success' ? 'bg-emerald-500' : 'bg-red-500']">
-     <p>{{data.message}}</p>
+   <pre>{{notification}}</pre>
+   <div  v-if="notification.show" class="fixed w-[300px] left-4 bottom-4 py-2 px-4 text-white animate-fade-in-down rounded-md flex justify-between"
+         :class="[notification.type=== 'success' ? 'bg-emerald-500' : 'bg-red-500']">
+     <p>{{notification.message}}</p>
      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-          @click="hideNotification">
+          @click="closeNotification()">
        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
      </svg>
    </div>
@@ -32,19 +32,19 @@ export default {
   data() {
     return {
       // Only copied when the component is created
-      data: this.notification,
+
     };
   },
   computed: {
     ...mapGetters({
-      notifications:'getNotifications'
+      notification:'notification'
     }),
-    ...mapActions(['closeNotification'])
+
   },
   methods:{
-    hideNotification(){
-      this.closeNotification();
-    }
+    ...mapActions({
+      closeNotification: 'closeNotification'
+    })
   }
 };
 </script>
