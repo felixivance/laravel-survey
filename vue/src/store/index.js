@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import Vuex from "vuex";
 import axiosClient from "../axios";
 
 const tmpSurveys = [
@@ -166,7 +166,7 @@ const tmpSurveys = [
   }
 ];
 
-const store = createStore({
+const store = new Vuex.Store({
   state:{
     user:{
       data: {},
@@ -235,6 +235,9 @@ const store = createStore({
       console.log("after saving in store ");
       console.log(response);
       return response;
+    },
+    closeNotification({commit}){
+      commit("hideNotifications")
     },
     register({commit},user){
       return axiosClient.post('/register', user).
@@ -319,6 +322,11 @@ const store = createStore({
     },
     setSurveys:(state,surveys)=>{
       state.surveys = surveys
+    },
+    hideNotifications:(state)=>{
+      state.notification.message = '';
+      state.notification.type=null;
+      state.notification.show=false;
     }
   },
   modules:{}
