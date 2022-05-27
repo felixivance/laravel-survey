@@ -1,4 +1,4 @@
-import Vuex from "vuex";
+import {createStore} from "vuex";
 import axiosClient from "../axios";
 
 const tmpSurveys = [
@@ -166,7 +166,7 @@ const tmpSurveys = [
   }
 ];
 
-const store = new Vuex.Store({
+const store = createStore({
   state:{
     user:{
       data: {},
