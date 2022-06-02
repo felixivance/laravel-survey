@@ -30,7 +30,7 @@ import SurveyListItem from "../components/SurveyListItem.vue";
 
 store.dispatch('getSurveys');
 
-let _surveys =  computed(() => store.state.surveys);
+const _surveys =  computed(() => store.state.surveys);
 
 
 const deleteSurvey= (survey)=>{
