@@ -31,13 +31,11 @@ import SurveyListItem from "../components/SurveyListItem.vue";
 let _surveys = ref([]);
 
 store.dispatch('getSurveys').then((data)=>{
-  console.log("surveys fetched");
-  console.log(data);
   _surveys.value = data;
 });
 
-// const _surveys =  computed(() => store.state.surveys);
 
+// const _surveys =  computed(() => store.state.surveys);
 
 const deleteSurvey= (survey)=>{
   if(confirm(`Are you sure you want to delete this survey? `)){
