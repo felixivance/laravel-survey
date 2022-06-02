@@ -177,6 +177,9 @@ const store = createStore({
     },
     // surveys:[...tmpSurveys],
     surveys:[],
+    surveysList:{
+      surveys:[],
+    },
     surveysLoading:false,
     currentSurvey:{
       loading:false,
@@ -327,7 +330,8 @@ const store = createStore({
       state.currentSurvey.data = survey
     },
     setSurveys:(state,surveys)=>{
-      state.surveys = surveys
+      state.surveys = surveys;
+      state.surveysList.surveys = surveys;
     },
     hideNotifications:(state)=>{
       state.notification.message = '';

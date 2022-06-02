@@ -2,9 +2,11 @@
 <template>
  <PageComponent title="Dashboard">
    content goes here
+
    <pre>
-     {{test}}
+     {{surveysList.surveys}}
    </pre>
+
  </PageComponent>
 </template>
 
@@ -13,7 +15,7 @@ import PageComponent from "../components/PageComponent.vue"
 import {mapState} from 'vuex';
 export default {
   computed:{
-    ...mapState(['test'])
+    ...mapState(['surveysList'])
   }
 }
 </script>

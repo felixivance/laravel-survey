@@ -25,12 +25,18 @@
 <script setup>
 import PageComponent from "../components/PageComponent.vue"
 import store from "../store";
-import {computed, onMounted} from "vue";
+import {computed, onMounted, ref, watch,} from "vue";
 import SurveyListItem from "../components/SurveyListItem.vue";
 
-store.dispatch('getSurveys');
+let _surveys = ref([]);
 
-const _surveys =  computed(() => store.state.surveys);
+store.dispatch('getSurveys').then((data)=>{
+  console.log("surveys fetched");
+  console.log(data);
+  _surveys.value = data;
+});
+
+// const _surveys =  computed(() => store.state.surveys);
 
 
 const deleteSurvey= (survey)=>{
