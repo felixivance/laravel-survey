@@ -2,10 +2,18 @@
 <template>
  <PageComponent title="Dashboard">
    content goes here
+   <pre>
+     {{test}}
+   </pre>
  </PageComponent>
 </template>
 
-<script setup>
+<script >
 import PageComponent from "../components/PageComponent.vue"
-
+import {mapState} from 'vuex';
+export default {
+  computed:{
+    ...mapState(['test'])
+  }
+}
 </script>
