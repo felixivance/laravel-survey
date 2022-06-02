@@ -15,7 +15,7 @@
            Back to List
             </span>
           </router-link>
-          <button v-if="route.params.id"  type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
+          <button v-if="this.$route.params.id"  type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
           @click="deleteSurvey">
             Delete
           </button>
@@ -23,7 +23,6 @@
       </div>
 
     </template>
-
     <div class="flex justify-center" v-if="surveyLoading.loading">Loading...</div>
     <form @submit.prevent="saveSurvey" v-else>
       <div class="shadow sm-rounded-md sm:overflow-hidden">
@@ -128,26 +127,25 @@ let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
 
-
 const surveyLoading = computed(()=> store.state.currentSurvey);
 
 // watch current survey to data change and update local data
-console.log("watch running");
-watch(
-  ()=> store.state.currentSurvey.data,
-  (newVal, oldVal) => {
-    console.log("new value ", newVal);
-    console.log("old value ",oldVal);
-    data = {
-      ...JSON.parse(JSON.stringify(newVal)),
-      status: newVal.status
-    }
-  },
-  {
-    deep:true //makes newVal and oldVal same
-  }
-);
-console.log("end watch running ", data);
+// console.log("watch running");
+// watch(
+//   ()=> store.state.currentSurvey.data,
+//   (newVal, oldVal) => {
+//     console.log("new value ", newVal);
+//     console.log("old value ",oldVal);
+//     data = {
+//       ...JSON.parse(JSON.stringify(newVal)),
+//       status: newVal.status
+//     }
+//   },
+//   {
+//     deep:true //makes newVal and oldVal same
+//   }
+// );
+// console.log("end watch running ", data);
 
 if(route.params.id){
   // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
