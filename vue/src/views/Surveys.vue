@@ -40,7 +40,9 @@ store.dispatch('getSurveys').then((data)=>{
 const deleteSurvey= (survey)=>{
   if(confirm(`Are you sure you want to delete this survey? `)){
     store.dispatch("deleteSurvey",survey.id).then(()=>{
-      store.dispatch("getSurveys");
+      store.dispatch("getSurveys").then((data)=>{
+        _surveys.value = data
+      });
     });
   }
 }
