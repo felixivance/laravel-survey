@@ -46,9 +46,13 @@ export default {
 
   },
   methods:{
-    ...mapActions({
-      closeNotification: 'closeNotification'
-    })
+    // ...mapActions({
+    //   closeNotification: 'closeNotification'
+    // }),
+
+    closeNotification(){
+      this.$store.dispatch('closeNotification')
+    }
   }
 };
 </script>
