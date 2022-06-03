@@ -1,7 +1,5 @@
 <template>
  <div class="" >
-   <pre>{{notification}}</pre>
-   <pre>{{test}}</pre>
    <div  v-if="notification.show" class="fixed w-[300px] left-4 bottom-4 py-2 px-4 text-white animate-fade-in-down rounded-md flex justify-between"
          :class="[notification.type=== 'success' ? 'bg-emerald-500' : 'bg-red-500']">
      <p>{{notification.message}}</p>
