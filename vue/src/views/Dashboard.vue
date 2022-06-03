@@ -2,11 +2,6 @@
 <template>
  <PageComponent title="Dashboard">
    content goes here
-
-   <pre>
-     {{surveysList.surveys}}
-   </pre>
-
  </PageComponent>
 </template>
 
