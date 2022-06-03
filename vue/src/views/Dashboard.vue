@@ -9,8 +9,6 @@
 import PageComponent from "../components/PageComponent.vue"
 import {mapState} from 'vuex';
 export default {
-  computed:{
-    ...mapState(['surveysList'])
-  }
+
 }
 </script>
