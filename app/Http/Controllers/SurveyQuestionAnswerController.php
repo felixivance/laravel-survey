@@ -38,16 +38,6 @@ class SurveyQuestionAnswerController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SurveyQuestionAnswer  $surveyQuestionAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SurveyQuestionAnswer $surveyQuestionAnswer)
-    {
-        //
-    }
 
 
 
