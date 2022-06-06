@@ -49,16 +49,7 @@ class SurveyQuestionAnswerController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SurveyQuestionAnswer  $surveyQuestionAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SurveyQuestionAnswer $surveyQuestionAnswer)
-    {
-        //
-    }
+
 
 
 
