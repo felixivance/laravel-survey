@@ -10,16 +10,6 @@ class SurveyQuestionController extends Controller
 
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SurveyQuestion  $surveyQuestion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SurveyQuestion $surveyQuestion)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
