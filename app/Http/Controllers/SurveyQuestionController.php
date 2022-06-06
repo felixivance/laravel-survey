@@ -8,8 +8,4 @@ use Illuminate\Http\Request;
 class SurveyQuestionController extends Controller
 {
 
-
-
-
-
 }
