@@ -72,14 +72,5 @@ class SurveyQuestionAnswerController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SurveyQuestionAnswer  $surveyQuestionAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SurveyQuestionAnswer $surveyQuestionAnswer)
-    {
-        //
-    }
+
 }
