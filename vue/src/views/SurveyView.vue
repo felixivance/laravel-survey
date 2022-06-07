@@ -76,10 +76,8 @@
             </div>
           </div>
           <div class="text-center text-gray-600"  v-if="!survey.questions.length">
-<!--             -->
             You dont have any questions created
           </div>
-<!--          {{survey.questions}}-->
           <div v-for="(question, index) in survey.questions" :key="question.id">
             <QuestionEditor  :question="question" :index="index" @change="questionChange" @addQuestion="addQuestion" @deleteQuestion="deleteQuestion"  />
           </div>
