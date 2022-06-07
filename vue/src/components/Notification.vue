@@ -63,9 +63,9 @@ export default {
   mounted() {
   //get notifications
    this.getNotifications();
-    sessionStorage.setItem("notification_show","true")
-    sessionStorage.setItem("notification_message","Testing")
-    sessionStorage.setItem("notification_type","success")
+    // sessionStorage.setItem("notification_show","true")
+    // sessionStorage.setItem("notification_message","Testing")
+    // sessionStorage.setItem("notification_type","success")
   }
 };
 </script>

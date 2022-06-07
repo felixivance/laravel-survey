@@ -245,6 +245,9 @@ const store = createStore({
       console.log(response);
       return response;
     },
+    setNotification({commit},title,message){
+      commit("setNotification", title,message)
+    },
     closeNotification({commit}){
       commit("hideNotifications")
     },
@@ -332,6 +335,14 @@ const store = createStore({
     setSurveys:(state,surveys)=>{
       state.surveys = surveys;
       state.surveysList.surveys = surveys;
+    },
+    setNotification:(state, type, message, status)=>{
+      sessionStorage.setItem("notification_show",status)
+      sessionStorage.setItem("notification_message",message)
+      sessionStorage.setItem("notification_type",type)
+      setTimeout(()=>{
+        this.hideNotifications()
+      },5000);
     },
     hideNotifications:(state)=>{
       // state.notification.message = '';
