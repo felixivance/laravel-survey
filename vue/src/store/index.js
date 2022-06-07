@@ -187,9 +187,9 @@ const store = createStore({
     },
     questionTypes:['text','select','radio','checkbox','textarea'],
     notification:{
-      show:false,
-      message:"",
-      type:null
+      show: sessionStorage.getItem("notification_show"),
+      message:sessionStorage.getItem("notification_message"),
+      type: sessionStorage.getItem("notification_type")
     }
   },
   getters:{
@@ -334,9 +334,12 @@ const store = createStore({
       state.surveysList.surveys = surveys;
     },
     hideNotifications:(state)=>{
-      state.notification.message = '';
-      state.notification.type=null;
-      state.notification.show=false;
+      // state.notification.message = '';
+      // state.notification.type=null;
+      // state.notification.show=false;
+      sessionStorage.removeItem("notification_show")
+      sessionStorage.removeItem("notification_message")
+        sessionStorage.removeItem("notification_type")
     }
   },
   modules:{}
