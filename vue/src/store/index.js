@@ -336,10 +336,11 @@ const store = createStore({
       state.surveys = surveys;
       state.surveysList.surveys = surveys;
     },
-    setNotification:(state, type, message, status)=>{
-      sessionStorage.setItem("notification_show",status)
+    setNotification:(state, {type, message})=>{
+      sessionStorage.setItem("notification_show","true")
       sessionStorage.setItem("notification_message",message)
       sessionStorage.setItem("notification_type",type)
+
       setTimeout(()=>{
         this.hideNotifications()
       },5000);

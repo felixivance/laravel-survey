@@ -56,13 +56,19 @@ export default {
     },
     getNotifications(){
       this.showNotification = sessionStorage.getItem("notification_show");
-      this.notificationMessage = sessionStorage.getItem("notification_show");
+      this.notificationMessage = sessionStorage.getItem("notification_message");
       this.notificationType = sessionStorage.getItem("notification_type");
     }
   },
   mounted() {
   //get notifications
-   this.getNotifications();
+    this.getNotifications();
+    setTimeout(function(){
+      console.log("timeer running")
+      this.getNotifications()
+    }.bind(this),1000);
+
+
     // sessionStorage.setItem("notification_show","true")
     // sessionStorage.setItem("notification_message","Testing")
     // sessionStorage.setItem("notification_type","success")

@@ -185,6 +185,8 @@ function saveSurvey(){
 
     survey.value = JSON.parse(JSON.stringify(res.data));
 
+    store.commit('setNotification',{type:'success',message:'Survey Saved Successfully'})
+
     router.push({
       name:"UpdateSurvey",
       params:{ id: res.data.id}
@@ -207,6 +209,7 @@ function onImageChange(event){
 function deleteSurvey(){
   if(confirm("Are you sure you want to delete this survey")){
     store.dispatch("deleteSurvey",survey.value.id).then(()=>{
+      store.commit('setNotification',{type:'success',message:'Survey deleted Successfully!'})
       router.push({
         name:'Surveys'
       })
