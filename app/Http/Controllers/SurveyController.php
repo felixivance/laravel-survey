@@ -60,26 +60,29 @@ class SurveyController extends Controller
     }
 
     public function createQuestion($question){
-        if(is_array($question['data'])){
-            $question['data'] = json_encode($question['data']);
-        }
-        $validator = Validator::make($question,[
-           'question'=> 'required|string',
-            'type'=> ['required',Rule::in(
-               [
-                   Survey::TYPE_TEXT,
-                   Survey::TYPE_TEXTAREA,
-                   Survey::TYPE_RADIO,
-                   Survey::TYPE_CHECKBOX,
-                   Survey::TYPE_SELECT,
-               ]
-            )],
-            'description'=> 'nullable|string',
-            'data'=>'present',
-            'survey_id'=>'exists:App\Models\Survey,id'
-
-        ]);
-        return SurveyQuestion::create($validator->validated());
+      try{
+          if(is_array($question['data'])){
+              $question['data'] = json_encode($question['data']);
+          }
+          $validator = Validator::make($question,[
+              'question'=> 'required|string',
+              'type'=> ['required',Rule::in(
+                  [
+                      Survey::TYPE_TEXT,
+                      Survey::TYPE_TEXTAREA,
+                      Survey::TYPE_RADIO,
+                      Survey::TYPE_CHECKBOX,
+                      Survey::TYPE_SELECT,
+                  ]
+              )],
+              'description'=> 'nullable|string',
+              'data'=>'present',
+              'survey_id'=>'exists:App\Models\Survey,id'
+          ]);
+          return SurveyQuestion::query()->create($validator->validated());
+      }catch (\Exception $exception){
+          return $exception->getMessage();
+      }
     }
 
     public function show($id, Request  $request)
