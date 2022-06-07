@@ -75,8 +75,8 @@
               <button type="button" @click="addQuestion" class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700">Add Question</button>
             </div>
           </div>
-          <div class="text-center text-gray-600">
-<!--             v-if="!survey.questions.length" -->
+          <div class="text-center text-gray-600"  v-if="!survey.questions.length">
+<!--             -->
             You dont have any questions created
           </div>
 <!--          {{survey.questions}}-->
