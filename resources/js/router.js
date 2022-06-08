@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import dashboardComponent from 'components/dashboardComponent'
+import dashboardComponent from './components/dashboardComponent'
 
 
 export default new VueRouter({
