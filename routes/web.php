@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/{any?}', [
+    'as' => 'home',
+    function () {
+//        if(is_null(Auth::user())){
+//            return redirect()->route('logout');
+//        }
+        return view('main');
+    }
+])->where('any','.*');
