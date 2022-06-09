@@ -15,7 +15,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
 
 // const defaultTheme = require('tailwindcss/defaultTheme');
