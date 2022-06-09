@@ -5359,8 +5359,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      errorMsg: 'asdas',
-      count: 0
+      errorMsg: '',
+      user: {
+        email: '',
+        password: '',
+        remember: false
+      }
     };
   },
   methods: {
@@ -5368,6 +5372,26 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.commit('increment');
       console.log(this.$store.state.count);
       this.count = this.$store.state.count;
+    },
+    login: function login(e) {
+      var _this = this;
+
+      e.preventDefault();
+      console.log("login user");
+      this.$store.dispatch('login', this.user).then(function (res) {
+        console.log("logged in user ", res);
+
+        if (res.error) {
+          return errorMsg.value = res.error;
+        }
+
+        _this.$router.push({
+          name: "Dashboard"
+        });
+      })["catch"](function (error) {
+        console.log(error);
+        errorMsg.value = error.response.data.message;
+      });
     }
   },
   mounted: function mounted() {}
@@ -5386,7 +5410,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -5421,7 +5445,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__we
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_3__["default"]
+  store: _store_index__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -28302,26 +28326,147 @@ var render = function () {
               attrs: { type: "hidden", name: "remember", value: "true" },
             }),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", { staticClass: "rounded-md shadow-sm -space-y-px" }, [
+              _c("div", [
+                _c(
+                  "label",
+                  { staticClass: "sr-only", attrs: { for: "email-address" } },
+                  [_vm._v("Email address")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.email,
+                      expression: "user.email",
+                    },
+                  ],
+                  staticClass:
+                    "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+                  attrs: {
+                    id: "email-address",
+                    name: "email",
+                    type: "email",
+                    autocomplete: "email",
+                    required: "",
+                    placeholder: "Email address",
+                  },
+                  domProps: { value: _vm.user.email },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "email", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "label",
+                  { staticClass: "sr-only", attrs: { for: "password" } },
+                  [_vm._v("Password")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.password,
+                      expression: "user.password",
+                    },
+                  ],
+                  staticClass:
+                    "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+                  attrs: {
+                    id: "password",
+                    name: "password",
+                    type: "password",
+                    autocomplete: "current-password",
+                    required: "",
+                    placeholder: "Password",
+                  },
+                  domProps: { value: _vm.user.password },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "password", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex items-center justify-between" }, [
+              _c("div", { staticClass: "flex items-center" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.remember,
+                      expression: "user.remember",
+                    },
+                  ],
+                  staticClass:
+                    "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded",
+                  attrs: {
+                    id: "remember-me",
+                    name: "remember-me",
+                    type: "checkbox",
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.user.remember)
+                      ? _vm._i(_vm.user.remember, null) > -1
+                      : _vm.user.remember,
+                  },
+                  on: {
+                    change: function ($event) {
+                      var $$a = _vm.user.remember,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.user, "remember", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.user,
+                              "remember",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.user, "remember", $$c)
+                      }
+                    },
+                  },
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "ml-2 block text-sm text-gray-900",
+                    attrs: { for: "remember-me" },
+                  },
+                  [_vm._v(" Remember me ")]
+                ),
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+            ]),
             _vm._v(" "),
             _vm._m(1),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-                  attrs: { type: "submit" },
-                },
-                [
-                  _vm._m(2),
-                  _vm._v(
-                    "\n          Sign in " + _vm._s(_vm.count) + "\n        "
-                  ),
-                ]
-              ),
-            ]),
           ]
         ),
       ]),
@@ -28333,96 +28478,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "rounded-md shadow-sm -space-y-px" }, [
-      _c("div", [
-        _c(
-          "label",
-          { staticClass: "sr-only", attrs: { for: "email-address" } },
-          [_vm._v("Email address")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass:
-            "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
-          attrs: {
-            id: "email-address",
-            name: "email",
-            type: "email",
-            autocomplete: "email",
-            required: "",
-            placeholder: "Email address",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { staticClass: "sr-only", attrs: { for: "password" } }, [
-          _vm._v("Password"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass:
-            "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
-          attrs: {
-            id: "password",
-            name: "password",
-            type: "password",
-            autocomplete: "current-password",
-            required: "",
-            placeholder: "Password",
-          },
-        }),
-      ]),
+    return _c("div", { staticClass: "text-sm" }, [
+      _c(
+        "a",
+        {
+          staticClass: "font-medium text-indigo-600 hover:text-indigo-500",
+          attrs: { href: "#" },
+        },
+        [_vm._v(" Forgot your password? ")]
+      ),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex items-center justify-between" }, [
-      _c("div", { staticClass: "flex items-center" }, [
-        _c("input", {
+    return _c("div", [
+      _c(
+        "button",
+        {
           staticClass:
-            "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded",
-          attrs: { id: "remember-me", name: "remember-me", type: "checkbox" },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "ml-2 block text-sm text-gray-900",
-            attrs: { for: "remember-me" },
-          },
-          [_vm._v(" Remember me ")]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-sm" }, [
-        _c(
-          "a",
-          {
-            staticClass: "font-medium text-indigo-600 hover:text-indigo-500",
-            attrs: { href: "#" },
-          },
-          [_vm._v(" Forgot your password? ")]
-        ),
-      ]),
+            "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+          attrs: { type: "submit" },
+        },
+        [
+          _c(
+            "span",
+            { staticClass: "absolute left-0 inset-y-0 flex items-center pl-3" },
+            [
+              _c("i", {
+                staticClass:
+                  "fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400",
+              }),
+            ]
+          ),
+          _vm._v("\n          Sign in\n        "),
+        ]
+      ),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "absolute left-0 inset-y-0 flex items-center pl-3" },
-      [
-        _c("i", {
-          staticClass:
-            "fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400",
-        }),
-      ]
-    )
   },
 ]
 render._withStripped = true
