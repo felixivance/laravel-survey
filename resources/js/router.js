@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import dashboardComponent from './components/dashboardComponent'
-import loginComponent from './components/loginComponent'
+import dashboardComponent from './components/dashboardComponent.vue'
+import loginComponent from './components/loginComponent.vue'
 
 export default new VueRouter({
   mode: 'history',
