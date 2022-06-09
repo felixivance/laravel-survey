@@ -28302,7 +28302,7 @@ var staticRenderFns = [
                 [
                   _c("i", {
                     staticClass:
-                      "fa fa-close h-5 w-5 text-indigo-500 group-hover:text-indigo-400",
+                      "fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400",
                   }),
                 ]
               ),
