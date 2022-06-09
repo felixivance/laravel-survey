@@ -19,6 +19,13 @@
         </p>
       </div>
       <form class="mt-8 space-y-6" action="#" method="POST">
+        <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center " v-if="errorMsg !=='' " >
+          {{errorMsg}}
+          <span @click="errorMsg =''" class="transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg></span>
+        </p>
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -42,24 +49,17 @@
           </div>
         </div>
 
-<!--        <div>-->
-<!--          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"-->
-<!--          @click="performIncrement">-->
-<!--            <span class="absolute left-0 inset-y-0 flex items-center pl-3">-->
-<!--              <i class="fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400"></i>-->
-<!--            </span>-->
-<!--            Sign in {{count}}-->
-<!--          </button>-->
-<!--        </div>-->
-      </form>
-      <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              @click="performIncrement">
+        <div>
+          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+         >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-<!--              <LockClosedIcon class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />-->
               <i class="fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400"></i>
             </span>
-        Sign in {{count}}
-      </button>
+            Sign in {{count}}
+          </button>
+        </div>
+      </form>
+
     </div>
   </div>
 </template>
@@ -67,6 +67,7 @@
 export default {
   data(){
     return {
+      errorMsg:'asdas',
       count:0
     }
   },

@@ -11,7 +11,6 @@
 </head>
 <body>
     <div id="app">
-        <p class="text-2xl">hello</p>
         <router-view></router-view>
     </div>
 </body>

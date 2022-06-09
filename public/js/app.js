@@ -5359,6 +5359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      errorMsg: 'asdas',
       count: 0
     };
   },
@@ -28228,7 +28229,7 @@ var render = function () {
           ),
           _vm._v(" "),
           _c("p", { staticClass: "mt-2 text-center text-sm text-gray-600" }, [
-            _vm._v("\n          Or\n          " + _vm._s(" ") + "\n          "),
+            _vm._v("\n        Or\n        " + _vm._s(" ") + "\n        "),
             _c(
               "a",
               {
@@ -28241,19 +28242,86 @@ var render = function () {
           ]),
         ]),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
         _c(
-          "button",
+          "form",
           {
-            staticClass:
-              "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-            attrs: { type: "submit" },
-            on: { click: _vm.performIncrement },
+            staticClass: "mt-8 space-y-6",
+            attrs: { action: "#", method: "POST" },
           },
           [
+            _vm.errorMsg !== ""
+              ? _c(
+                  "p",
+                  {
+                    staticClass:
+                      "text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center ",
+                  },
+                  [
+                    _vm._v("\n        " + _vm._s(_vm.errorMsg) + "\n        "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full",
+                        on: {
+                          click: function ($event) {
+                            _vm.errorMsg = ""
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "h-6 w-6",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              fill: "none",
+                              viewBox: "0 0 24 24",
+                              stroke: "currentColor",
+                              "stroke-width": "2",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                d: "M6 18L18 6M6 6l12 12",
+                              },
+                            }),
+                          ]
+                        ),
+                      ]
+                    ),
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "remember", value: "true" },
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
             _vm._m(1),
-            _vm._v("\n        Sign in " + _vm._s(_vm.count) + "\n      "),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                  attrs: { type: "submit" },
+                },
+                [
+                  _vm._m(2),
+                  _vm._v(
+                    "\n          Sign in " + _vm._s(_vm.count) + "\n        "
+                  ),
+                ]
+              ),
+            ]),
           ]
         ),
       ]),
@@ -28265,94 +28333,81 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      { staticClass: "mt-8 space-y-6", attrs: { action: "#", method: "POST" } },
-      [
+    return _c("div", { staticClass: "rounded-md shadow-sm -space-y-px" }, [
+      _c("div", [
+        _c(
+          "label",
+          { staticClass: "sr-only", attrs: { for: "email-address" } },
+          [_vm._v("Email address")]
+        ),
+        _vm._v(" "),
         _c("input", {
-          attrs: { type: "hidden", name: "remember", value: "true" },
+          staticClass:
+            "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+          attrs: {
+            id: "email-address",
+            name: "email",
+            type: "email",
+            autocomplete: "email",
+            required: "",
+            placeholder: "Email address",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("label", { staticClass: "sr-only", attrs: { for: "password" } }, [
+          _vm._v("Password"),
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass:
+            "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+          attrs: {
+            id: "password",
+            name: "password",
+            type: "password",
+            autocomplete: "current-password",
+            required: "",
+            placeholder: "Password",
+          },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex items-center justify-between" }, [
+      _c("div", { staticClass: "flex items-center" }, [
+        _c("input", {
+          staticClass:
+            "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded",
+          attrs: { id: "remember-me", name: "remember-me", type: "checkbox" },
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "rounded-md shadow-sm -space-y-px" }, [
-          _c("div", [
-            _c(
-              "label",
-              { staticClass: "sr-only", attrs: { for: "email-address" } },
-              [_vm._v("Email address")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass:
-                "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
-              attrs: {
-                id: "email-address",
-                name: "email",
-                type: "email",
-                autocomplete: "email",
-                required: "",
-                placeholder: "Email address",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "label",
-              { staticClass: "sr-only", attrs: { for: "password" } },
-              [_vm._v("Password")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass:
-                "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
-              attrs: {
-                id: "password",
-                name: "password",
-                type: "password",
-                autocomplete: "current-password",
-                required: "",
-                placeholder: "Password",
-              },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex items-center justify-between" }, [
-          _c("div", { staticClass: "flex items-center" }, [
-            _c("input", {
-              staticClass:
-                "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded",
-              attrs: {
-                id: "remember-me",
-                name: "remember-me",
-                type: "checkbox",
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "ml-2 block text-sm text-gray-900",
-                attrs: { for: "remember-me" },
-              },
-              [_vm._v(" Remember me ")]
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-sm" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "font-medium text-indigo-600 hover:text-indigo-500",
-                attrs: { href: "#" },
-              },
-              [_vm._v(" Forgot your password? ")]
-            ),
-          ]),
-        ]),
-      ]
-    )
+        _c(
+          "label",
+          {
+            staticClass: "ml-2 block text-sm text-gray-900",
+            attrs: { for: "remember-me" },
+          },
+          [_vm._v(" Remember me ")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-sm" }, [
+        _c(
+          "a",
+          {
+            staticClass: "font-medium text-indigo-600 hover:text-indigo-500",
+            attrs: { href: "#" },
+          },
+          [_vm._v(" Forgot your password? ")]
+        ),
+      ]),
+    ])
   },
   function () {
     var _vm = this
