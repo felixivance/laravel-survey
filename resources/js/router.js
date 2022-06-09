@@ -4,14 +4,18 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 import dashboardComponent from './components/dashboardComponent'
-
+import loginComponent from './components/loginComponent'
 
 export default new VueRouter({
   mode: 'history',
   routes: [
+    // {
+    //   path:'/',
+    //   redirect:'/login'
+    // },
     {
       path:'/',
-      redirect:'/main/dashboard'
+      component: loginComponent
     },
     {
       path: '/main/dashboard',
