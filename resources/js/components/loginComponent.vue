@@ -58,7 +58,7 @@
 <script>
 export default {
   mounted() {
-    console.log("hi")
+
   }
 }
 </script>
