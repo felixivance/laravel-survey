@@ -70,7 +70,7 @@ let errorMsg = ref("");
 function login(e){
   e.preventDefault();
   console.log("login user");
-  store.dispatch('login', user ).then((res)=>{
+  this.$store.dispatch('login', user ).then((res)=>{
     console.log("logged in user ", res)
     if(res.error){
       return errorMsg.value = res.error
