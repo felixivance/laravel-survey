@@ -18,7 +18,7 @@
           <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
         </p>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form class="mt-8 space-y-6" @submit="login">
         <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center " v-if="errorMsg !=='' " >
           {{errorMsg}}
           <span @click="errorMsg =''" class="transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full">
@@ -50,8 +50,7 @@
         </div>
 
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-         >
+          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <i class="fa fa-lock text-white h-5 w-5  group-hover:text-indigo-400"></i>
             </span>
@@ -92,19 +91,24 @@ export default {
           return errorMsg.value = res.error
         }
         this.$router.push({
-          name:"Dashboard"
+          name:"dashboard"
         })
       }).catch((error)=>{
         console.log(error)
         errorMsg.value = error.response.data.message
-
 
       })
     }
   },
 
   mounted() {
-
+    console.log(this.$store.state.user.token);
+  //  check if user is logged in and redirect to dashboard
+    if(this.$store.state.user.token !== null){
+      this.$router.push({
+        name:"dashboard"
+      })
+    }
   }
 }
 </script>
