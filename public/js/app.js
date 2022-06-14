@@ -5581,6 +5581,16 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   mutations: {
     increment: function increment(state) {
       state.count++;
+    },
+    setUser: function setUser(state, userData) {
+      state.user.token = userData.token;
+      state.user.data = userData.user;
+      sessionStorage.setItem('TOKEN', userData.token);
+    },
+    logout: function logout(state) {
+      state.user.data = {};
+      state.user.token = null;
+      sessionStorage.removeItem("TOKEN");
     }
   },
   actions: {

@@ -17,7 +17,17 @@ const store = new Vuex.Store({
   mutations: {
     increment (state) {
       state.count++
-    }
+    },
+    setUser: (state, userData)=>{
+      state.user.token = userData.token;
+      state.user.data = userData.user;
+      sessionStorage.setItem('TOKEN', userData.token);
+    },
+    logout: (state) =>{
+      state.user.data ={};
+      state.user.token = null;
+      sessionStorage.removeItem("TOKEN");
+    },
   },
   actions: {
     login({commit}, user) {
