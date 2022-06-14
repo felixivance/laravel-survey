@@ -14,7 +14,7 @@ export default new VueRouter({
   routes: [
     {
       path:'/',
-      name: 'Dashboard',
+      name: 'dashboard',
       redirect: '/dashboard',
       component: DefaultLayout,
       meta: {requiresAuth:true},

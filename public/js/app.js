@@ -5461,12 +5461,12 @@ __webpack_require__.r(__webpack_exports__);
       navigation: [{
         name: 'Dashboard',
         to: {
-          name: 'Dashboard'
+          name: 'dashboard'
         }
       }, {
         name: 'Surveys',
         to: {
-          name: 'Surveys'
+          name: 'surveys'
         }
       } // { name: 'About Us', href: '#', },
       // { name: 'Pricing', href: '#',  },
@@ -5484,6 +5484,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     user: function user() {
       return this.$store.state.user.data;
+    },
+    currentRouteName: function currentRouteName() {
+      return this.$route.name;
     }
   },
   methods: {
@@ -5492,7 +5495,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$store.dispatch('logout').then(function () {
         _this.$router.push({
-          name: 'Login'
+          name: 'login'
         });
       });
     }
@@ -5841,20 +5844,16 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__we
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// router.beforeEach((to, from, next)=>{
+//   if(to.meta.requiresAuth && !store.state.user.token){
+//     next({name:"Login"});
+//   }else if(store.state.user.token && !to.meta.requiresAuth){
+//     next({name:'Dashboard'})
+//   }else{
+//     next();
+//   }
+// });
 
-_router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, next) {
-  if (to.meta.requiresAuth && !_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token) {
-    next({
-      name: "Login"
-    });
-  } else if (_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token && !to.meta.requiresAuth) {
-    next({
-      name: 'Dashboard'
-    });
-  } else {
-    next();
-  }
-});
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -5956,7 +5955,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
   mode: 'history',
   routes: [{
     path: '/',
-    name: 'Dashboard',
+    name: 'dashboard',
     redirect: '/dashboard',
     component: _components_DefaultLayout__WEBPACK_IMPORTED_MODULE_3__["default"],
     meta: {
@@ -28999,7 +28998,7 @@ var render = function () {
                     {
                       key: item.name,
                       class: [
-                        this.$route.name === item.name
+                        _vm.currentRouteName === item.name
                           ? "bg-gray-900 text-white"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white",
                         "px-3 py-2 rounded-md text-sm font-medium",

@@ -12,7 +12,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <router-link v-for="item in navigation" :key="item.name" :to="item.to"
                              active-class="bg-gray-900 text-white"
-                             :class="[this.$route.name === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']">{{ item.name }}</router-link>
+                             :class="[currentRouteName === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']">{{ item.name }}</router-link>
               </div>
             </div>
           </div>
@@ -144,12 +144,13 @@ export default{
   data(){
     return{
       navigation:[
-        { name: 'Dashboard', to: {name:'Dashboard'} },
-        { name: 'Surveys', to: {name:'Surveys'}, },
+        { name: 'Dashboard', to: {name:'dashboard'} },
+        { name: 'Surveys', to: {name:'surveys'}, },
         // { name: 'About Us', href: '#', },
         // { name: 'Pricing', href: '#',  },
         // { name: 'Reports', href: '#', current: false },
       ],
+
       userNavigation : [
         { name: 'Your Profile', href:'' },
         { name: 'Settings', href:'' },
@@ -159,13 +160,16 @@ export default{
   computed:{
     user(){
       return this.$store.state.user.data
+    },
+    currentRouteName() {
+      return this.$route.name;
     }
   },
   methods:{
     logout(){
       this.$store.dispatch('logout').then(()=>{
         this.$router.push({
-          name:'Login'
+          name:'login'
         });
       });
 
