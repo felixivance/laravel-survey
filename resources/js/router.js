@@ -3,24 +3,15 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import dashboardComponent from './components/dashboardComponent.vue'
-import loginComponent from './components/loginComponent.vue'
-import DefaultLayout from "../../vue/src/components/DefaultLayout";
-import Dashboard from "../../vue/src/views/Dashboard";
-import Surveys from "../../vue/src/views/Surveys";
-import SurveyView from "../../vue/src/views/SurveyView";
+import Dashboard from "./pages/DashboardComponent";
+import DefaultLayout from "./components/DefaultLayout";
+import AuthComponent from "./components/AuthComponent";
+import Register from "./pages/RegisterComponent";
+import Login from "./pages/LoginComponent";
 
 export default new VueRouter({
   mode: 'history',
   routes: [
-    // {
-    //   path:'/',
-    //   redirect:'/login'
-    // },
-    {
-      path:'/',
-      component: loginComponent
-    },
     {
       path:'/',
       name: 'Dashboard',
@@ -40,6 +31,24 @@ export default new VueRouter({
         // {
         //   path:'/surveys/:id', name:'UpdateSurvey', component: SurveyView
         // }
+      ]
+    },
+    {
+      path:'/auth',
+      name:'Auth',
+      component: AuthComponent,
+      meta:{requiresAuth:false},
+      children: [
+        {
+          path:'/auth/register',
+          name: 'Register',
+          component: Register
+        },
+        {
+          path:'/auth/login',
+          name: 'Login',
+          component: Login
+        },
       ]
     },
   ],
