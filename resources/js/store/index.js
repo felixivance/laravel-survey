@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 // import axiosClient from "../../../vue/src/axios";
-import axiosClient from "../axios";
+import axiosClient from "../axios/axios";
 
 Vue.use(Vuex);
 

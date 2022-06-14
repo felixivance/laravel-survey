@@ -5450,6 +5450,33 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/axios/axios.js":
+/*!*************************************!*\
+  !*** ./resources/js/axios/axios.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+
+
+var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+  baseURL: 'http://127.0.0.1:8001/api'
+});
+axiosClient.interceptors.request.use(function (config) {
+  config.headers.Authorization = "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_1__["default"].state.user.token);
+  return config;
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (axiosClient);
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -5537,7 +5564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../axios'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _axios_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../axios/axios */ "./resources/js/axios/axios.js");
 
  // import axiosClient from "../../../vue/src/axios";
 
@@ -5555,7 +5582,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   actions: {
     login: function login(_ref, user) {
       var commit = _ref.commit;
-      return Object(function webpackMissingModule() { var e = new Error("Cannot find module '../axios'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())('/login', user).then(function (_ref2) {
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref2) {
         var data = _ref2.data;
         commit("setUser", data);
         return data;
@@ -45200,6 +45227,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
