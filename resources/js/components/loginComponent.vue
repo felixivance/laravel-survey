@@ -18,7 +18,7 @@
           <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
         </p>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form class="mt-8 space-y-6" @submit="login">
         <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center " v-if="errorMsg !=='' " >
           {{errorMsg}}
           <span @click="errorMsg =''" class="transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full">
@@ -89,14 +89,14 @@ export default {
       this.$store.dispatch('login', this.user ).then((res)=>{
         console.log("logged in user ", res)
         if(res.error){
-          return errorMsg.value = res.error
+          return this.errorMsg = res.error
         }
         this.$router.push({
           name:"Dashboard"
         })
       }).catch((error)=>{
         console.log(error)
-        errorMsg.value = error.response.data.message
+        this.errorMsg = error.response.data.message
 
 
       })

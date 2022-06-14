@@ -5382,7 +5382,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log("logged in user ", res);
 
         if (res.error) {
-          return errorMsg.value = res.error;
+          return _this.errorMsg = res.error;
         }
 
         _this.$router.push({
@@ -5390,7 +5390,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         console.log(error);
-        errorMsg.value = error.response.data.message;
+        _this.errorMsg = error.response.data.message;
       });
     }
   },
@@ -5572,7 +5572,11 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
-    count: 0
+    count: 0,
+    user: {
+      data: {},
+      token: sessionStorage.getItem("TOKEN")
+    }
   },
   mutations: {
     increment: function increment(state) {
@@ -28308,10 +28312,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "form",
-          {
-            staticClass: "mt-8 space-y-6",
-            attrs: { action: "#", method: "POST" },
-          },
+          { staticClass: "mt-8 space-y-6", on: { submit: _vm.login } },
           [
             _vm.errorMsg !== ""
               ? _c(
