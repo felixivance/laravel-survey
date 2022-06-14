@@ -5844,16 +5844,23 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__we
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-// router.beforeEach((to, from, next)=>{
-//   if(to.meta.requiresAuth && !store.state.user.token){
-//     next({name:"Login"});
-//   }else if(store.state.user.token && !to.meta.requiresAuth){
-//     next({name:'Dashboard'})
-//   }else{
-//     next();
-//   }
-// });
 
+_router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, next) {
+  if (_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token) {
+    // console.log(" authenticated");
+    // next({name:'dashboard'})
+    _router__WEBPACK_IMPORTED_MODULE_0__["default"].push('/dashboard')["catch"](function (error) {
+      console.info(error.message);
+    }); // next({name:"login"});
+  } else if (!_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token) {
+    // next({name:'dashboard'})
+    console.log(_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token);
+    console.log("authenticated");
+  } else {
+    // next();
+    console.log("proceed");
+  }
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -5984,11 +5991,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
     },
     children: [{
       path: '/auth/register',
-      name: 'Register',
+      name: 'register',
       component: _pages_RegisterComponent__WEBPACK_IMPORTED_MODULE_5__["default"]
     }, {
       path: '/auth/login',
-      name: 'Login',
+      name: 'login',
       component: _pages_LoginComponent__WEBPACK_IMPORTED_MODULE_6__["default"]
     }]
   }]
@@ -6011,7 +6018,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _axios_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../axios/axios */ "./resources/js/axios/axios.js");
 
- // import axiosClient from "../../../vue/src/axios";
 
 
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);

@@ -17,7 +17,7 @@ export default new VueRouter({
       name: 'dashboard',
       redirect: '/dashboard',
       component: DefaultLayout,
-      meta: {requiresAuth:true},
+      meta: { requiresAuth:true },
       children: [
         {
           path:'/dashboard', name:'Dashboard', component: Dashboard
@@ -41,12 +41,12 @@ export default new VueRouter({
       children: [
         {
           path:'/auth/register',
-          name: 'Register',
+          name: 'register',
           component: Register
         },
         {
           path:'/auth/login',
-          name: 'Login',
+          name: 'login',
           component: Login
         },
       ]

@@ -34,15 +34,24 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// router.beforeEach((to, from, next)=>{
-//   if(to.meta.requiresAuth && !store.state.user.token){
-//     next({name:"Login"});
-//   }else if(store.state.user.token && !to.meta.requiresAuth){
-//     next({name:'Dashboard'})
-//   }else{
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next)=>{
+  if(store.state.user.token){
+    // console.log(" authenticated");
+    // next({name:'dashboard'})
+    router.push('/dashboard')
+      .catch(error => {
+        console.info(error.message)
+      })
+    // next({name:"login"});
+  }else if(!store.state.user.token){
+    // next({name:'dashboard'})
+    console.log(store.state.user.token)
+    console.log("authenticated");
+  }else{
+    // next();
+    console.log("proceed");
+  }
+});
 
 const app = new Vue({
     el: '#app',
