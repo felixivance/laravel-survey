@@ -5489,8 +5489,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
-    console.log(this.$route);
+  mounted: function mounted() {// console.log(this.$route)
   }
 });
 
@@ -5532,6 +5531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -6142,7 +6142,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
       name: 'surveys',
       component: _pages_Surveys__WEBPACK_IMPORTED_MODULE_7__["default"]
     } // {
-    //   path:'/surveys/create', name:'CreateSurvey', component: SurveyView
+    //   path:'/dashboard/surveys/create', name:'CreateSurvey', component: SurveyView
     // },
     // {
     //   path:'/surveys/:id', name:'UpdateSurvey', component: SurveyView
