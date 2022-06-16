@@ -8,7 +8,11 @@
 </template>
 
 <script >
+import PageComponent from "../components/PageComponent";
 export default {
+  components:{
+    PageComponent
+  },
   mounted() {
     console.log("dashboard mounted");
   }

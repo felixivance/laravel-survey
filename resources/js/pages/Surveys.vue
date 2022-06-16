@@ -17,33 +17,43 @@
     </template>
 
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-      <SurveyListItem v-for="survey in _surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)" />
+<!--      <SurveyListItem v-for="survey in _surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)" />-->
     </div>
   </PageComponent>
 </template>
 
-<script setup>
+<script>
 import PageComponent from "../components/PageComponent.vue"
-import store from "../store";
-import {computed, onMounted, ref, watch,} from "vue";
-import SurveyListItem from "../components/SurveyListItem.vue";
+export default {
+  components:{
+    PageComponent
+  },
+  data(){
+    return {
 
-let _surveys = ref([]);
-
-store.dispatch('getSurveys').then((data)=>{
-  _surveys.value = data;
-});
-
-
-// const _surveys =  computed(() => store.state.surveys);
-
-const deleteSurvey= (survey)=>{
-  if(confirm(`Are you sure you want to delete this survey? `)){
-    store.dispatch("deleteSurvey",survey.id).then(()=>{
-      store.dispatch("getSurveys").then((data)=>{
-        _surveys.value = data
-      });
-    });
+    }
   }
 }
+// import store from "../store";
+// import {computed, onMounted, ref, watch,} from "vue";
+// import SurveyListItem from "../components/SurveyListItem.vue";
+//
+// let _surveys = ref([]);
+//
+// store.dispatch('getSurveys').then((data)=>{
+//   _surveys.value = data;
+// });
+//
+//
+// // const _surveys =  computed(() => store.state.surveys);
+//
+// const deleteSurvey= (survey)=>{
+//   if(confirm(`Are you sure you want to delete this survey? `)){
+//     store.dispatch("deleteSurvey",survey.id).then(()=>{
+//       store.dispatch("getSurveys").then((data)=>{
+//         _surveys.value = data
+//       });
+//     });
+//   }
+// }
 </script>
