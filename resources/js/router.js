@@ -8,6 +8,7 @@ import DefaultLayout from "./components/DefaultLayout";
 import AuthComponent from "./components/AuthComponent";
 import Register from "./pages/RegisterComponent";
 import Login from "./pages/LoginComponent";
+import Surveys from "./pages/Surveys";
 
 export default new VueRouter({
   mode: 'history',
@@ -22,9 +23,9 @@ export default new VueRouter({
         {
           path:'/dashboard', name:'Dashboard', component: Dashboard
         },
-        // {
-        //   path:'/surveys', name:'Surveys', component: Surveys
-        // },
+        {
+          path:'/surveys', name:'Surveys', component: Surveys
+        },
         // {
         //   path:'/surveys/create', name:'CreateSurvey', component: SurveyView
         // },
