@@ -23,6 +23,7 @@
                 </p>
             </div>
             <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
+                @csrf
                 <p class="text-white text-center bg-red-500 rounded-md px-3 py-5 flex justify-between items-center " v-if="errorMsg !=='' " >
 {{--                    {{errorMsg}}--}}
                     <span @click="errorMsg =''" class="transition-colors cursor-pointer hover:bg-[rgba(0,0,0,0.2)] rounded-full">
