@@ -30,8 +30,11 @@ export default {
   },
   data(){
     return {
-
+      surveys[]
     }
+  },
+  mounted() {
+    console.log("surveys mounted");
   }
 }
 // import store from "../store";

@@ -5845,68 +5845,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Surveys.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _components_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PageComponent.vue */ "./resources/js/components/PageComponent.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    PageComponent: _components_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {};
-  }
-}); // import store from "../store";
-// import {computed, onMounted, ref, watch,} from "vue";
-// import SurveyListItem from "../components/SurveyListItem.vue";
-//
-// let _surveys = ref([]);
-//
-// store.dispatch('getSurveys').then((data)=>{
-//   _surveys.value = data;
-// });
-//
-//
-// // const _surveys =  computed(() => store.state.surveys);
-//
-// const deleteSurvey= (survey)=>{
-//   if(confirm(`Are you sure you want to delete this survey? `)){
-//     store.dispatch("deleteSurvey",survey.id).then(()=>{
-//       store.dispatch("getSurveys").then((data)=>{
-//         _surveys.value = data
-//       });
-//     });
-//   }
-// }
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/felixivance/Documents/work/personal/laravel-survey/resources/js/pages/Surveys.vue: Unexpected token, expected \",\" (33:13)\n\n\u001b[0m \u001b[90m 31 |\u001b[39m   data(){\u001b[0m\n\u001b[0m \u001b[90m 32 |\u001b[39m     \u001b[36mreturn\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m       surveys[]\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m   }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 |\u001b[39m   mounted() {\u001b[0m\n    at instantiate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:358:12)\n    at Parser.raise (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3335:19)\n    at Parser.unexpected (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3373:16)\n    at Parser.expect (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:4002:28)\n    at Parser.parseObjectLike (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13486:14)\n    at Parser.parseExprAtom (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12890:23)\n    at Parser.parseExprSubscripts (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12540:23)\n    at Parser.parseUpdate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12519:21)\n    at Parser.parseMaybeUnary (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12490:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12284:61)\n    at Parser.parseExprOps (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12291:23)\n    at Parser.parseMaybeConditional (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12261:23)\n    at Parser.parseMaybeAssign (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12214:21)\n    at Parser.parseExpressionBase (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12150:23)\n    at /Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12144:39");
 
 /***/ }),
 
@@ -6085,8 +6026,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
       name: 'Dashboard',
       component: _pages_DashboardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
     }, {
-      path: '/surveys',
-      name: 'Surveys',
+      path: '/dashboard/surveys',
+      name: 'surveys',
       component: _pages_Surveys__WEBPACK_IMPORTED_MODULE_7__["default"]
     } // {
     //   path:'/surveys/create', name:'CreateSurvey', component: SurveyView
