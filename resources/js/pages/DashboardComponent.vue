@@ -9,6 +9,8 @@
 
 <script >
 export default {
-
+  mounted() {
+    console.log("dashboard mounted");
+  }
 }
 </script>
