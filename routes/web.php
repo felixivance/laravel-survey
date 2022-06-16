@@ -19,16 +19,24 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/', function(){
    return view('login');
-});
+})->name('login');
 
 Auth::routes();
 
-Route::get('/{any?}', [
+Route::get('/dashboard/{any?}', [
     'as' => 'home',
     function () {
-//        if(is_null(Auth::user())){
-//            return redirect()->route('logout');
-//        }
+        if(is_null(Auth::user())){
+            return redirect()->route('logout');
+        }
         return view('main');
     }
 ])->where('any','.*');
+
+Route::get('logout', [
+    'as' => 'logout',
+    function () {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+]);
