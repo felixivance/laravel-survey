@@ -5562,6 +5562,42 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    title: String
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/DashboardComponent.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/DashboardComponent.vue?vue&type=script&lang=js& ***!
@@ -5845,9 +5881,85 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Surveys.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/felixivance/Documents/work/personal/laravel-survey/resources/js/pages/Surveys.vue: Unexpected token, expected \",\" (33:13)\n\n\u001b[0m \u001b[90m 31 |\u001b[39m   data(){\u001b[0m\n\u001b[0m \u001b[90m 32 |\u001b[39m     \u001b[36mreturn\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m       surveys[]\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m   }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 |\u001b[39m   mounted() {\u001b[0m\n    at instantiate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:358:12)\n    at Parser.raise (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3335:19)\n    at Parser.unexpected (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3373:16)\n    at Parser.expect (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:4002:28)\n    at Parser.parseObjectLike (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13486:14)\n    at Parser.parseExprAtom (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12890:23)\n    at Parser.parseExprSubscripts (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12540:23)\n    at Parser.parseUpdate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12519:21)\n    at Parser.parseMaybeUnary (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12490:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12284:61)\n    at Parser.parseExprOps (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12291:23)\n    at Parser.parseMaybeConditional (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12261:23)\n    at Parser.parseMaybeAssign (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12214:21)\n    at Parser.parseExpressionBase (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12150:23)\n    at /Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12144:39");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PageComponent.vue */ "./resources/js/components/PageComponent.vue");
+/* harmony import */ var _components_SurveyListItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SurveyListItem.vue */ "./resources/js/components/SurveyListItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    PageComponent: _components_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    SurveyListItem: _components_SurveyListItem_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {};
+  },
+  computed: {
+    surveys: function surveys() {
+      return this.$store.state.surveys;
+    }
+  },
+  methods: {
+    deleteSurvey: function deleteSurvey(survey) {
+      var _this = this;
+
+      if (confirm("Are you sure you want to delete this survey? ")) {
+        this.$store.dispatch("deleteSurvey", survey.id).then(function () {
+          _this.$store.dispatch("getSurveys").then(function (data) {
+            _this.surveys = data;
+          });
+        });
+      }
+    },
+    mounted: function mounted() {
+      console.log("surveys mounted");
+      this.$store.dispatch('getSurveys');
+    }
+  }
+}); // import store from "../store";
+// import {computed, onMounted, ref, watch,} from "vue";
+// import SurveyListItem from "../components/SurveyListItem.vue";
+//
+// let _surveys = ref([]);
+//
+// store.dispatch('getSurveys').then((data)=>{
+//   _surveys.value = data;
+// });
+//
+//
+// // const _surveys =  computed(() => store.state.surveys);
+//
+// }
 
 /***/ }),
 
@@ -6081,6 +6193,21 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     user: {
       data: {},
       token: sessionStorage.getItem("TOKEN")
+    },
+    surveys: [],
+    surveysList: {
+      surveys: []
+    },
+    surveysLoading: false,
+    currentSurvey: {
+      loading: false,
+      data: {}
+    },
+    questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
+    notification: {
+      show: sessionStorage.getItem("notification_show"),
+      message: sessionStorage.getItem("notification_message"),
+      type: sessionStorage.getItem("notification_type")
     }
   },
   mutations: {
@@ -6094,12 +6221,116 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     }
   },
   actions: {
-    login: function login(_ref, user) {
+    // login({commit}, user) {
+    //   return axiosClient.post('/login', user).then(({data}) => {
+    //     commit("setUser", data)
+    //     return data;
+    //   })
+    // },
+    deleteSurvey: function deleteSurvey(_ref, id) {
       var commit = _ref.commit;
-      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref2) {
-        var data = _ref2.data;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/survey/".concat(id));
+    },
+    getSurveys: function getSurveys(_ref2) {
+      var commit = _ref2.commit;
+      commit("setSurveysLoading", true);
+      return axios.get("/survey").then(function (res) {
+        commit("setSurveys", res.data.data);
+        console.log("store fetching surveys ", res.data.data);
+        commit("setSurveysLoading", false);
+        return res.data.data;
+      });
+    },
+    getSurvey: function getSurvey(_ref3, id) {
+      var commit = _ref3.commit;
+      commit("setCurrentSurveyLoading", true);
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/survey/".concat(id)).then(function (res) {
+        console.log("response in fetching survey ", res.data);
+        commit("setCurrentSurvey", res.data.data);
+        commit("setCurrentSurveyLoading", false);
+        return res.data;
+      })["catch"](function (err) {
+        commit("setCurrentSurveyLoading", false);
+        throw err;
+      });
+    },
+    saveSurvey: function saveSurvey(_ref4, survey) {
+      var commit = _ref4.commit;
+      delete survey.image_url; //remove the viewable image src
+
+      console.log("saving survey ", survey);
+      console.log(survey.title);
+      var response;
+
+      if (survey.id) {
+        //updating
+        response = _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/survey/".concat(survey.id), survey).then(function (res) {
+          commit("setCurrentSurvey", res.data);
+          return res.data;
+        });
+      } else {
+        response = _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("/survey", survey).then(function (res) {
+          commit("setCurrentSurvey", res.data);
+          return res.data;
+        });
+      }
+
+      console.log("after saving in store ");
+      console.log(response);
+      return response;
+    },
+    setNotification: function setNotification(_ref5, title, message) {
+      var commit = _ref5.commit;
+      commit("setNotification", title, message);
+    },
+    closeNotification: function closeNotification(_ref6) {
+      var commit = _ref6.commit;
+      commit("hideNotifications");
+    },
+    register: function register(_ref7, user) {
+      var commit = _ref7.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', user).then(function (_ref8) {
+        var data = _ref8.data;
         commit("setUser", data);
         return data;
+      }); //odl method
+      // return fetch('http://127.0.0.1:8000/api/register',{
+      //   headers:{
+      //     "Content-type":'application/json',
+      //     "Accept": "application/json",
+      //   },
+      //   method:"Post",
+      //   body: JSON.stringify(user)
+      // }).then((res)=> res.json())
+      //   .then((result)=>{
+      //     commit("setUser", result)
+      //     return result;
+      //   });
+    },
+    login: function login(_ref9, user) {
+      var commit = _ref9.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref10) {
+        var data = _ref10.data;
+        commit("setUser", data);
+        return data;
+      }); //   return fetch('http://127.0.0.1:8000/api/login',{
+      //     headers:{
+      //       "Content-type":"application/json",
+      //       "Accept": "application/json"
+      //     },
+      //     method: "POST",
+      //     body: JSON.stringify(user)
+      //   }).then((res)=> res.json())
+      //     .then((result)=>{
+      //       commit("setUser", result)
+      //       return result
+      //     })
+    },
+    logout: function logout(_ref11) {
+      var commit = _ref11.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function (response) {
+        commit('logout');
+        return response;
       });
     }
   }
@@ -28710,6 +28941,45 @@ component.options.__file = "resources/js/components/PageComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/SurveyListItem.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/SurveyListItem.vue ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SurveyListItem.vue?vue&type=template&id=ce330014& */ "./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014&");
+/* harmony import */ var _SurveyListItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SurveyListItem.vue?vue&type=script&lang=js& */ "./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SurveyListItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SurveyListItem.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/DashboardComponent.vue":
 /*!***************************************************!*\
   !*** ./resources/js/pages/DashboardComponent.vue ***!
@@ -28930,6 +29200,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SurveyListItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SurveyListItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SurveyListItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/DashboardComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************!*\
   !*** ./resources/js/pages/DashboardComponent.vue?vue&type=script&lang=js& ***!
@@ -29058,6 +29344,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageComponent_vue_vue_type_template_id_e743c05a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageComponent_vue_vue_type_template_id_e743c05a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PageComponent.vue?vue&type=template&id=e743c05a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageComponent.vue?vue&type=template&id=e743c05a&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SurveyListItem_vue_vue_type_template_id_ce330014___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SurveyListItem.vue?vue&type=template&id=ce330014& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014&");
 
 
 /***/ }),
@@ -29669,6 +29972,25 @@ render._withStripped = true
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageComponent.vue?vue&type=template&id=e743c05a& ***!
   \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {}
+var staticRenderFns = []
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SurveyListItem.vue?vue&type=template&id=ce330014& ***!
+  \**************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -30409,7 +30731,7 @@ var render = function () {
                             }),
                           ]
                         ),
-                        _vm._v("\n          Add new survey\n          "),
+                        _vm._v("\n        Add new survey\n        "),
                       ]),
                     ]
                   ),
@@ -30424,9 +30746,22 @@ var render = function () {
     },
     [
       _vm._v(" "),
-      _c("div", {
-        staticClass: "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3",
-      }),
+      _c(
+        "div",
+        { staticClass: "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" },
+        _vm._l(_vm.surveys, function (survey) {
+          return _c("SurveyListItem", {
+            key: survey.id,
+            attrs: { survey: survey },
+            on: {
+              delete: function ($event) {
+                return _vm.deleteSurvey(survey)
+              },
+            },
+          })
+        }),
+        1
+      ),
     ]
   )
 }
