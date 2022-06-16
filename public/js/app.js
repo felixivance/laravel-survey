@@ -5552,7 +5552,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    console.log("dashboard mounted");
+  }
+});
 
 /***/ }),
 
@@ -5844,23 +5848,25 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__we
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// router.beforeEach((to, from, next)=>{
+//   if(store.state.user.token){
+//     // console.log(" authenticated");
+//     // next({name:'dashboard'})
+//     router.push('/dashboard')
+//       .catch(error => {
+//         console.info(error.message)
+//       })
+//     // next({name:"login"});
+//   }else if(!store.state.user.token){
+//     // next({name:'dashboard'})
+//     console.log(store.state.user.token)
+//     console.log("authenticated");
+//   }else{
+//     // next();
+//     console.log("proceed");
+//   }
+// });
 
-_router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, next) {
-  if (_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token) {
-    // console.log(" authenticated");
-    // next({name:'dashboard'})
-    _router__WEBPACK_IMPORTED_MODULE_0__["default"].push('/dashboard')["catch"](function (error) {
-      console.info(error.message);
-    }); // next({name:"login"});
-  } else if (!_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token) {
-    // next({name:'dashboard'})
-    console.log(_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].state.user.token);
-    console.log("authenticated");
-  } else {
-    // next();
-    console.log("proceed");
-  }
-});
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
