@@ -5594,9 +5594,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    title: String
+    title: String,
+    survey: Object
+  },
+  methods: {
+    "delete": function _delete(survey) {
+      this.emit('delete', survey); // const emit = defineEmits(['delete']);
+    }
   }
 });
 
@@ -30030,35 +30043,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("header", { staticClass: "bg-white shadow" }, [
-      _c(
-        "div",
-        { staticClass: "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" },
-        [
-          _c("h1", { staticClass: "text-3xl font-bold text-gray-900" }, [
-            _vm._v(_vm._s(_vm.title)),
-          ]),
-          _vm._v(" "),
-          _vm._t("header"),
-        ],
-        2
-      ),
-    ]),
-    _vm._v(" "),
-    _c("main", [
-      _c("div", { staticClass: "max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" }, [
-        _c("div", { staticClass: "px-4 py-6 sm:px-0" }, [_vm._t("default")], 2),
-      ]),
-    ]),
-  ])
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
