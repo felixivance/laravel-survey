@@ -17,6 +17,9 @@
     </template>
 
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <pre>
+        {{surveys}}
+      </pre>
       <SurveyListItem v-for="survey in surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)" />
     </div>
   </PageComponent>
@@ -49,10 +52,11 @@ export default {
         });
       }
     },
-    mounted() {
-      console.log("surveys mounted");
-      this.$store.dispatch('getSurveys')
-    }
+
+  },
+  mounted() {
+    console.log("surveys mounted");
+    this.$store.dispatch('getSurveys')
   }
 }
 // import store from "../store";

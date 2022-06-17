@@ -5931,6 +5931,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5957,11 +5960,11 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       }
-    },
-    mounted: function mounted() {
-      console.log("surveys mounted");
-      this.$store.dispatch('getSurveys');
     }
+  },
+  mounted: function mounted() {
+    console.log("surveys mounted");
+    this.$store.dispatch('getSurveys');
   }
 }); // import store from "../store";
 // import {computed, onMounted, ref, watch,} from "vue";
@@ -6250,11 +6253,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     getSurveys: function getSurveys(_ref2) {
       var commit = _ref2.commit;
-      commit("setSurveysLoading", true);
-      return axios.get("/survey").then(function (res) {
+      // commit("setSurveysLoading",true);
+      return axios.get("/api/survey").then(function (res) {
         commit("setSurveys", res.data.data);
-        console.log("store fetching surveys ", res.data.data);
-        commit("setSurveysLoading", false);
+        console.log("store fetching surveys ", res.data.data); // commit("setSurveysLoading",false);
+
         return res.data.data;
       });
     },
@@ -30793,18 +30796,22 @@ var render = function () {
       _c(
         "div",
         { staticClass: "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" },
-        _vm._l(_vm.surveys, function (survey) {
-          return _c("SurveyListItem", {
-            key: survey.id,
-            attrs: { survey: survey },
-            on: {
-              delete: function ($event) {
-                return _vm.deleteSurvey(survey)
+        [
+          _c("pre", [_vm._v("      " + _vm._s(_vm.surveys) + "\n    ")]),
+          _vm._v(" "),
+          _vm._l(_vm.surveys, function (survey) {
+            return _c("SurveyListItem", {
+              key: survey.id,
+              attrs: { survey: survey },
+              on: {
+                delete: function ($event) {
+                  return _vm.deleteSurvey(survey)
+                },
               },
-            },
-          })
-        }),
-        1
+            })
+          }),
+        ],
+        2
       ),
     ]
   )
