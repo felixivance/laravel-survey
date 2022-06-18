@@ -99,10 +99,13 @@
 </template>
 
 <script>
-import PageComponent from "../components/PageComponent.vue"
+import PageComponent from "../components/PageComponent"
 import QuestionEditor from "../components/editor/QuestionEditor.vue"
 import {v4 as uuidv4} from "uuid";
 export default {
+  components:{
+    PageComponent,QuestionEditor
+  },
   data(){
     return{
       survey:{
