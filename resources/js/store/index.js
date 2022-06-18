@@ -4,6 +4,170 @@ import axiosClient from "../axios/axios";
 
 Vue.use(Vuex);
 
+const tmpSurveys = [
+  {
+    id:100,
+    title:'Felix',
+    slug:'Felix is a G',
+    status:'draft',
+    image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+    description:'My name is Felix, i am a web developer with 8+ years of experience',
+    created_at: "2021-12-20 18:00:00",
+    updated_at:"2021-12-20 18:00:00",
+    expiry_date: "2021-12-31 18:00",
+    questions:[
+      {
+        id: 1,
+        type: "select",
+        question:"from which country are you?",
+        description: null,
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"kenya"
+            },
+            {
+              uuid: "2",
+              text:"Nigeria"
+            },
+            {
+              uuid: "4",
+              text:"Sudan"
+            }
+          ]
+        }
+      },
+      {
+        id: 2,
+        type: "checkbox",
+        question:"which language videos do you prefer",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 3,
+        type: "checkbox",
+        question:"which language videos do you prefer 2",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 4,
+        type: "radio",
+        question:"which language videos do you prefer",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 5,
+        type: "radio",
+        question:"which language videos do you prefer 2",
+        description: "itakua ngori sana checkbox",
+        data:{
+          options:[
+            {
+              uuid: "1",
+              text:"Kiswa"
+            },
+            {
+              uuid: "2",
+              text:"Ngoso"
+            },
+            {
+              uuid: "4",
+              text:"Kikuyu"
+            }
+          ]
+        }
+      },
+      {
+        id: 6,
+        type: "text",
+        question:"which language videos do you prefer 2",
+        description: null,
+        data:{ }
+      },
+      {
+        id: 7,
+        type: "textarea",
+        question:"which language videos do you prefer 2",
+        description: "text area description",
+        data:{ }
+      },
+    ]
+
+  },
+  {
+    id:200,
+    title:'Felix ',
+    slug:'Runye is a G',
+    status:'draft',
+    image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+    description:'My name is Felix, i am a web developer with 8+ years of experience',
+    created_at: "2021-12-20 18:00:00",
+    updated_at:"2021-12-20 18:00:00",
+    expiry_date: "2021-12-31 18:00",
+    questions:[]
+  },
+  {
+    id:200,
+    title:'Felix',
+    slug:'Ivance is a G',
+    status:'draft',
+    image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+    description:'My name is Felix, i am a web developer with 8+ years of experience',
+    created_at: "2021-12-20 18:00:00",
+    updated_at:"2021-12-20 18:00:00",
+    expiry_date: "2021-12-31 18:00",
+    questions:[]
+  }
+];
 
 const store = new Vuex.Store({
   state: {
@@ -13,6 +177,7 @@ const store = new Vuex.Store({
       token: sessionStorage.getItem("TOKEN")
     },
     surveys:[],
+    // surveys:[...tmpSurveys],
     surveysList:{
       surveys:[],
     },
@@ -28,6 +193,14 @@ const store = new Vuex.Store({
       type: sessionStorage.getItem("notification_type")
     }
   },
+  getters:{
+    surveys(state) {
+      return state.surveys
+    },
+    notification(state){
+      return state.notification
+    }
+  },
   mutations: {
     increment (state) {
       state.count++
@@ -37,6 +210,53 @@ const store = new Vuex.Store({
       state.user.data = userData.user;
       sessionStorage.setItem('TOKEN', userData.token);
     },
+    logout: (state) =>{
+      state.user.data ={};
+      state.user.token = null;
+      sessionStorage.removeItem("TOKEN");
+    },
+    // saveSurvey:(state, survey)=>{
+    //   state.surveys = [...state.surveys, survey.data]
+    // },
+    // updateSurvey:(state,survey)=>{
+    //   state.surveys = state.surveys.map((s)=>{
+    //     if(survey.data.id ===s.id){
+    //       return survey.data
+    //     }else{
+    //       return s
+    //     }
+    //   })
+    // },
+    setCurrentSurveyLoading:(state, loadingStatus)=>{
+      state.currentSurvey.loading = loadingStatus
+    },
+    setSurveysLoading: (state, loadingStatus)=>{
+      state.surveysLoading =   loadingStatus
+    },
+    setCurrentSurvey:(state, survey)=>{
+      state.currentSurvey.data = survey
+    },
+    setSurveys:(state,surveys)=>{
+      state.surveys = surveys;
+      state.surveysList.surveys = surveys;
+    },
+    setNotification:(state, {type, message})=>{
+      sessionStorage.setItem("notification_show","true")
+      sessionStorage.setItem("notification_message",message)
+      sessionStorage.setItem("notification_type",type)
+
+      setTimeout(()=>{
+        this.hideNotifications()
+      },5000);
+    },
+    hideNotifications:(state)=>{
+      // state.notification.message = '';
+      // state.notification.type=null;
+      // state.notification.show=false;
+      sessionStorage.removeItem("notification_show")
+      sessionStorage.removeItem("notification_message")
+      sessionStorage.removeItem("notification_type")
+    }
   },
   actions: {
     // login({commit}, user) {

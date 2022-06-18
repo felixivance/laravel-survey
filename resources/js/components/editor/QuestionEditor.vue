@@ -3,7 +3,7 @@
    <!-- Question index -->
    <div class="flex items-center justify-between">
      <h3 class="text-lg font-bold">
-       {{ props.index + 1 }}. {{ survey.question }}
+       {{ index + 1 }}. {{ survey.question }}
      </h3>
 
 
@@ -112,8 +112,8 @@
 
 <script >
 import {v4 as uuidv4} from "uuid";
-import {computed, ref} from "@vue/reactivity";
-import store from "../../store";
+// import {computed, ref} from "@vue/reactivity";
+// import store from "../../store";
 export default {
   props:{
     question: Object,
@@ -162,7 +162,7 @@ export default {
     },
     dataChange() {
       // const data = survey.value;
-      const data = JSON.parse(JSON.stringify(survey.value)); //create clone of model value ie the survey
+      const data = JSON.parse(JSON.stringify(this.survey.value)); //create clone of model value ie the survey
       if (!this.shouldHaveOptions()) {
         delete data.data.options;
       }

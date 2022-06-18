@@ -4,10 +4,10 @@
     <template v-slot:header>
       <div class="flex justify-between items-center">
         <div>
-          <h1 class="text-3xl font-bold text-gray-900">{{ route.params.id ? "Editing: "+survey.title : "Create Survey"  }}</h1>
+          <h1 class="text-3xl font-bold text-gray-900">{{ $route.params.id ? "Editing: "+survey.title : "Create Survey"  }}</h1>
         </div>
         <div class="flex items-center space-x-2">
-          <router-link :to="{name: 'Surveys'}" class="py-2 px-3 text-white bg-emerald-500 rounded-md hover:bg-emerald-600">
+          <router-link :to="{name: 'surveys'}" class="py-2 px-3 text-white bg-emerald-500 rounded-md hover:bg-emerald-600">
             <span class="flex space-x-2">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -15,7 +15,7 @@
            Back to List
             </span>
           </router-link>
-          <button v-if="this.$route.params.id"  type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
+          <button v-if="$route.params.id"  type="button" class="py-2 px-3 text-white bg-red-500 hover:bg-red-600 rounded-md"
                   @click="deleteSurvey">
             Delete
           </button>
@@ -116,24 +116,103 @@ export default {
         image_url:null,
         expiry_date:null,
         questions:[]
+      },
+      editMode:false,
+    }
+  },
+  computed:{
+    surveyLoading(){
+      return this.$store.state.currentSurvey
+    }
+  },
+  methods:{
+   loadSurvey(){
+     if(this.$route.params.id){
+       // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
+       this.$store.dispatch('getSurvey', this.$route.params.id).then((data)=>{
+         console.log("survey fetched is ")
+         console.log(data);
+         // survey.value = JSON.parse(JSON.stringify(data.data));
+       });
+       this.editMode = true;
+     }
+   },
+    addQuestion(index){
+      const newQuestion = {
+        id: uuidv4(),
+        type: "text",
+        question:"",
+        description: null,
+        data:{}
+      }
+      this.survey.questions.splice(index, 0, newQuestion) //adds nw element to thr array
+    },
+     deleteQuestion(question){
+      this.survey.questions = this.survey.questions.filter((q)=> q!== question)
+    },
+
+     questionChange(question){
+      this.survey.questions = this.survey.questions.map((q)=>{
+        if(q.id === question.id){
+          return JSON.parse(JSON.stringify(question))
+        }
+        return q;
+      })
+    },
+
+   saveSurvey(){
+
+        this.$store.dispatch("saveSurvey", survey).then((res)=>{
+
+          this.survey = JSON.parse(JSON.stringify(res.data));
+
+          this.$store.commit('setNotification',{type:'success',message:'Survey Saved Successfully'})
+
+          this.$router.push({
+            name:"UpdateSurvey",
+            params:{ id: res.data.id}
+          })
+        });
+      },
+
+     onImageChange(event){
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () =>{
+        //field to send to backend
+        this.survey.image = reader.result
+        //image to display
+        this.survey.image_url = reader.result
+      }
+    },
+     deleteSurvey(){
+      if(confirm("Are you sure you want to delete this survey")){
+        this.$store.dispatch("deleteSurvey",this.survey.id).then(()=>{
+          this.$store.commit('setNotification',{type:'success',message:'Survey deleted Successfully!'})
+          this.$router.push({
+            name:'surveys'
+          })
+        })
       }
     }
+  },
+  mounted() {
+
   }
 }
-import {computed, ref, watch,} from "vue";
-import {useRoute, useRouter} from "vue-router";
-import store from "../store";
 
 
 
 
-let editMode = false;
 
-let data = {}
+// let editMode = false;
+
+// let data = {}
 
 // survey.value = computed(() => store.state.currentSurvey.data)
 
-const surveyLoading = computed(()=> store.state.currentSurvey);
+// const surveyLoading = computed(()=> store.state.currentSurvey);
 
 // watch current survey to data change and update local data
 // console.log("watch running");
@@ -153,75 +232,18 @@ const surveyLoading = computed(()=> store.state.currentSurvey);
 // );
 // console.log("end watch running ", data);
 
-if(route.params.id){
-  // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
-  store.dispatch('getSurvey', route.params.id).then((data)=>{
-    console.log("survey fetched is ")
-    console.log(data);
-    survey.value = JSON.parse(JSON.stringify(data.data));
-  });
-  editMode = true;
-}
 
-const addQuestion=(index)=>{
-  const newQuestion = {
-    id: uuidv4(),
-    type: "text",
-    question:"",
-    description: null,
-    data:{}
-  }
-  survey.value.questions.splice(index, 0, newQuestion) //adds nw element to thr array
-}
 
-const deleteQuestion=(question)=>{
-  survey.value.questions = survey.value.questions.filter((q)=> q!== question)
-}
+// const addQuestion=(index)=>{
+//   const newQuestion = {
+//     id: uuidv4(),
+//     type: "text",
+//     question:"",
+//     description: null,
+//     data:{}
+//   }
+//   survey.value.questions.splice(index, 0, newQuestion) //adds nw element to thr array
+// }
 
-function questionChange(question){
-  survey.value.questions = survey.value.questions.map((q)=>{
-    if(q.id === question.id){
-      return JSON.parse(JSON.stringify(question))
-    }
-    return q;
-  })
-}
 
-function saveSurvey(){
-
-  store.dispatch("saveSurvey", survey.value).then((res)=>{
-
-    survey.value = JSON.parse(JSON.stringify(res.data));
-
-    store.commit('setNotification',{type:'success',message:'Survey Saved Successfully'})
-
-    router.push({
-      name:"UpdateSurvey",
-      params:{ id: res.data.id}
-    })
-  });
-}
-
-function onImageChange(event){
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () =>{
-    //field to send to backend
-    survey.value.image = reader.result
-    //image to display
-    survey.value.image_url = reader.result
-  }
-
-}
-function deleteSurvey(){
-  if(confirm("Are you sure you want to delete this survey")){
-    store.dispatch("deleteSurvey",survey.value.id).then(()=>{
-      store.commit('setNotification',{type:'success',message:'Survey deleted Successfully!'})
-      router.push({
-        name:'Surveys'
-      })
-    })
-  }
-}
 </script>

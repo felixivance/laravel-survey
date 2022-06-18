@@ -9,6 +9,7 @@ import AuthComponent from "./components/AuthComponent";
 import Register from "./pages/RegisterComponent";
 import Login from "./pages/LoginComponent";
 import Surveys from "./pages/Surveys";
+import SurveyView from "./pages/SurveyView";
 
 export default new VueRouter({
   mode: 'history',
