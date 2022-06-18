@@ -6161,10 +6161,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
       path: '/dashboard/surveys',
       name: 'surveys',
       component: _pages_Surveys__WEBPACK_IMPORTED_MODULE_7__["default"]
+    }, {
+      path: '/dashboard/surveys/create',
+      name: 'CreateSurvey',
+      component: SurveyView
     } // {
-    //   path:'/dashboard/surveys/create', name:'CreateSurvey', component: SurveyView
-    // },
-    // {
     //   path:'/surveys/:id', name:'UpdateSurvey', component: SurveyView
     // }
     ]

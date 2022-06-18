@@ -26,9 +26,9 @@ export default new VueRouter({
         {
           path:'/dashboard/surveys', name:'surveys', component: Surveys
         },
-        // {
-        //   path:'/dashboard/surveys/create', name:'CreateSurvey', component: SurveyView
-        // },
+        {
+          path:'/dashboard/surveys/create', name:'CreateSurvey', component: SurveyView
+        },
         // {
         //   path:'/surveys/:id', name:'UpdateSurvey', component: SurveyView
         // }
