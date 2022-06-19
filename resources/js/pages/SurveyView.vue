@@ -152,6 +152,7 @@ export default {
     },
 
      questionChange(question){
+     console.log("qstn changed")
       this.survey.questions = this.survey.questions.map((q)=>{
         if(q.id === question.id){
           return JSON.parse(JSON.stringify(question))

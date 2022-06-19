@@ -87,7 +87,7 @@
          You don't have any options defined
        </div>
        <!-- Option list -->
-       <div v-for="(option, index) in survey.data.options" :key="option.uuid" class="flex items-center mb-1">
+       <div v-for="(option, index) in survey.data.options" :key="index" class="flex items-center mb-1">
          <span class="w-6 text-sm"> {{ index + 1 }}. </span>
          <input v-model="option.text" class="w-full rounded-sm py-1 px-2 text-xs border border-gray-300 focus:border-indigo-500"
                 tabindex="1" type="text" @change="dataChange" />
@@ -135,19 +135,26 @@ export default {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
     getOptions() {
+      console.log(this.survey.data.options)
       return this.survey.data.options;
     },
     setOptions(options) {
+
       this.survey.data.options = options;
+      console.log("here")
+      console.log(this.survey)
     },
     shouldHaveOptions() {
+      console.log(this.survey.type)
       return ["select", "radio", "checkbox"].includes(this.survey.type);
     },
     addOption() {
+      console.log("Clicked add option");
       this.setOptions([
         ...this.getOptions(),
         {uuid: uuidv4(), text: ""},
       ]);
+
       this.dataChange();
     },
     removeOption(op) {
@@ -162,7 +169,7 @@ export default {
     },
     dataChange() {
       // const data = survey.value;
-      const data = JSON.parse(JSON.stringify(this.survey.value)); //create clone of model value ie the survey
+      const data = JSON.parse(JSON.stringify(this.survey)); //create clone of model value ie the survey
       if (!this.shouldHaveOptions()) {
         delete data.data.options;
       }
@@ -176,6 +183,7 @@ export default {
     }
   },
   mounted(){
+    // Re-create the whole question data to avoid unintentional reference change
     this.survey = JSON.parse(JSON.stringify(this.question))
   },
 }

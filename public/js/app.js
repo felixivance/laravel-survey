@@ -5774,15 +5774,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
     getOptions: function getOptions() {
+      console.log(this.survey.data.options);
       return this.survey.data.options;
     },
     setOptions: function setOptions(options) {
       this.survey.data.options = options;
+      console.log("here");
+      console.log(this.survey);
     },
     shouldHaveOptions: function shouldHaveOptions() {
+      console.log(this.survey.type);
       return ["select", "radio", "checkbox"].includes(this.survey.type);
     },
     addOption: function addOption() {
+      console.log("Clicked add option");
       this.setOptions([].concat(_toConsumableArray(this.getOptions()), [{
         uuid: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])(),
         text: ""
@@ -5804,7 +5809,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     dataChange: function dataChange() {
       // const data = survey.value;
-      var data = JSON.parse(JSON.stringify(this.survey.value)); //create clone of model value ie the survey
+      var data = JSON.parse(JSON.stringify(this.survey)); //create clone of model value ie the survey
 
       if (!this.shouldHaveOptions()) {
         delete data.data.options;
@@ -5820,6 +5825,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   mounted: function mounted() {
+    // Re-create the whole question data to avoid unintentional reference change
     this.survey = JSON.parse(JSON.stringify(this.question));
   }
 }); // const emit = defineEmits(["change", "addQuestion", "deleteQuestion"]);
@@ -6324,6 +6330,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     questionChange: function questionChange(question) {
+      console.log("qstn changed");
       this.survey.questions = this.survey.questions.map(function (q) {
         if (q.id === question.id) {
           return JSON.parse(JSON.stringify(question));
@@ -31488,7 +31495,7 @@ var render = function () {
               _vm._l(_vm.survey.data.options, function (option, index) {
                 return _c(
                   "div",
-                  { key: option.uuid, staticClass: "flex items-center mb-1" },
+                  { key: index, staticClass: "flex items-center mb-1" },
                   [
                     _c("span", { staticClass: "w-6 text-sm" }, [
                       _vm._v(" " + _vm._s(index + 1) + ". "),
