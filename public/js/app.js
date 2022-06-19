@@ -5783,7 +5783,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return ["select", "radio", "checkbox"].includes(this.survey.type);
     },
     addOption: function addOption() {
-      this.setOptions([].concat(_toConsumableArray(getOptions()), [{
+      this.setOptions([].concat(_toConsumableArray(this.getOptions()), [{
         uuid: (0,uuid__WEBPACK_IMPORTED_MODULE_0__["default"])(),
         text: ""
       }]));
@@ -5808,12 +5808,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (!this.shouldHaveOptions()) {
         delete data.data.options;
-      } // emit("change", data);
+      }
 
+      this.$emit("change", data);
     },
-    addQuestion: function addQuestion() {// emit("addQuestion", props.index + 1);
+    addQuestion: function addQuestion() {
+      this.$emit("addQuestion", this.index + 1);
     },
-    deleteQuestion: function deleteQuestion() {// emit("deleteQuestion", props.question);
+    deleteQuestion: function deleteQuestion() {
+      this.$emit("deleteQuestion", this.question);
     }
   },
   mounted: function mounted() {
@@ -6332,7 +6335,7 @@ __webpack_require__.r(__webpack_exports__);
     saveSurvey: function saveSurvey() {
       var _this = this;
 
-      this.$store.dispatch("saveSurvey", survey).then(function (res) {
+      this.$store.dispatch("saveSurvey", this.survey).then(function (res) {
         _this.survey = JSON.parse(JSON.stringify(res.data));
 
         _this.$store.commit('setNotification', {

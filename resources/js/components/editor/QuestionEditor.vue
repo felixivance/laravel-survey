@@ -145,7 +145,7 @@ export default {
     },
     addOption() {
       this.setOptions([
-        ...getOptions(),
+        ...this.getOptions(),
         {uuid: uuidv4(), text: ""},
       ]);
       this.dataChange();
@@ -166,13 +166,13 @@ export default {
       if (!this.shouldHaveOptions()) {
         delete data.data.options;
       }
-      // emit("change", data);
+      this.$emit("change", data);
     },
     addQuestion() {
-      // emit("addQuestion", props.index + 1);
+      this.$emit("addQuestion", this.index + 1);
     },
     deleteQuestion() {
-      // emit("deleteQuestion", props.question);
+      this.$emit("deleteQuestion", this.question);
     }
   },
   mounted(){

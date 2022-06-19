@@ -162,7 +162,7 @@ export default {
 
    saveSurvey(){
 
-        this.$store.dispatch("saveSurvey", survey).then((res)=>{
+        this.$store.dispatch("saveSurvey", this.survey).then((res)=>{
 
           this.survey = JSON.parse(JSON.stringify(res.data));
 
