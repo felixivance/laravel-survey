@@ -267,9 +267,11 @@ const store = new Vuex.Store({
     deleteSurvey({commit},id){
       return axios.delete(`/api/survey/${id}`)
     },
-    getSurveys({commit}){
+    getSurveys({commit}, {url = null} = {}){
+      url = url || '/api/survey';
+
       commit("setSurveysLoading",true);
-      return axios.get(`/api/survey`).then((res)=>{
+      return axios.get(url).then((res)=>{
         commit("setSurveys", res.data);
         console.log("store fetching surveys ",res.data.data);
         commit("setSurveysLoading",false);

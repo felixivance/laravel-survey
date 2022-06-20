@@ -6557,6 +6557,17 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       }
+    },
+    getForPage: function getForPage($event, link) {
+      $event.preventDefault();
+
+      if (!link.url || link.active) {
+        return;
+      }
+
+      this.$store.dispatch("getSurveys", {
+        url: link.url
+      });
     }
   },
   mounted: function mounted() {
@@ -7039,16 +7050,22 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     getSurveys: function getSurveys(_ref3) {
       var commit = _ref3.commit;
+
+      var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          _ref4$url = _ref4.url,
+          url = _ref4$url === void 0 ? null : _ref4$url;
+
+      url = url || '/api/survey';
       commit("setSurveysLoading", true);
-      return axios.get("/api/survey").then(function (res) {
+      return axios.get(url).then(function (res) {
         commit("setSurveys", res.data);
         console.log("store fetching surveys ", res.data.data);
         commit("setSurveysLoading", false);
         return res.data.data;
       });
     },
-    getSurvey: function getSurvey(_ref4, id) {
-      var commit = _ref4.commit;
+    getSurvey: function getSurvey(_ref5, id) {
+      var commit = _ref5.commit;
       commit("setCurrentSurveyLoading", true);
       return axios.get("/api/survey/".concat(id)).then(function (res) {
         console.log("response in fetching survey ", res.data);
@@ -7060,8 +7077,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
         throw err;
       });
     },
-    saveSurvey: function saveSurvey(_ref5, survey) {
-      var commit = _ref5.commit;
+    saveSurvey: function saveSurvey(_ref6, survey) {
+      var commit = _ref6.commit;
       delete survey.image_url; //remove the viewable image src
 
       console.log("saving survey ", survey);
@@ -7085,18 +7102,18 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       console.log(response);
       return response;
     },
-    setNotification: function setNotification(_ref6, title, message) {
-      var commit = _ref6.commit;
+    setNotification: function setNotification(_ref7, title, message) {
+      var commit = _ref7.commit;
       commit("setNotification", title, message);
     },
-    closeNotification: function closeNotification(_ref7) {
-      var commit = _ref7.commit;
+    closeNotification: function closeNotification(_ref8) {
+      var commit = _ref8.commit;
       commit("hideNotifications");
     },
-    register: function register(_ref8, user) {
-      var commit = _ref8.commit;
-      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', user).then(function (_ref9) {
-        var data = _ref9.data;
+    register: function register(_ref9, user) {
+      var commit = _ref9.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', user).then(function (_ref10) {
+        var data = _ref10.data;
         commit("setUser", data);
         return data;
       }); //odl method
@@ -7113,10 +7130,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       //     return result;
       //   });
     },
-    login: function login(_ref10, user) {
-      var commit = _ref10.commit;
-      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref11) {
-        var data = _ref11.data;
+    login: function login(_ref11, user) {
+      var commit = _ref11.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref12) {
+        var data = _ref12.data;
         commit("setUser", data);
         return data;
       }); //   return fetch('http://127.0.0.1:8000/api/login',{
@@ -7132,8 +7149,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       //       return result
       //     })
     },
-    logout: function logout(_ref12) {
-      var commit = _ref12.commit;
+    logout: function logout(_ref13) {
+      var commit = _ref13.commit;
       return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function (response) {
         commit('logout');
         return response;
@@ -33046,7 +33063,7 @@ var render = function () {
                     domProps: { innerHTML: _vm._s(link.label) },
                     on: {
                       click: function ($event) {
-                        return _vm.getForPage(link)
+                        return _vm.getForPage($event, link)
                       },
                     },
                   })
