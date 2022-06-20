@@ -152,7 +152,6 @@ export default {
     },
 
      questionChange(question){
-     console.log("qstn changed")
       this.survey.questions = this.survey.questions.map((q)=>{
         if(q.id === question.id){
           return JSON.parse(JSON.stringify(question))
@@ -199,7 +198,14 @@ export default {
     }
   },
   mounted() {
-
+    if(this.$route.params.id){
+      console.log("set");
+      // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
+      this.$store.dispatch('getSurvey', this.$route.params.id).then((data)=>{
+        this.survey = JSON.parse(JSON.stringify(data.data));
+      });
+      this.editMode = true;
+    }
   }
 }
 

@@ -6336,7 +6336,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     questionChange: function questionChange(question) {
-      console.log("qstn changed");
       this.survey.questions = this.survey.questions.map(function (q) {
         if (q.id === question.id) {
           return JSON.parse(JSON.stringify(question));
@@ -6395,7 +6394,18 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var _this4 = this;
+
+    if (this.$route.params.id) {
+      console.log("set"); // survey.value = store.state.surveys.find((survey)=>survey.id === parseInt(route.params.id))
+
+      this.$store.dispatch('getSurvey', this.$route.params.id).then(function (data) {
+        _this4.survey = JSON.parse(JSON.stringify(data.data));
+      });
+      this.editMode = true;
+    }
+  }
 }); // let editMode = false;
 // let data = {}
 // survey.value = computed(() => store.state.currentSurvey.data)
@@ -6443,8 +6453,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PageComponent.vue */ "./resources/js/components/PageComponent.vue");
 /* harmony import */ var _components_SurveyListItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SurveyListItem.vue */ "./resources/js/components/SurveyListItem.vue");
-//
-//
 //
 //
 //
@@ -6703,10 +6711,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
       path: '/dashboard/surveys/create',
       name: 'CreateSurvey',
       component: _pages_SurveyView__WEBPACK_IMPORTED_MODULE_8__["default"]
-    } // {
-    //   path:'/surveys/:id', name:'UpdateSurvey', component: SurveyView
-    // }
-    ]
+    }, {
+      path: '/dashboard/surveys/:id',
+      name: 'UpdateSurvey',
+      component: _pages_SurveyView__WEBPACK_IMPORTED_MODULE_8__["default"]
+    }]
   }, {
     path: '/auth',
     name: 'Auth',
@@ -6978,7 +6987,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     // },
     deleteSurvey: function deleteSurvey(_ref2, id) {
       var commit = _ref2.commit;
-      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/survey/".concat(id));
+      return axios["delete"]("/api/survey/".concat(id));
     },
     getSurveys: function getSurveys(_ref3) {
       var commit = _ref3.commit;
@@ -6993,7 +7002,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     getSurvey: function getSurvey(_ref4, id) {
       var commit = _ref4.commit;
       commit("setCurrentSurveyLoading", true);
-      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/survey/".concat(id)).then(function (res) {
+      return axios.get("/api/survey/".concat(id)).then(function (res) {
         console.log("response in fetching survey ", res.data);
         commit("setCurrentSurvey", res.data.data);
         commit("setCurrentSurveyLoading", false);
@@ -7013,12 +7022,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
 
       if (survey.id) {
         //updating
-        response = _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/survey/".concat(survey.id), survey).then(function (res) {
+        response = axios.put("/api/survey/".concat(survey.id), survey).then(function (res) {
           commit("setCurrentSurvey", res.data);
           return res.data;
         });
       } else {
-        response = _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("/survey", survey).then(function (res) {
+        response = axios.post("/api/survey", survey).then(function (res) {
           commit("setCurrentSurvey", res.data);
           return res.data;
         });
@@ -32823,22 +32832,18 @@ var render = function () {
       _c(
         "div",
         { staticClass: "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" },
-        [
-          _c("pre", [_vm._v("      " + _vm._s(_vm.surveys) + "\n    ")]),
-          _vm._v(" "),
-          _vm._l(_vm.surveys, function (survey) {
-            return _c("SurveyListItem", {
-              key: survey.id,
-              attrs: { survey: survey },
-              on: {
-                delete: function ($event) {
-                  return _vm.deleteSurvey(survey)
-                },
+        _vm._l(_vm.surveys, function (survey) {
+          return _c("SurveyListItem", {
+            key: survey.id,
+            attrs: { survey: survey },
+            on: {
+              delete: function ($event) {
+                return _vm.deleteSurvey(survey)
               },
-            })
-          }),
-        ],
-        2
+            },
+          })
+        }),
+        1
       ),
     ]
   )

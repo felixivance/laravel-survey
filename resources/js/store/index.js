@@ -266,7 +266,7 @@ const store = new Vuex.Store({
     //   })
     // },
     deleteSurvey({commit},id){
-      return axiosClient.delete(`/survey/${id}`)
+      return axios.delete(`/api/survey/${id}`)
     },
     getSurveys({commit}){
       // commit("setSurveysLoading",true);
@@ -279,7 +279,7 @@ const store = new Vuex.Store({
     },
     getSurvey({commit}, id){
       commit("setCurrentSurveyLoading", true);
-      return axiosClient.get(`/survey/${id}`).then((res)=>{
+      return axios.get(`/api/survey/${id}`).then((res)=>{
         console.log("response in fetching survey ", res.data)
         commit("setCurrentSurvey", res.data.data);
         commit("setCurrentSurveyLoading", false);
@@ -295,12 +295,12 @@ const store = new Vuex.Store({
       console.log(survey.title);
       let response;
       if(survey.id){ //updating
-        response = axiosClient.put(`/survey/${survey.id}`, survey).then((res)=>{
+        response = axios.put(`/api/survey/${survey.id}`, survey).then((res)=>{
           commit("setCurrentSurvey",res.data)
           return res.data;
         })
       }else{
-        response = axiosClient.post(`/survey`,survey).then((res)=>{
+        response = axios.post(`/api/survey`,survey).then((res)=>{
           commit("setCurrentSurvey", res.data)
           return res.data;
         })
