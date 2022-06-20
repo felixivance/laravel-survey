@@ -6996,20 +6996,17 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     setNotification: function setNotification(state, _ref) {
       var type = _ref.type,
           message = _ref.message;
-      sessionStorage.setItem("notification_show", "true");
-      sessionStorage.setItem("notification_message", message);
-      sessionStorage.setItem("notification_type", type);
+      state.notification.show = true;
+      state.notification.type = type;
+      state.notification.message = message;
       setTimeout(function () {
         _this.hideNotifications();
       }, 5000);
     },
     hideNotifications: function hideNotifications(state) {
-      // state.notification.message = '';
-      // state.notification.type=null;
-      // state.notification.show=false;
-      sessionStorage.removeItem("notification_show");
-      sessionStorage.removeItem("notification_message");
-      sessionStorage.removeItem("notification_type");
+      state.notification.message = '';
+      state.notification.type = null;
+      state.notification.show = false;
     }
   },
   actions: {

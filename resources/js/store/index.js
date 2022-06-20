@@ -241,21 +241,19 @@ const store = new Vuex.Store({
       state.surveysList.surveys = surveys;
     },
     setNotification:(state, {type, message})=>{
-      sessionStorage.setItem("notification_show","true")
-      sessionStorage.setItem("notification_message",message)
-      sessionStorage.setItem("notification_type",type)
+
+      state.notification.show = true;
+      state.notification.type = type;
+      state.notification.message = message;
 
       setTimeout(()=>{
         this.hideNotifications()
       },5000);
     },
     hideNotifications:(state)=>{
-      // state.notification.message = '';
-      // state.notification.type=null;
-      // state.notification.show=false;
-      sessionStorage.removeItem("notification_show")
-      sessionStorage.removeItem("notification_message")
-      sessionStorage.removeItem("notification_type")
+      state.notification.message = '';
+      state.notification.type=null;
+      state.notification.show=false;
     }
   },
   actions: {
