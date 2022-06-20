@@ -6907,9 +6907,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
     notification: {
-      show: sessionStorage.getItem("notification_show"),
-      message: sessionStorage.getItem("notification_message"),
-      type: sessionStorage.getItem("notification_type")
+      show: false,
+      message: null,
+      type: null
     }
   },
   getters: {
