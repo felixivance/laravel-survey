@@ -6523,6 +6523,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -33024,8 +33029,26 @@ var render = function () {
                 _vm._l(_vm.surveys.links, function (link, i) {
                   return _c("a", {
                     key: i,
-                    attrs: { disabled: !link.url },
+                    staticClass:
+                      "relative inline-flex items-center px-4 py-2 border text-sm font-medium whitespace-nowrap",
+                    class: [
+                      link.active
+                        ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
+                        : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50",
+                      i === 0 ? "rounded-l-md" : "",
+                      i === _vm.surveys.links.length - 1 ? "rounded-r-md" : "",
+                    ],
+                    attrs: {
+                      disabled: !link.url,
+                      href: "#",
+                      "aria-current": "page",
+                    },
                     domProps: { innerHTML: _vm._s(link.label) },
+                    on: {
+                      click: function ($event) {
+                        return _vm.getForPage(link)
+                      },
+                    },
                   })
                 }),
                 0
