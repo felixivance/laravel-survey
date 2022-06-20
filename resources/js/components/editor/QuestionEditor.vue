@@ -141,8 +141,11 @@ export default {
     setOptions(options) {
 
       this.survey.data.options = options;
-      console.log("here")
-      console.log(this.survey)
+      this.survey = {
+        ...this.survey
+      }
+      // console.log("here")
+      // console.log(this.survey)
     },
     shouldHaveOptions() {
       console.log(this.survey.type)
