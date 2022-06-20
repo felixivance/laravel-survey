@@ -6785,8 +6785,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _axios_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../axios/axios */ "./resources/js/axios/axios.js");
-var _this = undefined;
-
 
 
 
@@ -7000,13 +6998,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       state.notification.type = type;
       state.notification.message = message;
       setTimeout(function () {
-        _this.hideNotifications();
+        state.notification.show = false;
+        state.notification.message = null;
+        state.notification.type = null;
       }, 5000);
-    },
-    hideNotifications: function hideNotifications(state) {
-      state.notification.message = '';
-      state.notification.type = null;
-      state.notification.show = false;
     }
   },
   actions: {

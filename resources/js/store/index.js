@@ -247,14 +247,12 @@ const store = new Vuex.Store({
       state.notification.message = message;
 
       setTimeout(()=>{
-        this.hideNotifications()
+        state.notification.show=false
+        state.notification.message = null;
+        state.notification.type=null;
       },5000);
     },
-    hideNotifications:(state)=>{
-      state.notification.message = '';
-      state.notification.type=null;
-      state.notification.show=false;
-    }
+
   },
   actions: {
     // login({commit}, user) {
