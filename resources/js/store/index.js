@@ -265,11 +265,11 @@ const store = new Vuex.Store({
       return axios.delete(`/api/survey/${id}`)
     },
     getSurveys({commit}){
-      // commit("setSurveysLoading",true);
+      commit("setSurveysLoading",true);
       return axios.get(`/api/survey`).then((res)=>{
         commit("setSurveys", res.data.data);
         console.log("store fetching surveys ",res.data.data);
-        // commit("setSurveysLoading",false);
+        commit("setSurveysLoading",false);
         return res.data.data;
       })
     },

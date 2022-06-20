@@ -23,8 +23,8 @@
       </div>
 
     </template>
-    <div class="flex justify-center" v-if="surveyLoading.loading">Loading...</div>
-    <form @submit.prevent="saveSurvey" v-else>
+    <div class="flex justify-center" v-if="surveyLoading">Loading...</div>
+    <form @submit.prevent="saveSurvey" v-else class="animate-fade-in-down">
       <div class="shadow sm-rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
           <!--            image-->
@@ -122,7 +122,7 @@ export default {
   },
   computed:{
     surveyLoading(){
-      return this.$store.state.currentSurvey
+      return this.$store.state.surveysLoading
     }
   },
   methods:{

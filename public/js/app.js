@@ -6340,7 +6340,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     surveyLoading: function surveyLoading() {
-      return this.$store.state.currentSurvey;
+      return this.$store.state.surveysLoading;
     }
   },
   methods: {
@@ -6513,6 +6513,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6526,6 +6529,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     surveys: function surveys() {
       return this.$store.state.surveys;
+    },
+    surveysLoading: function surveysLoading() {
+      return this.$store.state.surveysLoading;
     }
   },
   methods: {
@@ -7018,11 +7024,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
     },
     getSurveys: function getSurveys(_ref3) {
       var commit = _ref3.commit;
-      // commit("setSurveysLoading",true);
+      commit("setSurveysLoading", true);
       return axios.get("/api/survey").then(function (res) {
         commit("setSurveys", res.data.data);
-        console.log("store fetching surveys ", res.data.data); // commit("setSurveysLoading",false);
-
+        console.log("store fetching surveys ", res.data.data);
+        commit("setSurveysLoading", false);
         return res.data.data;
       });
     },
@@ -32499,13 +32505,14 @@ var render = function () {
     },
     [
       _vm._v(" "),
-      _vm.surveyLoading.loading
+      _vm.surveyLoading
         ? _c("div", { staticClass: "flex justify-center" }, [
             _vm._v("Loading..."),
           ])
         : _c(
             "form",
             {
+              staticClass: "animate-fade-in-down",
               on: {
                 submit: function ($event) {
                   $event.preventDefault()
@@ -32969,24 +32976,33 @@ var render = function () {
     },
     [
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3" },
-        _vm._l(_vm.surveys, function (survey, index) {
-          return _c("SurveyListItem", {
-            key: survey.id,
-            staticClass: "opacity-0 animate-fade-in-down",
-            style: { animationDelay: index * 0.1 + "s" },
-            attrs: { survey: survey },
-            on: {
-              delete: function ($event) {
-                return _vm.deleteSurvey(survey)
+      _vm.surveysLoading
+        ? _c("div", { staticClass: "flex justify-center" }, [
+            _vm._v("Loading..."),
+          ])
+        : _c("div", [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3",
               },
-            },
-          })
-        }),
-        1
-      ),
+              _vm._l(_vm.surveys, function (survey, index) {
+                return _c("SurveyListItem", {
+                  key: survey.id,
+                  staticClass: "opacity-0 animate-fade-in-down",
+                  style: { animationDelay: index * 0.1 + "s" },
+                  attrs: { survey: survey },
+                  on: {
+                    delete: function ($event) {
+                      return _vm.deleteSurvey(survey)
+                    },
+                  },
+                })
+              }),
+              1
+            ),
+          ]),
     ]
   )
 }

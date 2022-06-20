@@ -15,12 +15,15 @@
       </div>
 
     </template>
+    <div v-if="surveysLoading" class="flex justify-center">Loading...</div>
+    <div  v-else>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
 
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-
-      <SurveyListItem v-for="(survey,index) in surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)"
-      class="opacity-0 animate-fade-in-down" :style="{animationDelay:`${index * 0.1}s`}"/>
+        <SurveyListItem v-for="(survey,index) in surveys" :key="survey.id" :survey="survey" @delete="deleteSurvey(survey)"
+                        class="opacity-0 animate-fade-in-down" :style="{animationDelay:`${index * 0.1}s`}"/>
+      </div>
     </div>
+
   </PageComponent>
 </template>
 
@@ -39,6 +42,9 @@ export default {
   computed:{
     surveys(){
       return this.$store.state.surveys
+    },
+    surveysLoading (){
+      return this.$store.state.surveysLoading
     }
   },
   methods: {
