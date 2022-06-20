@@ -6516,6 +6516,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6934,7 +6941,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       data: {},
       token: sessionStorage.getItem("TOKEN")
     },
-    surveys: [],
+    surveys: {
+      links: [],
+      data: []
+    },
     // surveys:[...tmpSurveys],
     surveysList: {
       surveys: []
@@ -6995,8 +7005,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       state.currentSurvey.data = survey;
     },
     setSurveys: function setSurveys(state, surveys) {
-      state.surveys = surveys;
-      state.surveysList.surveys = surveys;
+      state.surveys.data = surveys.data;
+      state.surveys.links = surveys.links;
     },
     setNotification: function setNotification(state, _ref) {
       var type = _ref.type,
@@ -7026,7 +7036,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
       var commit = _ref3.commit;
       commit("setSurveysLoading", true);
       return axios.get("/api/survey").then(function (res) {
-        commit("setSurveys", res.data.data);
+        commit("setSurveys", res.data);
         console.log("store fetching surveys ", res.data.data);
         commit("setSurveysLoading", false);
         return res.data.data;
@@ -32961,7 +32971,7 @@ var render = function () {
                             }),
                           ]
                         ),
-                        _vm._v("\n        Add new survey\n        "),
+                        _vm._v("\n          Add new survey\n          "),
                       ]),
                     ]
                   ),
@@ -32987,7 +32997,7 @@ var render = function () {
                 staticClass:
                   "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3",
               },
-              _vm._l(_vm.surveys, function (survey, index) {
+              _vm._l(_vm.surveys.data, function (survey, index) {
                 return _c("SurveyListItem", {
                   key: survey.id,
                   staticClass: "opacity-0 animate-fade-in-down",
@@ -33002,6 +33012,25 @@ var render = function () {
               }),
               1
             ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex justify-center mt-5" }, [
+              _c(
+                "nav",
+                {
+                  staticClass:
+                    "relative z-0 inline-flex justify-center rounded-md shadow-sm",
+                  attrs: { "aria-label": "pagination" },
+                },
+                _vm._l(_vm.surveys.links, function (link, i) {
+                  return _c("a", {
+                    key: i,
+                    attrs: { disabled: !link.url },
+                    domProps: { innerHTML: _vm._s(link.label) },
+                  })
+                }),
+                0
+              ),
+            ]),
           ]),
     ]
   )

@@ -17,10 +17,10 @@ use Illuminate\Validation\Rule;
 class SurveyController extends Controller
 {
 
-    public function index(Request $request)
+    public function index(Request $request): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $user = $request->user();
-        return Survey::where('user_id', $user->id)->paginate();
+        return Survey::query()->where('user_id', $user->id)->paginate(1);
     }
 
 

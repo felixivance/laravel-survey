@@ -176,7 +176,10 @@ const store = new Vuex.Store({
       data: {},
       token: sessionStorage.getItem("TOKEN")
     },
-    surveys:[],
+    surveys:{
+      links:[],
+      data:[]
+    },
     // surveys:[...tmpSurveys],
     surveysList:{
       surveys:[],
@@ -237,8 +240,8 @@ const store = new Vuex.Store({
       state.currentSurvey.data = survey
     },
     setSurveys:(state,surveys)=>{
-      state.surveys = surveys;
-      state.surveysList.surveys = surveys;
+      state.surveys.data = surveys.data;
+      state.surveys.links = surveys.links
     },
     setNotification:(state, {type, message})=>{
 
@@ -267,7 +270,7 @@ const store = new Vuex.Store({
     getSurveys({commit}){
       commit("setSurveysLoading",true);
       return axios.get(`/api/survey`).then((res)=>{
-        commit("setSurveys", res.data.data);
+        commit("setSurveys", res.data);
         console.log("store fetching surveys ",res.data.data);
         commit("setSurveysLoading",false);
         return res.data.data;
