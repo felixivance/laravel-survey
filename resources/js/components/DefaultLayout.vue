@@ -125,10 +125,15 @@
     </nav>
 
     <router-view></router-view>
+    <Notification></Notification>
   </div>
 </template>
 <script>
+import Notification from "./Notification";
 export default{
+  components:{
+    Notification
+  },
   data(){
     return{
       openNav:false,
