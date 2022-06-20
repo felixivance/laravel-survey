@@ -799,6 +799,9 @@ select {
 .w-10 {
   width: 2.5rem;
 }
+.w-\[300px\] {
+  width: 300px;
+}
 .w-64 {
   width: 16rem;
 }
@@ -810,9 +813,6 @@ select {
 }
 .w-3 {
   width: 0.75rem;
-}
-.w-\[300px\] {
-  width: 300px;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -850,6 +850,34 @@ select {
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@-webkit-keyframes fade-in-down {
+
+  from {
+    transform: translateY(-0.75rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-down {
+
+  from {
+    transform: translateY(-0.75rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+.animate-fade-in-down {
+  -webkit-animation: fade-in-down 0.2s ease-in-out both;
+          animation: fade-in-down 0.2s ease-in-out both;
 }
 .cursor-default {
   cursor: default;
