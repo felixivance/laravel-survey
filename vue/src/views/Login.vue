@@ -81,8 +81,6 @@ function login(e){
   }).catch((error)=>{
     console.log(error)
     errorMsg.value = error.response.data.message
-
-
   })
 }
 

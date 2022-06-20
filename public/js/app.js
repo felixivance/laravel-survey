@@ -30705,7 +30705,7 @@ var render = function () {
                         {
                           staticClass: "block px-4 py-2 text-sm text-gray-700",
                           attrs: {
-                            href: "#",
+                            href: "/logout",
                             role: "menuitem",
                             tabindex: "-1",
                             id: "user-menu-item-2",
