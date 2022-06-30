@@ -6513,6 +6513,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -33129,22 +33143,71 @@ var render = function () {
               },
             },
           },
-          [_vm._m(0)]
+          [
+            _c("div", { staticClass: "grid grid-cols-6 items-center" }, [
+              _c("div", { staticClass: "mr-4" }, [
+                _c("img", { attrs: { src: _vm.survey.image_url, alt: "" } }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-span-5" }, [
+                _c("h1", { staticClass: "text-3xl mb-3" }, [
+                  _vm._v(_vm._s(_vm.survey.title)),
+                ]),
+                _vm._v(" "),
+                _c("p", {
+                  staticClass: "text-gray-500 text-sm",
+                  domProps: { innerHTML: _vm._s(_vm.survey.description) },
+                }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm.surveyFinished
+              ? _c("div", {
+                  staticClass:
+                    "py-8 px-6 bg-emerald-400 text-white w-[600px] mx-auto",
+                })
+              : _c(
+                  "div",
+                  [
+                    _c("hr", { staticClass: "my-3" }),
+                    _vm._v(" "),
+                    _vm._l(_vm.survey.questions, function (question, index) {
+                      return _c(
+                        "div",
+                        { key: question.id },
+                        [
+                          _c("QuestionViewer", {
+                            attrs: { question: question, index: index },
+                            model: {
+                              value: _vm.answers[question.id],
+                              callback: function ($$v) {
+                                _vm.$set(_vm.answers, question.id, $$v)
+                              },
+                              expression: "answers[question.id]",
+                            },
+                          }),
+                        ],
+                        1
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm  text-sm font-medium rounded-md\n          text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                        attrs: { type: "submit" },
+                      },
+                      [_vm._v("\n            Submit\n      ")]
+                    ),
+                  ],
+                  2
+                ),
+          ]
         ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid grid-cols-6 items-center" }, [
-      _c("div", { staticClass: "mr-4" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-span-5" }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
