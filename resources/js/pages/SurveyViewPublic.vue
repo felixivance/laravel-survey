@@ -1,0 +1,24 @@
+<template>
+  <div>
+    public view
+  </div>
+
+</template>
+<script>
+export default {
+  data() {
+    return {
+
+    }
+  },
+  computed:{
+
+  },
+  methods:{
+
+  },
+  mounted() {
+
+  }
+}
+</script>

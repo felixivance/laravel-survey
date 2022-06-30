@@ -10,6 +10,7 @@ import Register from "./pages/RegisterComponent";
 import Login from "./pages/LoginComponent";
 import Surveys from "./pages/Surveys";
 import SurveyView from "./pages/SurveyView";
+import SurveyViewPublic from "./pages/SurveyViewPublic";
 
 export default new VueRouter({
   mode: 'history',
@@ -34,6 +35,11 @@ export default new VueRouter({
           path:'/dashboard/surveys/:id', name:'UpdateSurvey', component: SurveyView
         }
       ]
+    },
+    {
+      path: '/view/survey/:slug',
+      name: 'SurveyViewPublic',
+      component: SurveyViewPublic
     },
     {
       path:'/auth',

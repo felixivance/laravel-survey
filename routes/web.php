@@ -36,6 +36,17 @@ Route::get('/dashboard/{any?}', [
     }
 ])->where('any','.*');
 
+Route::get('/view/{any?}', [
+    'as' => 'home',
+    function () {
+        if(is_null(Auth::user())){
+            return redirect()->route('logout');
+        }
+        return view('main');
+    }
+])->where('any','.*');
+
+
 Route::get('logout', [
     'as' => 'logout',
     function () {
