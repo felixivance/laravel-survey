@@ -5635,6 +5635,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     title: String,
@@ -31327,45 +31337,86 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _vm.survey.id
-            ? _c(
-                "button",
-                {
-                  staticClass:
-                    "h-8 w-8 flex items-center justify-center rounded-full\n              border border-transparent text-sm text-red-500 focus:ring-2 focus:ring-offset-2 focus:ring-red-500",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function ($event) {
-                      return _vm.deleteSurvey(_vm.survey)
+          _c("div", { staticClass: "flex items-center" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "h-8 w-8 flex items-center justify-center rounded-full\n      border border-transparent text-sm text-indigo-500 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: {
+                  href: "/view/survey/" + _vm.survey.slug,
+                  target: "_blank",
+                },
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-4 w-4",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      "stroke-width": "2",
                     },
                   },
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "h-6 w-6 text-",
+                  [
+                    _c("path", {
                       attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        stroke: "currentColor",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
                         "stroke-width": "2",
+                        d: "M3 3h2l.4 2M7 13h10l2.4 2M7 9h10l2.4 2M7 5h10l2.4 2M7 13A2 2 0 0 0 9 15H7a2 2 0 0 0 0-2z",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", [_vm._v("View")]),
+              ]
+            ),
+            _vm._v(" "),
+            _vm.survey.id
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "h-8 w-8 flex items-center justify-center rounded-full\n              border border-transparent text-sm text-red-500 focus:ring-2 focus:ring-offset-2 focus:ring-red-500",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.deleteSurvey(_vm.survey)
                       },
                     },
-                    [
-                      _c("path", {
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-6 w-6 text-",
                         attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          "stroke-width": "2",
                         },
-                      }),
-                    ]
-                  ),
-                ]
-              )
-            : _vm._e(),
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+                          },
+                        }),
+                      ]
+                    ),
+                  ]
+                )
+              : _vm._e(),
+          ]),
         ],
         1
       ),
