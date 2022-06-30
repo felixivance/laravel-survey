@@ -50,13 +50,17 @@ export default {
     }
   },
   computed:{
-    loading: ()=> this.$store.state.currentSurvey.loading,
-    survey: ()=> this.$store.state.currentSurvey.data
+    loading(){
+      return this.$store.state.currentSurvey.loading
+    },
+    survey(){
+      return this.$store.state.currentSurvey.data
+    }
 
   },
   methods:{
     submitSurvey(){
-      console.log(JSON.stringify(this.answers, undefined, 2))
+      console.log(JSON.stringify(this.answers, undefined, 2));
       this.$store.dispatch("saveSurveyAnswer", {
         surveyId: this.survey.id,
         answers: this.answers

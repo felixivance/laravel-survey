@@ -6521,8 +6521,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_viewer_QuestionViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/viewer/QuestionViewer */ "./resources/js/components/viewer/QuestionViewer.vue");
-var _this = undefined;
-
 //
 //
 //
@@ -6574,15 +6572,15 @@ var _this = undefined;
   },
   computed: {
     loading: function loading() {
-      return _this.$store.state.currentSurvey.loading;
+      return this.$store.state.currentSurvey.loading;
     },
     survey: function survey() {
-      return _this.$store.state.currentSurvey.data;
+      return this.$store.state.currentSurvey.data;
     }
   },
   methods: {
     submitSurvey: function submitSurvey() {
-      var _this2 = this;
+      var _this = this;
 
       console.log(JSON.stringify(this.answers, undefined, 2));
       this.$store.dispatch("saveSurveyAnswer", {
@@ -6590,17 +6588,17 @@ var _this = undefined;
         answers: this.answers
       }).then(function (response) {
         if (response.status === 201) {
-          _this2.surveyFinished = true;
+          _this.surveyFinished = true;
         }
       });
     },
     submitAnotherResponse: function submitAnotherResponse() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.$store.dispatch("getSurvey", this.survey.id).then(function (data) {
-        _this3.survey = data;
-        _this3.answers = {};
-        _this3.surveyFinished = false;
+        _this2.survey = data;
+        _this2.answers = {};
+        _this2.surveyFinished = false;
       });
     }
   },
@@ -6797,6 +6795,33 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/axios/axios.js":
+/*!*************************************!*\
+  !*** ./resources/js/axios/axios.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+
+
+var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+  baseURL: 'http://127.0.0.1:8001/api'
+});
+axiosClient.interceptors.request.use(function (config) {
+  config.headers.Authorization = "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_1__["default"].state.user.token);
+  return config;
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (axiosClient);
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -6921,9 +6946,371 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 /*!*************************************!*\
   !*** ./resources/js/store/index.js ***!
   \*************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/felixivance/Documents/work/personal/laravel-survey/resources/js/store/index.js: Unexpected token, expected \",\" (379:0)\n\n\u001b[0m \u001b[90m 377 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 378 |\u001b[39m   }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 379 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 380 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 381 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m store\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 382 |\u001b[39m\u001b[0m\n    at instantiate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:358:12)\n    at Parser.raise (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3335:19)\n    at Parser.unexpected (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:3373:16)\n    at Parser.expect (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:4002:28)\n    at Parser.parseExprList (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13900:14)\n    at Parser.parseNewArguments (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13410:25)\n    at Parser.parseNew (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13404:10)\n    at Parser.parseNewOrNewTarget (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:13384:17)\n    at Parser.parseExprAtom (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12905:21)\n    at Parser.parseExprSubscripts (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12540:23)\n    at Parser.parseUpdate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12519:21)\n    at Parser.parseMaybeUnary (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12490:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12284:61)\n    at Parser.parseExprOps (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12291:23)\n    at Parser.parseMaybeConditional (/Users/felixivance/Documents/work/personal/laravel-survey/node_modules/@babel/parser/lib/index.js:12261:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _axios_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../axios/axios */ "./resources/js/axios/axios.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var tmpSurveys = [{
+  id: 100,
+  title: 'Felix',
+  slug: 'Felix is a G',
+  status: 'draft',
+  image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+  description: 'My name is Felix, i am a web developer with 8+ years of experience',
+  created_at: "2021-12-20 18:00:00",
+  updated_at: "2021-12-20 18:00:00",
+  expiry_date: "2021-12-31 18:00",
+  questions: [{
+    id: 1,
+    type: "select",
+    question: "from which country are you?",
+    description: null,
+    data: {
+      options: [{
+        uuid: "1",
+        text: "kenya"
+      }, {
+        uuid: "2",
+        text: "Nigeria"
+      }, {
+        uuid: "4",
+        text: "Sudan"
+      }]
+    }
+  }, {
+    id: 2,
+    type: "checkbox",
+    question: "which language videos do you prefer",
+    description: "itakua ngori sana checkbox",
+    data: {
+      options: [{
+        uuid: "1",
+        text: "Kiswa"
+      }, {
+        uuid: "2",
+        text: "Ngoso"
+      }, {
+        uuid: "4",
+        text: "Kikuyu"
+      }]
+    }
+  }, {
+    id: 3,
+    type: "checkbox",
+    question: "which language videos do you prefer 2",
+    description: "itakua ngori sana checkbox",
+    data: {
+      options: [{
+        uuid: "1",
+        text: "Kiswa"
+      }, {
+        uuid: "2",
+        text: "Ngoso"
+      }, {
+        uuid: "4",
+        text: "Kikuyu"
+      }]
+    }
+  }, {
+    id: 4,
+    type: "radio",
+    question: "which language videos do you prefer",
+    description: "itakua ngori sana checkbox",
+    data: {
+      options: [{
+        uuid: "1",
+        text: "Kiswa"
+      }, {
+        uuid: "2",
+        text: "Ngoso"
+      }, {
+        uuid: "4",
+        text: "Kikuyu"
+      }]
+    }
+  }, {
+    id: 5,
+    type: "radio",
+    question: "which language videos do you prefer 2",
+    description: "itakua ngori sana checkbox",
+    data: {
+      options: [{
+        uuid: "1",
+        text: "Kiswa"
+      }, {
+        uuid: "2",
+        text: "Ngoso"
+      }, {
+        uuid: "4",
+        text: "Kikuyu"
+      }]
+    }
+  }, {
+    id: 6,
+    type: "text",
+    question: "which language videos do you prefer 2",
+    description: null,
+    data: {}
+  }, {
+    id: 7,
+    type: "textarea",
+    question: "which language videos do you prefer 2",
+    description: "text area description",
+    data: {}
+  }]
+}, {
+  id: 200,
+  title: 'Felix ',
+  slug: 'Runye is a G',
+  status: 'draft',
+  image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+  description: 'My name is Felix, i am a web developer with 8+ years of experience',
+  created_at: "2021-12-20 18:00:00",
+  updated_at: "2021-12-20 18:00:00",
+  expiry_date: "2021-12-31 18:00",
+  questions: []
+}, {
+  id: 200,
+  title: 'Felix',
+  slug: 'Ivance is a G',
+  status: 'draft',
+  image: "https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEYqj2_400x400.png",
+  description: 'My name is Felix, i am a web developer with 8+ years of experience',
+  created_at: "2021-12-20 18:00:00",
+  updated_at: "2021-12-20 18:00:00",
+  expiry_date: "2021-12-31 18:00",
+  questions: []
+}];
+var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
+  state: {
+    count: 0,
+    user: {
+      data: {},
+      token: sessionStorage.getItem("TOKEN")
+    },
+    surveys: {
+      links: [],
+      data: []
+    },
+    // surveys:[...tmpSurveys],
+    surveysList: {
+      surveys: []
+    },
+    surveysLoading: false,
+    currentSurvey: {
+      loading: false,
+      data: {}
+    },
+    questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
+    notification: {
+      show: false,
+      message: null,
+      type: null
+    }
+  },
+  getters: {
+    surveys: function surveys(state) {
+      return state.surveys;
+    },
+    notification: function notification(state) {
+      return state.notification;
+    }
+  },
+  mutations: {
+    increment: function increment(state) {
+      state.count++;
+    },
+    setUser: function setUser(state, userData) {
+      state.user.token = userData.token;
+      state.user.data = userData.user;
+      sessionStorage.setItem('TOKEN', userData.token);
+    },
+    logout: function logout(state) {
+      state.user.data = {};
+      state.user.token = null;
+      sessionStorage.removeItem("TOKEN");
+    },
+    // saveSurvey:(state, survey)=>{
+    //   state.surveys = [...state.surveys, survey.data]
+    // },
+    // updateSurvey:(state,survey)=>{
+    //   state.surveys = state.surveys.map((s)=>{
+    //     if(survey.data.id ===s.id){
+    //       return survey.data
+    //     }else{
+    //       return s
+    //     }
+    //   })
+    // },
+    setCurrentSurveyLoading: function setCurrentSurveyLoading(state, loadingStatus) {
+      state.currentSurvey.loading = loadingStatus;
+    },
+    setSurveysLoading: function setSurveysLoading(state, loadingStatus) {
+      state.surveysLoading = loadingStatus;
+    },
+    setCurrentSurvey: function setCurrentSurvey(state, survey) {
+      state.currentSurvey.data = survey;
+    },
+    setSurveys: function setSurveys(state, surveys) {
+      state.surveys.data = surveys.data;
+      state.surveys.links = surveys.links;
+    },
+    setNotification: function setNotification(state, _ref) {
+      var type = _ref.type,
+          message = _ref.message;
+      state.notification.show = true;
+      state.notification.type = type;
+      state.notification.message = message;
+      setTimeout(function () {
+        state.notification.show = false;
+        state.notification.message = null;
+        state.notification.type = null;
+      }, 5000);
+    }
+  },
+  actions: {
+    // login({commit}, user) {
+    //   return axiosClient.post('/login', user).then(({data}) => {
+    //     commit("setUser", data)
+    //     return data;
+    //   })
+    // },
+    deleteSurvey: function deleteSurvey(_ref2, id) {
+      var commit = _ref2.commit;
+      return axios["delete"]("/api/survey/".concat(id));
+    },
+    getSurveys: function getSurveys(_ref3) {
+      var commit = _ref3.commit;
+
+      var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          _ref4$url = _ref4.url,
+          url = _ref4$url === void 0 ? null : _ref4$url;
+
+      url = url || '/api/survey';
+      commit("setSurveysLoading", true);
+      return axios.get(url).then(function (res) {
+        commit("setSurveys", res.data);
+        console.log("store fetching surveys ", res.data.data);
+        commit("setSurveysLoading", false);
+        return res.data.data;
+      });
+    },
+    getSurvey: function getSurvey(_ref5, id) {
+      var commit = _ref5.commit;
+      commit("setCurrentSurveyLoading", true);
+      return axios.get("/api/survey/".concat(id)).then(function (res) {
+        console.log("response in fetching survey ", res.data);
+        commit("setCurrentSurvey", res.data.data);
+        commit("setCurrentSurveyLoading", false);
+        return res.data;
+      })["catch"](function (err) {
+        commit("setCurrentSurveyLoading", false);
+        throw err;
+      });
+    },
+    saveSurvey: function saveSurvey(_ref6, survey) {
+      var commit = _ref6.commit;
+      delete survey.image_url; //remove the viewable image src
+
+      console.log("saving survey ", survey);
+      console.log(survey.title);
+      var response;
+
+      if (survey.id) {
+        //updating
+        response = axios.put("/api/survey/".concat(survey.id), survey).then(function (res) {
+          commit("setCurrentSurvey", res.data);
+          return res.data;
+        });
+      } else {
+        response = axios.post("/api/survey", survey).then(function (res) {
+          commit("setCurrentSurvey", res.data);
+          return res.data;
+        });
+      }
+
+      console.log("after saving in store ");
+      console.log(response);
+      return response;
+    },
+    getSurveyBySlug: function getSurveyBySlug(_ref7, slug) {
+      var commit = _ref7.commit;
+      return axios.get("/api/getSurveyBySlug/".concat(slug)).then(function (res) {
+        commit("setCurrentSurvey", res.data);
+        commit("setCurrentSurveyLoading", false);
+        return res.data;
+      })["catch"](function (err) {
+        commit("setCurrentSurveyLoading", false);
+        throw err;
+      });
+    },
+    setNotification: function setNotification(_ref8, title, message) {
+      var commit = _ref8.commit;
+      commit("setNotification", title, message);
+    },
+    closeNotification: function closeNotification(_ref9) {
+      var commit = _ref9.commit;
+      commit("hideNotifications");
+    },
+    register: function register(_ref10, user) {
+      var commit = _ref10.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', user).then(function (_ref11) {
+        var data = _ref11.data;
+        commit("setUser", data);
+        return data;
+      }); //odl method
+      // return fetch('http://127.0.0.1:8000/api/register',{
+      //   headers:{
+      //     "Content-type":'application/json',
+      //     "Accept": "application/json",
+      //   },
+      //   method:"Post",
+      //   body: JSON.stringify(user)
+      // }).then((res)=> res.json())
+      //   .then((result)=>{
+      //     commit("setUser", result)
+      //     return result;
+      //   });
+    },
+    login: function login(_ref12, user) {
+      var commit = _ref12.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/login', user).then(function (_ref13) {
+        var data = _ref13.data;
+        commit("setUser", data);
+        return data;
+      }); //   return fetch('http://127.0.0.1:8000/api/login',{
+      //     headers:{
+      //       "Content-type":"application/json",
+      //       "Accept": "application/json"
+      //     },
+      //     method: "POST",
+      //     body: JSON.stringify(user)
+      //   }).then((res)=> res.json())
+      //     .then((result)=>{
+      //       commit("setUser", result)
+      //       return result
+      //     })
+    },
+    logout: function logout(_ref14) {
+      var commit = _ref14.commit;
+      return _axios_axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function (response) {
+        commit('logout');
+        return response;
+      });
+    }
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 /***/ }),
 
@@ -49851,6 +50238,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

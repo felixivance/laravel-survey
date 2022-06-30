@@ -319,7 +319,7 @@ const store = new Vuex.Store({
             commit("setCurrentSurveyLoading", false);
             throw err;
           });
-       }
+
     },
     setNotification({commit},title,message){
       commit("setNotification", title,message)
