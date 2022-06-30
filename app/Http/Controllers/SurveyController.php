@@ -274,4 +274,8 @@ class SurveyController extends Controller
         return $question->update($validator->validated());
 
     }
+    public function getSurveyBySlug($slug){
+        $survey = Survey::query()->where('slug',$slug)->first();
+        return response($survey,204);
+    }
 }

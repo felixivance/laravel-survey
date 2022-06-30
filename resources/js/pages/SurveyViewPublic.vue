@@ -76,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('getSurveyBySlug',route.params.slug)
+    this.$store.dispatch('getSurveyBySlug',this.$route.params.slug)
   }
 }
 </script>

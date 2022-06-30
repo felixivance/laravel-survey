@@ -22,7 +22,7 @@ Route::middleware('auth:api')->group(function(){
     });
     Route::post('logout',[AuthController::class, 'logout']);
     Route::resource('survey',SurveyController::class);
-
+    Route::get('getSurveyBySlug/{slug}',[SurveyController::class,'getSurveyBySlug']);
 });
 
 Route::post('register',[AuthController::class, 'register']);
