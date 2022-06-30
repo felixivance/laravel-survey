@@ -6527,6 +6527,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -33162,10 +33167,22 @@ var render = function () {
             ]),
             _vm._v(" "),
             _vm.surveyFinished
-              ? _c("div", {
-                  staticClass:
-                    "py-8 px-6 bg-emerald-400 text-white w-[600px] mx-auto",
-                })
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "py-8 px-6 bg-emerald-400 text-white w-[600px] mx-auto",
+                  },
+                  [
+                    _c("div", { staticClass: "text-xl mb-3 font-semibold" }, [
+                      _vm._v(
+                        "\n        Thank you for participating in this survey\n      "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("button"),
+                  ]
+                )
               : _c(
                   "div",
                   [

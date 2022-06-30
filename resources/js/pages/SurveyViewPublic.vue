@@ -14,7 +14,12 @@
         </div>
       </div>
       <div v-if="surveyFinished" class="py-8 px-6 bg-emerald-400 text-white w-[600px] mx-auto">
+        <div class="text-xl mb-3 font-semibold">
+          Thank you for participating in this survey
+        </div>
+        <button>
 
+        </button>
       </div>
       <div v-else>
         <hr class="my-3">
