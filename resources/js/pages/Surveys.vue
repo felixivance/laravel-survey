@@ -69,8 +69,8 @@ export default {
         });
       }
     },
-    getForPage($event,link){
-      $event.preventDefault();
+    getForPage(event,link){
+      event.preventDefault();
       if(!link.url || link.active){
         return;
       }

@@ -6558,8 +6558,8 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    getForPage: function getForPage($event, link) {
-      $event.preventDefault();
+    getForPage: function getForPage(event, link) {
+      event.preventDefault();
 
       if (!link.url || link.active) {
         return;
