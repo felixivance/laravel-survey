@@ -6501,6 +6501,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -33101,9 +33113,38 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  public view\n")])
+  return _c("div", { staticClass: "py-5 px-8" }, [
+    _vm.loading
+      ? _c("div", { staticClass: "flex justify-center " }, [
+          _vm._v("\n     Survey Loading...\n   "),
+        ])
+      : _c(
+          "form",
+          {
+            staticClass: "mx-auto",
+            on: {
+              submit: function ($event) {
+                $event.preventDefault()
+                return _vm.submitSurvey.apply(null, arguments)
+              },
+            },
+          },
+          [_vm._m(0)]
+        ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "grid grid-cols-6 items-center" }, [
+      _c("div", { staticClass: "mr-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-span-5" }),
+    ])
+  },
+]
 render._withStripped = true
 
 
