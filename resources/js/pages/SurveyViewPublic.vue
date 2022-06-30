@@ -17,8 +17,9 @@
         <div class="text-xl mb-3 font-semibold">
           Thank you for participating in this survey
         </div>
-        <button>
-
+        <button type="button" @click="submitAnotherResponse" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600
+ hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Submit another response
         </button>
       </div>
       <div v-else>
@@ -36,7 +37,11 @@
 
 </template>
 <script>
+import QuestionViewer from "../components/viewer/QuestionViewer"
 export default {
+  components:{
+    QuestionViewer
+  },
   data() {
     return {
 
