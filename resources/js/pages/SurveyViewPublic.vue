@@ -44,17 +44,39 @@ export default {
   },
   data() {
     return {
+        surveyFinished:false,
+        answers:{},
 
     }
   },
   computed:{
+    loading: ()=> this.$store.state.currentSurvey.loading,
+    survey: ()=> this.$store.state.currentSurvey.data
 
   },
   methods:{
+    submitSurvey(){
+      console.log(JSON.stringify(this.answers, undefined, 2))
+      this.$store.dispatch("saveSurveyAnswer", {
+        surveyId: this.survey.id,
+        answers: this.answers
+      }).then((response) => {
+        if(response.status ===201){
+          this.surveyFinished = true
+        }
 
+      });
+    },
+    submitAnotherResponse(){
+      this.$store.dispatch("getSurvey", this.survey.id).then((data) => {
+        this.survey = data
+        this.answers = {}
+        this.surveyFinished = false
+      });
+    }
   },
   mounted() {
-
+    this.$store.dispatch('getSurveyBySlug',route.params.slug)
   }
 }
 </script>

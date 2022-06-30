@@ -6521,6 +6521,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_viewer_QuestionViewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/viewer/QuestionViewer */ "./resources/js/components/viewer/QuestionViewer.vue");
+var _this = undefined;
+
 //
 //
 //
@@ -6565,11 +6567,46 @@ __webpack_require__.r(__webpack_exports__);
     QuestionViewer: _components_viewer_QuestionViewer__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      surveyFinished: false,
+      answers: {}
+    };
   },
-  computed: {},
-  methods: {},
-  mounted: function mounted() {}
+  computed: {
+    loading: function loading() {
+      return _this.$store.state.currentSurvey.loading;
+    },
+    survey: function survey() {
+      return _this.$store.state.currentSurvey.data;
+    }
+  },
+  methods: {
+    submitSurvey: function submitSurvey() {
+      var _this2 = this;
+
+      console.log(JSON.stringify(this.answers, undefined, 2));
+      this.$store.dispatch("saveSurveyAnswer", {
+        surveyId: this.survey.id,
+        answers: this.answers
+      }).then(function (response) {
+        if (response.status === 201) {
+          _this2.surveyFinished = true;
+        }
+      });
+    },
+    submitAnotherResponse: function submitAnotherResponse() {
+      var _this3 = this;
+
+      this.$store.dispatch("getSurvey", this.survey.id).then(function (data) {
+        _this3.survey = data;
+        _this3.answers = {};
+        _this3.surveyFinished = false;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.$store.dispatch('getSurveyBySlug', route.params.slug);
+  }
 });
 
 /***/ }),
