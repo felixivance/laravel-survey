@@ -311,10 +311,15 @@ const store = new Vuex.Store({
       return response;
     },
     getSurveyBySlug({commit}, slug){
-     let response = axios.get(`/api/getSurveyBySlug/${slug}`).then((res)=>{
-        commit("setCurrentSurvey", res.data)
-        return res.data;
-      });
+      return axios.get(`/api/getSurveyBySlug/${slug}`).then((res)=>{
+          commit("setCurrentSurvey", res.data)
+         commit("setCurrentSurveyLoading", false);
+            return res.data;
+          }).catch((err)=>{
+            commit("setCurrentSurveyLoading", false);
+            throw err;
+          });
+       }
     },
     setNotification({commit},title,message){
       commit("setNotification", title,message)
