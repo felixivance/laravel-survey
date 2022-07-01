@@ -276,6 +276,6 @@ class SurveyController extends Controller
     }
     public function getSurveyBySlug($slug){
         $survey = Survey::query()->where('slug',$slug)->first();
-        return response( new SurveyResource($survey),201);
+        return new SurveyResource($survey);
     }
 }

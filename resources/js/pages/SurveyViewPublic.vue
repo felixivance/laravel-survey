@@ -54,7 +54,7 @@ export default {
       return this.$store.state.currentSurvey.loading
     },
     survey(){
-      return this.$store.state.currentSurvey.data
+      return this.$store.state.currentSurvey.data.data
     }
 
   },

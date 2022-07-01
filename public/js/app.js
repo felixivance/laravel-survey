@@ -6575,7 +6575,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.currentSurvey.loading;
     },
     survey: function survey() {
-      return this.$store.state.currentSurvey.data;
+      return this.$store.state.currentSurvey.data.data;
     }
   },
   methods: {
