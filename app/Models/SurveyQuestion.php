@@ -11,7 +11,8 @@ class SurveyQuestion extends Model
 
     protected $fillable=['question','data','type','survey_id','description'];
 
-    public function survey(){
+    public function survey(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(Survey::class, 'survey_id');
     }
 }
