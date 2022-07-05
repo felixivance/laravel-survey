@@ -87,7 +87,7 @@ class SurveyController extends Controller
 
     public function show($id, Request  $request)
     {
-        $survey = Survey::where('id',$id)->with('questions')->first();
+        $survey = Survey::query()->where('id',$id)->with('questions')->first();
         $survey->image_url = $survey->image ? URL::to($survey->image) : null;
 
         if($request->user()->id !== $survey->user_id){
@@ -102,7 +102,7 @@ class SurveyController extends Controller
     {
 
         //check if logged in user is the owner of the survey
-        $survey = Survey::find($id)->first();
+        $survey = Survey::query()->find($id)->first();
 
         if($survey->user_id !== Auth::id()){
             return "You are not permitted to perform this action!";
@@ -196,7 +196,7 @@ class SurveyController extends Controller
     }
 
     public function permanentlyDeleteSurvey($id){
-        $survey = Survey::find($id);
+        $survey = Survey::query()->find($id);
 
         if(Auth::id() !== $survey->user_id){
             return abort(403, 'unauthorized action');
