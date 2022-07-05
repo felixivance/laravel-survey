@@ -21,16 +21,6 @@ class SurveyAnswerController extends Controller
             return response()->json($surveyAnswer, 201);
         }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SurveyAnswer  $surveyAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SurveyAnswer $surveyAnswer)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
