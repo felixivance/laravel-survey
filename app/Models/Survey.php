@@ -39,4 +39,8 @@ class Survey extends Model
     public function getStatusAttribute($value){
         return $value == 'active';
     }
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
