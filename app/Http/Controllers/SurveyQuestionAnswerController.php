@@ -15,13 +15,13 @@ class SurveyQuestionAnswerController extends Controller
             'question_id' => 'required|integer',
             'answer' => 'required|string',
         ]);
-        $surveyQuestionAnswer = SurveyQuestionAnswer::create($request->all());
+        $surveyQuestionAnswer = SurveyQuestionAnswer::query()->create($request->all());
         return response()->json($surveyQuestionAnswer, 201);
     }
 
     public function show($id)
     {
-        $surveyQuestionAnswer = SurveyQuestionAnswer::find($id);
+        $surveyQuestionAnswer = SurveyQuestionAnswer::query()->find($id);
         return response()->json($surveyQuestionAnswer, 200);
     }
 
@@ -33,14 +33,14 @@ class SurveyQuestionAnswerController extends Controller
             'question_id' => 'required|integer',
             'answer' => 'required|string',
         ]);
-        $surveyQuestionAnswer = SurveyQuestionAnswer::find($id);
+        $surveyQuestionAnswer = SurveyQuestionAnswer::query()->find($id);
         $surveyQuestionAnswer->update($request->all());
         return response()->json($surveyQuestionAnswer, 200);
     }
 
     public function delete($id)
     {
-        $surveyQuestionAnswer = SurveyQuestionAnswer::find($id);
+        $surveyQuestionAnswer = SurveyQuestionAnswer::query()->find($id);
         $surveyQuestionAnswer->delete();
         return response()->json(null, 204);
     }
