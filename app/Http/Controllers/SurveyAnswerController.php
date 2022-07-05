@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class SurveyAnswerController extends Controller
 {
-
-
-       public function store(Request $request)
+        public function store(Request $request)
         {
             $request->validate([
                 'user_id' => 'required|integer',
