@@ -9,18 +9,17 @@ class SurveyAnswerController extends Controller
 {
 
 
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SurveyAnswer  $surveyAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SurveyAnswer $surveyAnswer)
-    {
-        //
-    }
+       public function store(Request $request)
+        {
+            $request->validate([
+                'user_id' => 'required|integer',
+                'survey_id' => 'required|integer',
+                'question_id' => 'required|integer',
+                'answer' => 'required|string',
+            ]);
+            $surveyAnswer = SurveyAnswer::create($request->all());
+            return response()->json($surveyAnswer, 201);
+        }
 
     /**
      * Show the form for editing the specified resource.
