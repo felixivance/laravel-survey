@@ -21,27 +21,11 @@ class SurveyAnswerController extends Controller
             return response()->json($surveyAnswer, 201);
         }
 
+        public function show($id)
+        {
+            $surveyAnswer = SurveyAnswer::find($id);
+            return response()->json($surveyAnswer, 200);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SurveyAnswer  $surveyAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SurveyAnswer $surveyAnswer)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SurveyAnswer  $surveyAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SurveyAnswer $surveyAnswer)
-    {
-        //
-    }
 }
