@@ -37,7 +37,7 @@ Route::get('/dashboard/{any?}', [
 ])->where('any','.*');
 
 Route::get('/view/{any?}', [
-    'as' => 'home',
+    'as' => 'view',
     function () {
         if(is_null(Auth::user())){
             return redirect()->route('logout');

@@ -5,6 +5,14 @@
 </template>
 <script>
 export default {
+  props:{
+    question: {
+      type: Object,
+      required: true
+    },
+    index:Number,
+    modelValue:[String,Array],
+  },
   data(){
 
   },
