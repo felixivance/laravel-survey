@@ -5955,10 +5955,22 @@ __webpack_require__.r(__webpack_exports__);
     index: Number,
     modelValue: [String, Array]
   },
-  data: function data() {},
+  data: function data() {
+    return {
+      model: ''
+    };
+  },
   computed: {},
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    updateModelValue: function updateModelValue() {
+      this.$emit('updateModelValue', this.index, this.modelValue);
+    }
+  },
+  mounted: function mounted() {
+    if (this.question.type === 'checkbox') {
+      this.model = this.modelValue;
+    }
+  }
 });
 
 /***/ }),

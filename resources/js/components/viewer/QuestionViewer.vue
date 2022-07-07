@@ -11,16 +11,22 @@ export default {
     modelValue:[String,Array],
   },
   data(){
-
+    return {
+      model:''
+    }
   },
   computed:{
 
   },
   methods:{
-
+    updateModelValue(){
+      this.$emit('updateModelValue',this.index,this.modelValue);
+    }
   },
   mounted(){
-
+    if(this.question.type === 'checkbox'){
+      this.model = this.modelValue;
+    }
   }
 }
 </script>
