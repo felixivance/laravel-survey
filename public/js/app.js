@@ -5985,6 +5985,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -32234,10 +32237,22 @@ var render = function () {
           ? _c(
               "div",
               _vm._l(_vm.question.data.options, function (option, id) {
-                return _c("div", {
-                  key: option.uuid,
-                  staticClass: "flex items-center",
-                })
+                return _c(
+                  "div",
+                  { key: option.uuid, staticClass: "flex items-center" },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300",
+                      attrs: {
+                        id: option.uuid,
+                        name: _vm.question,
+                        "+question.id": "",
+                        type: "radio",
+                      },
+                    }),
+                  ]
+                )
               }),
               0
             )

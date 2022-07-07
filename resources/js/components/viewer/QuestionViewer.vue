@@ -23,7 +23,10 @@
          <div class="flex items-center"
          v-for="(option,id) of question.data.options"
          :key="option.uuid">
-
+           <input :id="option.uuid"
+           :name="question"+question.id
+           type="radio"
+           class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
          </div>
        </div>
        <div v-if="question.type ==='checkbox'">
