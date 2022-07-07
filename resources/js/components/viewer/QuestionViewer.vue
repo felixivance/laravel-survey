@@ -6,10 +6,7 @@
 <script>
 export default {
   props:{
-    question: {
-      type: Object,
-      required: true
-    },
+    question: Object,
     index:Number,
     modelValue:[String,Array],
   },
