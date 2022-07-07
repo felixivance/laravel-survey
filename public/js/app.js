@@ -5958,6 +5958,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -32163,9 +32180,23 @@ var render = function () {
               "\n      "
           ),
         ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-gray-500 text-sm" }, [
+          _vm._v("\n        " + _vm._s(_vm.question.description) + "\n      "),
+        ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "mt-3" }),
+      _c("div", { staticClass: "mt-3" }, [
+        _vm.question.type === "select" ? _c("div") : _vm._e(),
+        _vm._v(" "),
+        _vm.question.type === "radio" ? _c("div") : _vm._e(),
+        _vm._v(" "),
+        _vm.question.type === "checkbox" ? _c("div") : _vm._e(),
+        _vm._v(" "),
+        _vm.question.type === "text" ? _c("div") : _vm._e(),
+        _vm._v(" "),
+        _vm.question.type === "textarea" ? _c("div") : _vm._e(),
+      ]),
     ]),
   ])
 }

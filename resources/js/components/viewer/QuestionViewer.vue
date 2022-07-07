@@ -5,9 +5,26 @@
         <legend class="text-base font-medium text-gray-900">
           {{ index + 1 }}. {{ question.question }}
         </legend>
+        <p class="text-gray-500 text-sm">
+          {{ question.description }}
+        </p>
       </div>
      <div class="mt-3">
+        <div v-if="question.type ==='select'">
 
+        </div>
+       <div v-if="question.type ==='radio'">
+
+       </div>
+       <div v-if="question.type ==='checkbox'">
+
+       </div>
+       <div v-if="question.type ==='text'">
+
+       </div>
+       <div v-if="question.type ==='textarea'">
+
+       </div>
      </div>
    </fieldset>
   </div>
