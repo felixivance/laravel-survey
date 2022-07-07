@@ -5976,6 +5976,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -5989,8 +5991,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
-    updateModelValue: function updateModelValue() {
-      this.$emit('updateModelValue', this.index, this.modelValue);
+    updateModelValue: function updateModelValue(value) {
+      this.$emit('updateModelValue', value);
     }
   },
   mounted: function mounted() {
@@ -32196,6 +32198,12 @@ var render = function () {
                 staticClass:
                   "mt-1 block-w-full py-2 px-3 border border-gray-300\nbg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
                 attrs: { name: "", id: "" },
+                domProps: { value: _vm.modelValue },
+                on: {
+                  change: function ($event) {
+                    return _vm.updateModelValue(_vm.event.target.value)
+                  },
+                },
               }),
             ])
           : _vm._e(),
