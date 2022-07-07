@@ -1,6 +1,15 @@
 <template>
   <div>
-    <p>QuestionViewer</p>
+   <fieldset class="mb-4">
+      <div>
+        <legend class="text-base font-medium text-gray-900">
+          {{ index + 1 }}. {{ question.question }}
+        </legend>
+      </div>
+     <div class="mt-3">
+
+     </div>
+   </fieldset>
   </div>
 </template>
 <script>

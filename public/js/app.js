@@ -5949,6 +5949,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -32142,16 +32151,25 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("fieldset", { staticClass: "mb-4" }, [
+      _c("div", [
+        _c("legend", { staticClass: "text-base font-medium text-gray-900" }, [
+          _vm._v(
+            "\n        " +
+              _vm._s(_vm.index + 1) +
+              ". " +
+              _vm._s(_vm.question.question) +
+              "\n      "
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-3" }),
+    ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("QuestionViewer")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
