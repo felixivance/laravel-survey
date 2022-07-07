@@ -5978,6 +5978,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -32176,35 +32179,48 @@ var render = function () {
       _c("div", [
         _c("legend", { staticClass: "text-base font-medium text-gray-900" }, [
           _vm._v(
-            "\n          " +
+            "\n        " +
               _vm._s(_vm.index + 1) +
               ". " +
               _vm._s(_vm.question.question) +
-              "\n        "
+              "\n      "
           ),
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "text-gray-500 text-sm" }, [
-          _vm._v(
-            "\n          " + _vm._s(_vm.question.description) + "\n        "
-          ),
+          _vm._v("\n        " + _vm._s(_vm.question.description) + "\n      "),
         ]),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "mt-3" }, [
         _vm.question.type === "select"
           ? _c("div", [
-              _c("select", {
-                staticClass:
-                  "mt-1 block-w-full py-2 px-3 border border-gray-300\nbg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
-                attrs: { name: "", id: "" },
-                domProps: { value: _vm.modelValue },
-                on: {
-                  change: function ($event) {
-                    return _vm.updateModelValue(_vm.event.target.value)
+              _c(
+                "select",
+                {
+                  staticClass:
+                    "mt-1 block-w-full py-2 px-3 border border-gray-300\n                bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
+                  attrs: { name: "", id: "" },
+                  domProps: { value: _vm.modelValue },
+                  on: {
+                    change: function ($event) {
+                      return _vm.updateModelValue(_vm.event.target.value)
+                    },
                   },
                 },
-              }),
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Please select"),
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.question.data.options, function (option, index) {
+                    return _c("option", { attrs: { value: "", id: index } }, [
+                      _vm._v(_vm._s(option.text)),
+                    ])
+                  }),
+                ],
+                2
+              ),
             ])
           : _vm._e(),
         _vm._v(" "),

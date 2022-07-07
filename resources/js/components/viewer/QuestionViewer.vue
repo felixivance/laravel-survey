@@ -14,7 +14,10 @@
           <select name="" :value="modelValue"
                   @change="updateModelValue(event.target.value)"
                   id="" class="mt-1 block-w-full py-2 px-3 border border-gray-300
-bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></select>
+                  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option value="">Please select</option>
+            <option value="" :id="index" v-for="(option,index) in question.data.options">{{option.text}}</option>
+          </select>
         </div>
        <div v-if="question.type ==='radio'">
 
