@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use App\Models\SurveyQuestion;
+use Exception;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -13,11 +15,12 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Log;
 
 class SurveyController extends Controller
 {
 
-    public function index(Request $request): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function index(Request $request): LengthAwarePaginator
     {
         $user = $request->user();
         return Survey::query()->where('user_id', $user->id)->paginate(10);
@@ -26,77 +29,119 @@ class SurveyController extends Controller
 
     public function store(Request $request)
     {
-        $request->merge(['user_id'=> Auth::id()]);
-        isset($request['status']) ? $request->merge(['status'=> 'inactive']): $request->merge(['status'=> $request['status']]);
+        $request->merge(['user_id' => Auth::id()]);
+        isset($request['status']) ? $request->merge(['status' => 'inactive']) : $request->merge(['status' => $request['status']]);
 
         $data = $request->validate([
-            'title'=>'required | string| max:1000',
-            'image'=>'nullable|string',
-            'user_id'=>'exists:users,id',
-            'status'=>'required|string',
-            'description'=>'nullable|string',
-            'expire_date'=>'nullable|date|after:tomorrow',
-            'questions'=>'array'
+            'title' => 'required | string| max:1000',
+            'image' => 'nullable|string',
+            'user_id' => 'exists:users,id',
+            'status' => 'required|string',
+            'description' => 'nullable|string',
+            'expire_date' => 'nullable|date|after:tomorrow',
+            'questions' => 'array'
         ]);
 
         //check if image was sent
-        if(isset($data['image'])){
+        if (isset($data['image'])) {
             try {
                 $relativePath = $this->saveImage($data['image']);
                 $data['image'] = $relativePath;
-            } catch (\Exception $e) {
-                \Log::info($e->getMessage());
+            } catch (Exception $e) {
+                Log::info($e->getMessage());
             }
 
         }
-      $survey =  Survey::create($data);
-        foreach($data['questions'] as $question){
+        $survey = Survey::create($data);
+        foreach ($data['questions'] as $question) {
             $question['survey_id'] = $survey->id;
             //validate questions
             $this->createQuestion($question);
         }
-      return  new SurveyResource($survey);
+        return new SurveyResource($survey);
 
     }
 
-    public function createQuestion($question){
-      try{
-          if(is_array($question['data'])){
-              $question['data'] = json_encode($question['data']);
-          }
-          $validator = Validator::make($question,[
-              'question'=> 'required|string',
-              'type'=> ['required',Rule::in(
-                  [
-                      Survey::TYPE_TEXT,
-                      Survey::TYPE_TEXTAREA,
-                      Survey::TYPE_RADIO,
-                      Survey::TYPE_CHECKBOX,
-                      Survey::TYPE_SELECT,
-                  ]
-              )],
-              'description'=> 'nullable|string',
-              'data'=>'present',
-              'survey_id'=>'exists:App\Models\Survey,id'
-          ]);
-          return SurveyQuestion::query()->create($validator->validated());
-      }catch (\Exception $exception){
-          return $exception->getMessage();
-      }
-    }
-
-    public function show($id, Request  $request)
+    /**
+     * @throws Exception
+     */
+    private function saveImage($image)
     {
-        $survey = Survey::query()->where('id',$id)->with('questions')->first();
+        //check if image is valid base 64
+        if (preg_match('/^data:image\/(\w+);base64,/', $image, $type)) {
+            //take out the base64 encoded text without meme type
+            $image = substr($image, strpos($image, ',') + 1);
+
+            //get file extension
+            $type = strtolower($type[1]);
+
+            //check if file is an image
+            if (!in_array($type, ['jpg', 'jpeg', 'gif', 'png'])) {
+                throw new Exception('invalid image type');
+            }
+
+            $image = str_replace(' ', '+', $image);
+            $image = base64_decode($image);
+
+            if (!$image) {
+                throw new Exception('base 64 decode failed');
+            }
+
+        } else
+            throw new Exception("did not match; not a valid image");
+
+        $dir = 'images/';
+        $file = Str::random() . '.' . $type;
+        $absolutePath = public_path($dir);
+        $relativePath = $dir . $file;
+
+        if (!File::exists($absolutePath)) {
+            File::makeDirectory($absolutePath, 0755, true);
+        }
+
+        file_put_contents($relativePath, $image);
+
+        return $relativePath;
+
+    }
+
+    public function createQuestion($question)
+    {
+        try {
+            if (is_array($question['data'])) {
+                $question['data'] = json_encode($question['data']);
+            }
+            $validator = Validator::make($question, [
+                'question' => 'required|string',
+                'type' => ['required', Rule::in(
+                    [
+                        Survey::TYPE_TEXT,
+                        Survey::TYPE_TEXTAREA,
+                        Survey::TYPE_RADIO,
+                        Survey::TYPE_CHECKBOX,
+                        Survey::TYPE_SELECT,
+                    ]
+                )],
+                'description' => 'nullable|string',
+                'data' => 'present',
+                'survey_id' => 'exists:App\Models\Survey,id'
+            ]);
+            return SurveyQuestion::query()->create($validator->validated());
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    public function show($id, Request $request)
+    {
+        $survey = Survey::query()->where('id', $id)->with('questions')->first();
         $survey->image_url = $survey->image ? URL::to($survey->image) : null;
 
-        if($request->user()->id !== $survey->user_id){
+        if ($request->user()->id !== $survey->user_id) {
             return abort(403, 'unauthorized action');
         }
         return new SurveyResource($survey);
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -104,18 +149,18 @@ class SurveyController extends Controller
         //check if logged in user is the owner of the survey
         $survey = Survey::query()->find($id)->first();
 
-        if($survey->user_id !== Auth::id()){
+        if ($survey->user_id !== Auth::id()) {
             return "You are not permitted to perform this action!";
         }
 
         $data = $request->validate([
-            'title'=>'required | string| max:1000',
-            'image'=>'nullable|string',
-            'user_id'=>'exists:users,id',
-            'status'=>'required|boolean',
-            'description'=>'nullable|string',
-            'expire_date'=>'nullable|date|after:tomorrow',
-            'questions'=>'present'
+            'title' => 'required | string| max:1000',
+            'image' => 'nullable|string',
+            'user_id' => 'exists:users,id',
+            'status' => 'required|boolean',
+            'description' => 'nullable|string',
+            'expire_date' => 'nullable|date|after:tomorrow',
+            'questions' => 'present'
         ]);
 
 //        // Check validation failure
@@ -124,18 +169,18 @@ class SurveyController extends Controller
 //        }
 
         //if image exists inside data
-        if(isset($data['image'])){
+        if (isset($data['image'])) {
             $relativePath = $this->saveImage($data['image']);
-            $data['image']= $relativePath;
+            $data['image'] = $relativePath;
 
             //if there is an old image , delete it
-            if($survey->image){
+            if ($survey->image) {
                 $absolutePath = public_path($survey->image);
                 File::delete($absolutePath);
             }
         }
 
-        if($survey->update($data)){
+        if ($survey->update($data)) {
 
             $survey->image_url = $survey->image ? URL::to($survey->image) : null;
 
@@ -145,7 +190,7 @@ class SurveyController extends Controller
             $existingIds = $survey->questions()->pluck('id')->toArray();
 
             //get ids as a plain array of new questions
-            $newIds = Arr::pluck($data['questions'],'id');
+            $newIds = Arr::pluck($data['questions'], 'id');
 
             //find questions to delete
             $toDelete = array_diff($existingIds, $newIds);
@@ -157,16 +202,16 @@ class SurveyController extends Controller
             SurveyQuestion::destroy($toDelete);
 
             //create new questions
-            foreach ($data['questions'] as $question){
-                if(in_array($question['id'],$questionsToAdd)){
+            foreach ($data['questions'] as $question) {
+                if (in_array($question['id'], $questionsToAdd)) {
                     $question['survey_id'] = $survey->id;
                     $this->createQuestion($question);
                 }
             }
             //update existing questions
             $questionsMap = collect($data['questions'])->keyBy('id');
-            foreach($survey->questions as $question){
-                if(isset($questionsMap[$question->id])){
+            foreach ($survey->questions as $question) {
+                if (isset($questionsMap[$question->id])) {
                     $this->updateQuestion($question, $questionsMap[$question->id]);
                 }
 
@@ -174,108 +219,67 @@ class SurveyController extends Controller
 
 
             return new SurveyResource($survey);
-        }else{
+        } else {
             return abort(500, 'error occurred updating survey');
         }
     }
 
-
     public function destroy(Survey $survey, Request $request)
     {
 //        todo disable permanent deletion, implement temporary deleting
-        if($request->user()->id !== $survey->user_id){
+        if ($request->user()->id !== $survey->user_id) {
             return abort(403, 'unauthorized action');
         }
-        if($survey->image){
+        if ($survey->image) {
             $absolutePath = public_path($survey->image);
             File::delete($absolutePath);
         }
 
         $survey->delete();
-        return response('Survey deleted successfully',204);
-    }
-
-    public function permanentlyDeleteSurvey($id){
-        $survey = Survey::query()->find($id);
-
-        if(Auth::id() !== $survey->user_id){
-            return abort(403, 'unauthorized action');
-        }
-        if($survey->image){
-            $absolutePath = public_path($survey->image);
-            File::delete($absolutePath);
-        }
-
-        $survey->delete();
-        return response('Survey deleted successfully',204);
-    }
-
-    /**
-     * @throws \Exception
-     */
-    private function saveImage($image)
-    {
-        //check if image is valid base 64
-        if(preg_match('/^data:image\/(\w+);base64,/', $image, $type)){
-            //take out the base64 encoded text without meme type
-            $image = substr($image, strpos($image,',')+1);
-
-            //get file extension
-            $type = strtolower($type[1]);
-
-            //check if file is an image
-            if(!in_array($type, ['jpg','jpeg','gif','png'])){
-                throw new \Exception('invalid image type');
-            }
-
-            $image = str_replace(' ','+',$image);
-            $image = base64_decode($image);
-
-            if(!$image){
-                throw new \Exception('base 64 decode failed');
-            }
-
-        }else
-            throw new \Exception("did not match; not a valid image");
-
-        $dir = 'images/';
-        $file = Str::random().'.'.$type;
-        $absolutePath = public_path($dir);
-        $relativePath = $dir.$file;
-
-        if(!File::exists($absolutePath)){
-            File::makeDirectory($absolutePath, 0755, true);
-        }
-
-        file_put_contents($relativePath, $image);
-
-        return $relativePath;
-
+        return response('Survey deleted successfully', 204);
     }
 
     private function updateQuestion(SurveyQuestion $question, $data)
     {
-        if(is_array($data['data'])){
-            $data['data']= json_encode($data['data']);
+        if (is_array($data['data'])) {
+            $data['data'] = json_encode($data['data']);
         }
-        $validator = Validator::make($data,[
-            'id'=> 'exists:App\Models\SurveyQuestion,id',
-            'question'=>'required|string',
-            'type'=> ['required',Rule::in([
+        $validator = Validator::make($data, [
+            'id' => 'exists:App\Models\SurveyQuestion,id',
+            'question' => 'required|string',
+            'type' => ['required', Rule::in([
                 Survey::TYPE_TEXT,
                 Survey::TYPE_TEXTAREA,
                 Survey::TYPE_RADIO,
                 Survey::TYPE_CHECKBOX,
                 Survey::TYPE_SELECT,
             ])],
-            'description'=> 'nullable|string',
-            'data'=>'present'
+            'description' => 'nullable|string',
+            'data' => 'present'
         ]);
         return $question->update($validator->validated());
 
     }
-    public function getSurveyBySlug($slug){
-        $survey = Survey::query()->where('slug',$slug)->first();
+
+    public function permanentlyDeleteSurvey($id)
+    {
+        $survey = Survey::query()->find($id);
+
+        if (Auth::id() !== $survey->user_id) {
+            return abort(403, 'unauthorized action');
+        }
+        if ($survey->image) {
+            $absolutePath = public_path($survey->image);
+            File::delete($absolutePath);
+        }
+
+        $survey->delete();
+        return response('Survey deleted successfully', 204);
+    }
+
+    public function getSurveyBySlug($slug)
+    {
+        $survey = Survey::query()->where('slug', $slug)->first();
         return new SurveyResource($survey);
     }
 }
