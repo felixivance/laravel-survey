@@ -11,36 +11,41 @@ use Spatie\Sluggable\SlugOptions;
 class Survey extends Model
 {
     use HasFactory, HasSlug;
-    protected $fillable=['user_id','title','image','slug','status','description','expire_date'];
-    protected $appends=['image_url'];
 
-    const TYPE_TEXT="text";
-    const TYPE_TEXTAREA="textarea";
-    const TYPE_SELECT="select";
-    const TYPE_RADIO="radio";
-    const TYPE_CHECKBOX="checkbox";
+    const TYPE_TEXT = "text";
+    const TYPE_TEXTAREA = "textarea";
+    const TYPE_SELECT = "select";
+    const TYPE_RADIO = "radio";
+    const TYPE_CHECKBOX = "checkbox";
+    protected $fillable = ['user_id', 'title', 'image', 'slug', 'status', 'description', 'expire_date'];
+    protected $appends = ['image_url'];
 
 
     //save slug
+
     public function getSlugOptions(): SlugOptions
     {
-       return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
+        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug');
     }
 
-    public function getImageUrlAttribute(){
+    public function getImageUrlAttribute()
+    {
         return $this->image ? URL::to($this->image) : null;
 //        return $value ? URL::to($value) : null;
     }
 
-    public function questions(){
+    public function questions()
+    {
         return $this->hasMany(SurveyQuestion::class, 'survey_id');
     }
 
-    public function getStatusAttribute($value){
+    public function getStatusAttribute($value)
+    {
         return $value == 'active';
     }
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
