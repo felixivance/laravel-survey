@@ -87,8 +87,10 @@ class SurveyController extends Controller
                 throw new Exception('base 64 decode failed');
             }
 
-        } else
+        } else{
             throw new Exception("did not match; not a valid image");
+        }
+
 
         $dir = 'images/';
         $file = Str::random() . '.' . $type;
