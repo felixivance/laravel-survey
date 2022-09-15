@@ -13,7 +13,14 @@ class StoreSurveyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'user_id' => $this->user()->id,
+        ]);
     }
 
     /**
@@ -24,7 +31,13 @@ class StoreSurveyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required | string| max:1000',
+            'image' => 'nullable|string',
+            'user_id' => 'exists:users,id',
+            'status' => 'required|string',
+            'description' => 'nullable|string',
+            'expire_date' => 'nullable|date|after:tomorrow',
+            'questions' => 'array'
         ];
     }
 }
