@@ -20,15 +20,16 @@ use Log;
 class SurveyController extends Controller
 {
 
-    public function index(Request $request): LengthAwarePaginator
+    public function index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $user = $request->user();
-        return Survey::query()->where('user_id', $user->id)->paginate(10);
+        return SurveyResource::collection(Survey::query()->where('user_id', $user->id)->paginate(10));
     }
 
 
     public function store(Request $request)
     {
+
         $request->merge(['user_id' => Auth::id()]);
         isset($request['status']) ? $request->merge(['status' => 'inactive']) : $request->merge(['status' => $request['status']]);
 
@@ -48,7 +49,7 @@ class SurveyController extends Controller
                 $relativePath = $this->saveImage($data['image']);
                 $data['image'] = $relativePath;
             } catch (Exception $e) {
-                Log::info($e->getMessage());
+                \Log::info($e->getMessage());
             }
 
         }
