@@ -41,7 +41,7 @@ class Survey extends Model
 
     public function getStatusAttribute($value)
     {
-        return $value == 'active';
+        return $value === 'active';
     }
 
     public function user()
