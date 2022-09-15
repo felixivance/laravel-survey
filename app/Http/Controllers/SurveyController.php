@@ -109,7 +109,7 @@ class SurveyController extends Controller
     {
         try {
             if (is_array($question['data'])) {
-                $question['data'] = json_encode($question['data']);
+                $question['data'] = json_encode($question['data'], JSON_THROW_ON_ERROR);
             }
             $validator = Validator::make($question, [
                 'question' => 'required|string',
