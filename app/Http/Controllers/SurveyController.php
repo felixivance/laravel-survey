@@ -135,7 +135,10 @@ class SurveyController extends Controller
     public function show($id, Request $request)
     {
         $survey = Survey::query()->where('id', $id)->with('questions')->first();
-        $survey->image_url = $survey->image ? URL::to($survey->image) : null;
+        if(!is_null($survey)){
+            $survey->image_url = $survey->image ? URL::to($survey->image) : null;
+        }
+
 
         if ($request->user()->id !== $survey->user_id) {
             return abort(403, 'unauthorized action');

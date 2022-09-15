@@ -5988,6 +5988,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object,
@@ -32207,7 +32209,7 @@ var render = function () {
                 {
                   staticClass:
                     "mt-1 block-w-full py-2 px-3 border border-gray-300\n                bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
-                  attrs: { name: "", id: "" },
+                  attrs: { id: "", name: "" },
                   domProps: { value: _vm.modelValue },
                   on: {
                     change: function ($event) {
@@ -32223,8 +32225,14 @@ var render = function () {
                   _vm._l(_vm.question.data.options, function (option, index) {
                     return _c(
                       "option",
-                      { key: option.uuid, attrs: { value: "", id: index } },
-                      [_vm._v(_vm._s(option.text))]
+                      { key: option.uuid, attrs: { id: index, value: "" } },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(option.text) +
+                            "\n          "
+                        ),
+                      ]
                     )
                   }),
                 ],
@@ -32246,8 +32254,8 @@ var render = function () {
                         "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300",
                       attrs: {
                         id: option.uuid,
-                        name: _vm.question,
                         "+question.id": "",
+                        name: _vm.question,
                         type: "radio",
                       },
                     }),
