@@ -137,7 +137,6 @@ export default {
       return this.survey.data.options;
     },
     setOptions(options) {
-
       this.survey.data.options = options;
       this.survey = {
         ...this.survey
