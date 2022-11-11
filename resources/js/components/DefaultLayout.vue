@@ -71,7 +71,6 @@
               </svg>
               <!--
                 Heroicon name: outline/x
-
                 Menu open: "block", Menu closed: "hidden"
               -->
               <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -169,8 +168,6 @@ export default{
 
     },
   },
-  mounted() {
-    // console.log(this.$route)
-  }
+ 
 }
 </script>
