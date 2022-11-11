@@ -353,9 +353,7 @@ const store = new Vuex.Store({
       then(({data})=>{
         commit("setUser", data)
         return data;
-
       })
-
       //   return fetch('http://127.0.0.1:8000/api/login',{
       //     headers:{
       //       "Content-type":"application/json",
