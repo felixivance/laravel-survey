@@ -5,8 +5,7 @@
      <h3 class="text-lg font-bold">
        {{ index + 1 }}. {{ survey.question }}
      </h3>
-
-
+     
      <div class="flex items-center">
        <!-- Add new question -->
        <button class=" flex items-center text-xs py-1 px-3 mr-2 rounded-sm text-white bg-gray-600 hover:bg-gray-700" type="button"
