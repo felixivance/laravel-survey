@@ -1,4 +1,4 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
+
 <template>
   <PageComponent >
     <template v-slot:header>
