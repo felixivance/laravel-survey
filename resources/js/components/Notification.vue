@@ -3,7 +3,6 @@
   :class="[notification.type === 'success' ? 'bg-emerald-500' : 'bg-red-500']">
     {{notification.message}}
   </div>
-
 </template>
 <script>
 export default {
