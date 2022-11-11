@@ -35,7 +35,6 @@
         </nav>
       </div>
     </div>
-
   </PageComponent>
 </template>
 
@@ -95,6 +94,5 @@ export default {
 //
 // // const _surveys =  computed(() => store.state.surveys);
 //
-
 // }
 </script>
