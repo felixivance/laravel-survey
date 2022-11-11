@@ -14,7 +14,7 @@ export default {
     PageComponent
   },
   mounted() {
-    console.log("dashboard mounted");
+    // console.log("dashboard mounted");
   }
 }
 </script>
