@@ -46,7 +46,6 @@ export default {
     return {
         surveyFinished:false,
         answers:{},
-
     }
   },
   computed:{
@@ -56,7 +55,6 @@ export default {
     survey(){
       return this.$store.state.currentSurvey.data.data
     }
-
   },
   methods:{
     submitSurvey(){
